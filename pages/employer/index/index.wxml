@@ -1,0 +1,47 @@
+<view class='container'>
+  <view class='top'>
+    <image src='../../images/employerTop.png' class='banner'/>
+    <image src='../../images/my.png' class='my-img'/>
+    <view class='tip'>
+        <image src='../../images/fixed.png' class='fixed'/>
+        <text>附近有168位同学</text>
+    </view>
+  </view>
+  <view class='info'>
+    <p class='tit'>请填写外卖信息</p>
+    <ul class='list'>
+        <li>
+            <image src='../../images/get.png' class='icon-get'/>
+            <text wx:if='{{getAddress !== ""}}' class='address' bindtap='getAddress'>{{getAddress}}</text>
+            <text wx:else class='address no-address' bindtap='getAddress'>请填写取外卖地址</text>
+            <image src='../../images/next.png' class='icon-next' bindtap='getAddress'/>
+        </li>
+        <li>
+            <image src='../../images/receive.png' class='icon-get'/>
+            <text wx:if='{{receiveAddress !== ""}}' class='address' bindtap='receiveAddress'>{{receiveAddress}}</text>
+            <text wx:else class='address no-address' bindtap='receiveAddress'>请填写送达地址</text>
+            <image src='../../images/next.png' class='icon-next' bindtap='receiveAddress'/>
+        </li>
+        <li class='list-num'>
+            <text>外卖数量</text>
+            <view class='num-area'>
+                <image wx:if='{{num > 1}}' src='../../images/subtract.png' class='num-img' bindtap='subtractNum'/>
+                <image wx:else src='../../images/subtract-disabled.png' class='num-img' bindtap='subtractNum'/>
+                <text class='num'>{{num}}</text>
+                <image src='../../images/add.png' class='num-img' bindtap='addNum'/>
+            </view>
+        </li>
+        <li>
+            <textarea placeholder='童鞋你有何送达要求(40字内)' maxlength='40' auto-height placeholder-style='color: #AABEC6;' class='input-info' bindinput='des' value='{{des}}'/>
+        </li>
+        <li>
+            <text>预计很快送达</text>
+            <text class='total'><text class='price'>{{price}}</text>元</text>
+        </li>
+    </ul>
+    <view class='footerButton'>
+        <button wx:if='{{getAddress !== "" && receiveAddress !== "" && num !== "" && des !== "" && price !== ""}}' bindtap='submitOrder' class='submitButton'>立即下单</button>
+        <button wx:else bindtap='submitOrder' class='submitButton button-disabled' bindtap='submitOrder'>立即下单</button>
+    </view>
+  </view>
+</view>

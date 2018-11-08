@@ -1,0 +1,61 @@
+.container {
+    background: #DAE5EE;
+    padding: 20rpx 0 100rpx 0;
+}
+.list{
+    margin-top: 20rpx;
+    font-size: 26rpx;
+    color: #64818D;
+    padding: 40rpx 30rpx 24rpx 30rpx;
+    background:#fff;
+}
+.list:first-child {
+  margin-top: 0;
+}
+.infoArea {
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+}
+.address {
+    font-size: 32rpx;
+    color: #1ABFC0;
+    margin-bottom: 28rpx;
+}
+.oper{
+    display: flex;
+    justify-content: flex-end;
+    border-top: 2rpx solid #DAE5EE;
+    margin-top: 30rpx;
+    padding-top: 24rpx;
+}
+.icon-edit, .icon-del {
+    width: 38rpx;
+    height: 36rpx;
+}
+.icon-edit{
+    margin-right: 40rpx;
+}
+.default-address {
+  display: block;
+  width: 92rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+  text-align: center;
+  font-size: 26rpx;
+  color: #FFFFFF;
+  background: #1ABFC0;
+  border-radius: 4px;
+}
+.submitButton {
+    width: 750rpx;
+    height: 100rpx;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    line-height: 100rpx;
+    background: #1ABFC0;
+    font-size: 32rpx;
+    color: #fff;
+    border-radius: 0;
+}

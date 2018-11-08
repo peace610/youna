@@ -1,0 +1,35 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/employer/index/index",
+    "pages/employer/getAddress/getAddress",
+    "pages/employer/addressSearch/addressSearch",
+    "pages/employer/receiveAddress/receiveAddress",
+    "pages/employer/receiveAddressList/receiveAddressList",
+    "pages/employer/orderDetail/orderDetail",
+    "pages/mercenary/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "悠拿",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "backgroundColor": "#fff",
+    "selectedColor": "#1AAD16",
+    "borderStyle": "black",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/mercenary/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "日志"
+      }
+    ]
+  }
+}

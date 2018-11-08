@@ -1,0 +1,56 @@
+.container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .bg{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: -1;
+  }
+  .title{
+    color: #333;
+    font-size: 46rpx;
+    margin-top: 100rpx;
+  }
+  .sub-title{
+    color: #999;
+    font-size: 28rpx;
+    margin-top: 40rpx;
+  }
+  .area{
+    width: 610rpx;
+    height: 238rpx;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 160rpx;
+    background: #fff;
+    border-radius: 16rpx;
+    text-align: left;
+  }
+  .area .info .tit{
+    font-size: 40rpx;
+    color: #248BDF;
+    
+  }
+  .area .info .tit-s{
+    color: #F37F00;
+  }
+  .area .info .sub-tit{
+    font-size: 26rpx;
+    color: #999999;
+    margin-top: 18rpx;
+    
+  }
+  .area .img {
+    width: 176rpx;
+    height:176rpx;
+  }
+  .marTop40{
+     margin-top: 40rpx;
+  }

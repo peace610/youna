@@ -1,0 +1,14 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  box-sizing: border-box;
+} 
+button {
+  margin: 0;
+  padding: 0;
+  line-height: normal;
+  background: none;
+}
+button::after{
+  border:0;
+}

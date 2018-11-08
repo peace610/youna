@@ -1,0 +1,78 @@
+@import '../../../common.wxss';
+.top, .top .banner{
+  width: 100%;
+  height: 388rpx;
+  position: relative;
+}
+.top .my-img {
+    position:absolute;
+    width: 34rpx;
+    height: 40rpx;
+    top: 28rpx;
+    left: 30rpx;
+}
+.top .tip {
+    position:absolute;
+    height: 50rpx;
+    line-height: 50rpx;
+    top: 254rpx;
+    left: 250rpx;
+    display: flex;
+    align-items: center;
+    font-size: 28rpx;
+    color: #fff;
+    /*background :#000;*/
+}
+.top .tip .fixed {
+    width: 22rpx;
+    height: 28rpx;
+    margin-right: 18rpx;
+}
+.info{
+  width: 100%;
+  background: #fff;
+  position: absolute;
+  top: 320rpx;
+  border-radius: 20rpx 20rpx 0 0;
+}
+.info .tit{
+    padding: 32rpx 30rpx 20rpx;
+    padding-top: 32rpx;
+    font-size: 28rpx;
+    color: #2A383E;
+}
+
+.list .list-num{
+    margin-left: 0;
+    padding-left: 30rpx;
+    border-bottom: 12rpx solid #F6F7F7;
+}
+
+.icon-get {
+    width: 48rpx;
+    height: 48rpx;
+    margin-right: 30rpx;
+}
+
+.num-area {
+    display: flex;
+    align-items: center;
+}
+.num-img {
+    width: 36rpx;
+    height: 36rpx;
+}
+.num {
+    margin: 0 30rpx;
+}
+/*.input-info {*/
+    /*width: 100%;*/
+/*}*/
+.total {
+    font-size: 28rpx;
+}
+.price {
+    font-size: 48rpx;
+    color: #FAA212;
+    margin-right: 10rpx;
+}

@@ -1,0 +1,58 @@
+@import '../../../common.wxss'
+
+.bg{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom:0;
+    left:0;
+    z-index: -1;
+}
+.list {
+    background: #fff;
+}
+.label-s {
+    margin-right: 48rpx;
+}
+.address {
+    width: 500rpx;
+}
+.input-info {
+    position: relative;
+}
+.surname {
+    width: 170rpx;
+}
+.sign {
+    width: 2rpx;
+    height: 34rpx;
+    background: #64818D;
+    margin-right: 40rpx;
+}
+.icon-area {
+    width: 28rpx;
+    height: 20rpx;
+    position: absolute;
+    right: 0;
+    top: 10rpx;
+}
+.type {
+    display: flex;
+    align-items: center;
+}
+.sex {
+    margin: 0 40rpx 0 20rpx;
+}
+.setDefault {
+    display: flex;
+    align-items: center;
+    font-size: 32rpx;
+    color: #64818D;
+    margin-top: 40rpx;
+    padding-left: 30rpx;
+}
+.icon-radio {
+    width: 34rpx;
+    height: 34rpx;
+    margin-right: 40rpx;
+}

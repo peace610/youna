@@ -1,0 +1,24 @@
+<view class='container'>
+    <image src='../../images/getAddress.png' class='bg'/>
+    <ul class='list'>
+        <li>
+            <text class='label'>商家名称</text>
+            <input placeholder='订外卖的商家店铺名称' placeholder-style='color: #AABEC6;' class='input-info' bindinput='setName' value='{{name}}'/>
+        </li>
+        <li>
+            <text class='label'>大致地址</text>
+            <text wx:if='{{address !== ""}}' class='address' bindtap='addressSearch'>{{address}}</text>
+            <text wx:else class='address no-address' bindtap='addressSearch'>请选择取货地址</text>
+            <image src='../../images/next.png' class='icon-next' bindtap='addressSearch'/>
+        </li>
+        <li>
+            <text class='label'>详细地址</text>
+            <input placeholder='例如：成蹊苑南门' placeholder-style='color: #AABEC6;' class='input-info' bindinput='setAddressDetail' value='{{addressDetail}}'/>
+        </li>
+    </ul>
+     <view class='footerButton'>
+        <!--<button wx:if='{{name !== "" && address !== "" && addressDetail !== ""}}' bindtap='submitOrder' class='submitButton' data-name='{{name}}' data-address='{{address}}' data-address-detail='{{addressDetail}}'>保存</button>-->
+        <button wx:if='{{name !== "" && address !== "" && addressDetail !== ""}}' bindtap='submitOrder' class='submitButton'>保存</button>
+        <button wx:else class='submitButton button-disabled'>保存</button>
+    </view>
+</view>

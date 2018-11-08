@@ -1,0 +1,37 @@
+<view class="container">
+  <image src='../images/bg.png' class='bg'></image>
+  <view class="title">您这次想</view>
+  <view class="sub-title">请选择您想做的事情</view>
+<block wx:if="{{!hasUserInfo && canIUse}}">
+    <button open-type="getUserInfo" bindgetuserinfo="getUserInfoEmployer" class="area">
+      <view class='info'>
+        <view class='tit'>这次不想自己拿</view>
+        <view class='sub-tit'>即使在忙，也别太累</view>
+      </view>
+      <image src='../images/employer.png' class='img'></image>
+    </button>
+    <button open-type="getUserInfo" bindgetuserinfo="getUserInfoMercenary" class="area marTop40">
+        <view class='info'>
+          <view class='tit tit-s'>这次，赚点零花钱</view>
+          <view class='sub-tit'>空闲之余，也有所得</view>
+        </view>
+        <image src='../images/mercenary.png' class='img'></image>
+    </button>
+</block>
+<block wx:else>
+      <navigator url="/pages/employer/index/index" class="area">
+        <view class='info'>
+          <view class='tit'>这次不想自己拿</view>
+          <view class='sub-tit'>即使在忙，也别太累</view>
+        </view>
+        <image src='../images/employer.png' class='img'></image>
+      </navigator>
+      <navigator url="/pages/mercenary/index/index" open-type="switchTab" class="area marTop40">
+        <view class='info'>
+          <view class='tit tit-s'>这次，赚点零花钱</view>
+          <view class='sub-tit'>空闲之余，也有所得</view>
+        </view>
+         <image src='../images/mercenary.png' class='img'></image>
+      </navigator>
+</block>
+</view>

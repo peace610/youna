@@ -1,0 +1,35 @@
+<view class='container'>
+  <view class='top'>
+    <view class='searchBar'>
+      <text class='city'>{{city}}</text>
+      <view class='downArea'>
+        <image src='../../images/icon-down.png' class='icon-down' />
+      </view>
+      <view class='search'>
+        <image wx:if='{{searchFlag === false && searchInput === ""}}' src='../../images/icon-search-btn.png' class='icon-search-btn' />
+        <input placeholder='输入小区/写字楼/学校 等' placeholder-style='color: #AABEC6;' class='input-info' bindfocus='focusSearchFlag'
+          bindblur='blurSearchFlag' bindinput='setSearchInput' bindconfirm='submitSearch' value='{{searchInput}}' />
+        <image wx:if='{{searchInput !== ""}}' src='../../images/icon-search-del.png' class='icon-search-del' bindtap='resetSearch' />
+      </view>
+    </view>
+    <text wx:if='{{searchFlag && searchInput == ""}}' bindtap='submitSearch' class='searchBtn searchBtn-disabled'>搜索</text>
+    <text wx:elif='{{searchFlag || searchInput !== ""}}' bindtap='submitSearch' class='searchBtn'>搜索</text>
+  </view>
+  <ul class='list'>
+    <li>
+      <image src='../../images/icon-fixed.png' class='icon-fixed' />
+      <text class='fixedText' data-address='{{fixedText}}' bindtap='goAddress'>{{fixedText}}</text>
+      <image src='../../images/reset-fixed.png' class='reset-fixed' />
+      <text class='resetText' bindtap='resetFixed'>重新定位</text>
+    </li>
+    <li wx:for='{{searchList}}' bindtap='goAddress' data-address='{{item.title}}'>
+      <image src='../../images/icon-search.png' class='icon-search' />
+      <text>{{item.title}}</text>
+      <!-- <text>{{item.address}}</text> -->
+    </li>
+  </ul>
+  <view wx:if='{{!searchResult}}' class='result'>
+    <image src='../../images/searchResult.png' class='searchResutl' />
+    <text>搜索无结果</text>
+  </view>
+</view>

@@ -1,0 +1,24 @@
+<view class='container'>
+    <image src='../../images/wait-bg.png' class='bg'></image>
+    <view class='top'>
+        <view class='state'>
+            <text>等待同学接单</text>
+            <text class='time'>00:14:18</text>
+        </view>
+        <text class='sub-tit'>正在为您寻找附近有空的同学，请稍等</text>
+        <view class='oper'>
+            <button class='btn btn-s'>取消订单</button>
+            <button class='btn'>感谢费<text class='tip'>接单更快</text></button>
+        </view>
+    </view>
+    <view class='info'>
+        <view class='tit'>下单信息</view>
+        <view class='list'>
+            <view class='addressArea'>
+                <image src='../../images/get.png' class='icon-get'/>
+                <text class='address' bindtap='getAddress'>浙江工业大学南门小门旁</text>
+            </view>
+            <text>弄堂里</text>
+        </view>
+    </view>
+</view>
