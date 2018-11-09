@@ -1,9 +1,12 @@
+page {
+    background:#fbfcfd;
+}
 .container {
-    padding: 60rpx 30rpx 0;
+    padding: 60rpx 30rpx 30rpx 30rpx;
 }
 .bg{
     width: 100%;
-    height: 100%;
+    height: 606rpx;
     position: absolute;
     top:0;
     left:0;
@@ -16,19 +19,41 @@
     color: #fff;
 }
 .state {
+    height: 74rpx;
+    line-height: 48rpx;
     display: flex;
+    align-items: flex-start;
     justify-content: space-between;
     font-size: 52rpx;
     margin-bottom: 18rpx;
 }
+.state-notice {
+    font-size: 40rpx;
+    height: 123rpx;
+    line-height: 58rpx;
+}
+.state-success{
+    height: 150rpx;
+    line-height: 70rpx;
+    align-items: center;
+
+}
 .time {
     font-size: 32rpx;
+}
+.icon-cancel {
+    width: 72rpx;
+    height: 72rpx;
 }
 .sub-tit {
     opacity: 0.7;
 }
 .oper {
     margin-top: 58rpx;
+    margin-bottom: 34rpx;
+}
+.oper-cart {
+    margin-bottom: 0;
 }
 .btn {
     background: #fff;
@@ -39,11 +64,17 @@
     margin-right: 20rpx;
     display: inline-block;
 }
-.btn-s {
+.btn-cancel {
     background: none;
     opacity: 0.7;
     border: 1px solid rgba(255,255,255,0.5);
     color: #fff;
+}
+.btn-resetOrder{
+    color: #558CAF;
+}
+.btn-take{
+    color: #207FBA;
 }
 .tip {
     font-size: 24rpx;
@@ -51,11 +82,179 @@
     margin-left: 12rpx;
 }
 .info {
+    font-size: 32rpx;
+    color: #2A383E;
+}
+.titArea {
     background: #fff;
     border-radius: 8rpx 8rpx 0 0;
+    padding-top: 30rpx;
+}
+.tit {
+    padding: 0 30rpx;
+}
+.cut-border {
+    display: block;
+    width: 100%;
+    height: 48rpx;
+    margin-top: 19rpx;
+}
+.cut-border-top {
+    margin-top: 0;
+}
+.list {
+    background: #fff;
+    padding: 19rpx 30rpx;
+    box-shadow: #f6f6f6 0 4rpx 10rpx 0;
+}
+.addressArea {
+    margin-top: 40rpx;
+}
+.addressInfo {
+    display: flex;
+    align-items: center;
 }
 .icon-get {
     width: 48rpx;
     height: 48rpx;
     margin-right: 30rpx;
+}
+.addressDetail{
+    font-size: 28rpx;
+    color: #64818D;
+    margin-left: 78rpx;
+    margin-top: 20rpx;
+}
+.price-list {
+    background: #fff;
+    padding: 19rpx 30rpx;
+    box-shadow: #f6f6f6 0 4rpx 10rpx 0;
+}
+.price-list-s {
+    padding-bottom: 30rpx;
+}
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 32rpx;
+    color: #64818D;
+    margin-bottom: 20rpx;
+}
+.item:last-child {
+    margin-bottom: 0;
+}
+.num {
+    font-size: 40rpx;
+    color: #001A00;
+}
+.icon-tel {
+    width: 40rpx;
+    height: 40rpx;
+}
+.item-tip {
+    font-size: 24rpx;
+    color: #64818D;
+}
+.cut-bottom {
+    display: block;
+    width: 100%;
+    height: 44rpx;
+}
+/*使屏幕变暗 */
+.commodity_screen {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: 0.5;
+    overflow: hidden;
+    z-index: 1;
+    color: #fff;
+}
+/*对话框 */
+.commodity_attr_box {
+    height: 520rpx;
+    position: fixed;
+    overflow: hidden;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    background: #fff;
+    padding: 30rpx;
+    font-size: 32rpx;
+    color: #2A383E;
+}
+.box-tit {
+    text-align: center;
+    position: relative;
+}
+.icon-close {
+    width: 28rpx;
+    height: 28rpx;
+    position: absolute;
+    top:0;
+    left:0;
+}
+.price-btn {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 70rpx;
+}
+.btn-item {
+    width: 210rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    border: 2rpx solid #DAE5EE;
+    border-radius: 8rpx;
+    font-size: 48rpx;
+    text-align: center;
+}
+.btn-item-s, .btn-item-s .unit {
+    background: #1ABFC0;
+    color: #fff;
+}
+.icon-cart {
+    width: 90rpx;
+    height: 58rpx;
+}
+.unit {
+    font-size: 28rpx;
+    color: #001A00;
+    margin-left: 10rpx;
+}
+.other-price {
+    height: 32rpx;
+    line-height: 32rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 34rpx 30rpx;
+    margin: 40rpx 0 60rpx 0;
+    background: #F9F9F9;
+    border: 2rpx solid #DAE5EE;
+    border-radius: 8rpx;
+}
+.other-label {
+    width: 164rpx;
+}
+.input-info {
+    flex-grow: 1;
+    margin-left: 40rpx;
+    font-size: 48rpx
+}
+.submitButton {
+    width: 690rpx;
+    height: 94rpx;
+    margin: 0 auto;
+    line-height: 94rpx;
+    background: #1ABFC0;
+    font-size: 32rpx;
+    color: #fff;
+    border-radius: 8rpx;
+}
+.button-disabled{
+    background: #DAE5EE;
 }
