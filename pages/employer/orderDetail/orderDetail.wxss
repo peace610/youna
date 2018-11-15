@@ -45,6 +45,10 @@ page {
     width: 72rpx;
     height: 72rpx;
 }
+.icon-nice {
+    width: 88rpx;
+    height: 98rpx;
+}
 .sub-tit {
     opacity: 0.7;
 }

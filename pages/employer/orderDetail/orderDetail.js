@@ -5,15 +5,27 @@ Page({
     data: {
         showModalStatus: false,
         animationData: {},
+        animationDataCar: {},
         priceItem: '',
         price: '',
-        orderState: 0, // 0:等待同学接单 1:订单已取消 2：已接单 3：同学已收到您的通知 4：外卖已送达
+        orderState: 3, // 0:等待同学接单 1:订单已取消 2：已接单 3：同学已收到您的通知 4：外卖已送达
     },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        if (this.data.orderState == 3) {
+            var animation = wx.createAnimation({
+                duration: 14000,
+                timingFunction: "linear",
+                delay: 0
+            })
+            this.animation = animation
+            animation.translateX(300).step()
+            this.setData({
+                animationDataCar: animation.export(),
+            })
+        }
     },
     cancelOrder: function () {
         var vm = this

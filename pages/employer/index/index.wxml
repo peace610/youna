@@ -1,7 +1,9 @@
 <view class='container'>
   <view class='top'>
     <image src='../../images/employerTop.png' class='banner'/>
-    <image src='../../images/my.png' class='my-img'/>
+      <navigator url="/pages/employer/my/my">
+          <image src='../../images/my.png' class='my-img'/>
+      </navigator>
     <view class='tip'>
         <image src='../../images/fixed.png' class='fixed'/>
         <text>附近有168位同学</text>

@@ -47,7 +47,7 @@
             </view>
             <text class='sub-tit'>您的外卖已接单，请耐心等待</text>
             <view class='oper oper-cart'>
-                <image src='../../images/icon-cart.png' class='icon-cart'></image>
+                <image src='../../images/icon-cart.png' animation="{{animationDataCar}}" class='icon-cart'></image>
             </view>
         </view>
     </block>
@@ -56,7 +56,7 @@
         <view class='top'>
             <view class='state state-success'>
                 <text>外卖已送达\n祝您用餐愉快</text>
-                <image src='../../images/icon-cancel.png' class='icon-cancel'></image>
+                <image src='../../images/icon-nice.png' class='icon-nice'></image>
             </view>
             <text class='sub-tit'>您的外卖已送达，感谢您的使用</text>
             <view class='oper'></view>
