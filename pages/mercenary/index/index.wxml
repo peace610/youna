@@ -1,14 +1,51 @@
 <view class='container'>
-<swiper indicator-dots='{{indicatorDots}}'
-    autoplay='{{autoplay}}' interval='{{interval}}' duration='{{duration}}' class='swiperArea'>
-    <block wx:for='{{imgUrls}}'>
-      <swiper-item>
-        <image src='{{item}}' class='slide-image' width='355' height='150'/>
-      </swiper-item>
-    </block>
-  </swiper>
-我是佣兵
-<navigator url='/pages/index/index'>
-    首页
-</navigator>
+    <swiper indicator-dots='{{indicatorDots}}'
+        autoplay='{{autoplay}}' interval='{{interval}}' duration='{{duration}}' class='swiperArea'>
+        <block wx:for='{{imgUrls}}'>
+          <swiper-item>
+            <image src='{{item}}' class='slide-image' width='355' height='150'/>
+          </swiper-item>
+        </block>
+    </swiper>
+    <view class='conent'>
+        <view class='info'>
+            <text>推荐订单</text>
+            <view class='fixed'>
+                <image src='../../images/icon-fixed-s.png' class='icon-fixed' />
+                <text class='fixed-tit'>浙江工业大学之江校区北门校区北门</text>
+            </view>
+        </view>
+        <block wx:if="{{listS.length>1}}">
+            <view class='list' wx:for="{{list}}">
+                <view class='item'>
+                    <text class='cir'></text>
+                    <text>{{item.name}}</text>
+                    <view class='price-area'>
+                        <text>¥</text>
+                        <text class='price'>{{item.price}}</text>
+                    </view>
+                </view>
+                <view class='item'>
+                    <text class='cir cir-s'></text>
+                    <text class='address'>{{item.address}}</text>
+                </view>
+                <view class='item item-s'>
+                    <text>距离 600米</text>
+                    <button class='btn'>立即接单</button>
+                </view>
+            </view>
+        </block>
+        <view wx:else class='taskInfo'>
+            <image src='../../images/icon-task.png' class='icon-task'></image>
+            <block wx:if="{{flagCertif}}">
+                <text>
+                    任务都被人抢光了\r\n趁着有空，先注册认证吧
+                </text>
+                <navigator url='/pages/mercenary/material/material' class='register'>去注册认证</navigator>
+            </block>
+            <text wx:else>
+                任务都被人抢光了\r\n稍后再来吧
+            </text>
+        </view>
+    </view>
 </view>

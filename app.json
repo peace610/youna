@@ -9,6 +9,7 @@
     "pages/employer/orderDetail/orderDetail",
     "pages/employer/my/my",
     "pages/mercenary/index/index",
+    "pages/mercenary/material/material",
     "pages/logs/logs"
   ],
   "window": {
