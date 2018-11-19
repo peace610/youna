@@ -1,0 +1,66 @@
+.my-bg-top {
+    width: 100%;
+    height: 232rpx;
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: -1;
+}
+.my-bg-bottom {
+    width: 100%;
+    height: 386rpx;
+    position: absolute;
+    bottom:0;
+    left:0;
+    z-index: -1;
+}
+.info {
+    height: 232rpx;
+    margin-left: 30rpx;
+    display: flex;
+    align-items: center;
+    font-size: 48rpx;
+    color: #000;
+}
+.pic {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+    margin-right: 34rpx;
+}
+.list li{
+    margin-left: 30rpx;
+    padding-right: 30rpx;
+    height: 116rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2rpx solid #DAE5EE;
+    font-size: 32rpx;
+    color: #2A383E;
+}
+.icon-my {
+    width: 36rpx;
+    height: 36rpx;
+    margin-right: 30rpx;
+}
+.label {
+    flex-grow: 1;
+}
+.tip {
+    width: 20rpx;
+    height: 20rpx;
+    background: #FF5959;
+    border-radius: 50%;
+    margin-right: 20rpx;
+}
+.icon-next {
+    width: 16rpx;
+    height: 28rpx;
+}
+.my-banner {
+    display: block;
+    width: 690rpx;
+    height: 164rpx;
+    margin: 60rpx auto 0;
+}
