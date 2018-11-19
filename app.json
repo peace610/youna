@@ -10,6 +10,7 @@
     "pages/employer/my/my",
     "pages/mercenary/index/index",
     "pages/mercenary/material/material",
+    "pages/mercenary/uploadCard/uploadCard",
     "pages/logs/logs"
   ],
   "window": {

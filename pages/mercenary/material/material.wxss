@@ -73,3 +73,6 @@ page {
     height: 34rpx;
     margin-right: 40rpx;
 }
+.footerButton {
+    bottom: 170rpx;
+}

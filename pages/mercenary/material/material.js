@@ -59,7 +59,7 @@ Page({
         var addressDetail = e.currentTarget.dataset.addressDetail
         console.info(address,addressDetail)
         wx.redirectTo({
-            url: '/pages/employer/receiveAddressList/receiveAddressList?address='+address+'&addressDetail='+addressDetail
+            url: '/pages/mercenary/uploadCard/uploadCard'
         })
     }
 })
