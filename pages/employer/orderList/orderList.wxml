@@ -1,0 +1,13 @@
+<view class='container'>
+    <view class='list'>
+        <view class='address' bindtap='goEmployer' data-receive-address='浙江大学工商学院浙江大学工商学院浙江大学工商学院浙江大学工商学院'>浙江大学工商学院浙江大学工商学院浙江大学工商学院浙江大学工商学院</view>
+        <view>
+            <text>黄小黄</text>
+            <text>13845645622</text>
+        </view>
+        <view class='oper'>
+            <image src='../../images/icon-edit.png' class='icon-edit' bindtap='editAddress'/>
+            <image src='../../images/icon-del.png' class='icon-del' bindtap='delAddress'/>
+        </view>
+    </view>
+</view>

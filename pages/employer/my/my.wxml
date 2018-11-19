@@ -1,0 +1,38 @@
+<view class='container'>
+    <image src='../../images/my-bg-top.png' class='my-bg-top'/>
+    <image src='../../images/my-bg-bottom.png' class='my-bg-bottom'/>
+    <view class='info'>
+        <image src='http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg' class='pic'/>
+        <text>微信昵称</text>
+    </view>
+    <ul class='list'>
+        <li>
+            <image src='../../images/icon-my-order.png' class='icon-my'/>
+            <text class='label'>我的订单</text>
+            <text class='tip'></text>
+            <image src='../../images/next.png' class='icon-next' bindtap='getAddress'/>
+        </li>
+        <li>
+            <image src='../../images/icon-my-info.png' class='icon-my'/>
+            <text  class='label'>消息中心</text>
+            <text class='tip'></text>
+            <image src='../../images/next.png' class='icon-next' bindtap='getAddress'/>
+        </li>
+        <li>
+            <image src='../../images/icon-my-feedback.png' class='icon-my'/>
+            <text  class='label'>意见反馈</text>
+            <image src='../../images/next.png' class='icon-next' bindtap='getAddress'/>
+        </li>
+        <li>
+            <image src='../../images/iocn-my-protocol.png' class='icon-my'/>
+            <text  class='label'>用户协议</text>
+            <image src='../../images/next.png' class='icon-next' bindtap='getAddress'/>
+        </li>
+        <li>
+            <image src='../../images/icon-my-help.png' class='icon-my'/>
+            <text  class='label'>帮助说明</text>
+            <image src='../../images/next.png' class='icon-next' bindtap='getAddress'/>
+        </li>
+    </ul>
+    <image src='../../images/my-banner.png' class='my-banner'/>
+</view>
