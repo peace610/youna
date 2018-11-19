@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b34ed49f-2d3c-4fc1-b4c4-ae42a23c99cf" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/pages/images/icon-uploadCard.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/mercenary/material/material.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/mercenary/material/material.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/mercenary/material/material.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/mercenary/material/material.wxss" afterDir="false" />
-    </list>
+    <list default="true" id="b34ed49f-2d3c-4fc1-b4c4-ae42a23c99cf" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -303,23 +297,23 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542631629323" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542631673607" />
     <property name="last_opened_file_path" value="E:/gitlab/maidao-fe-admin-consumerService" />
     <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\yongbing\wx\pages\images" />
-      <recent name="E:\yongbing\wx\pages\receiveAddressList" />
-      <recent name="E:\yongbing\wx\pages\libs" />
-      <recent name="E:\yongbing\wx" />
-      <recent name="E:\yongbing\wx\pages\receiveAddress" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\yongbing\wx\pages\mercenary\index" />
       <recent name="E:\yongbing\wx\pages" />
       <recent name="E:\yongbing\wx\pages\employer" />
       <recent name="E:\yongbing\wx\pages\employer\index" />
+      <recent name="E:\yongbing\wx" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/pages/images" />
+      <recent name="E:\yongbing\wx\pages\images" />
+      <recent name="E:\yongbing\wx\pages\receiveAddressList" />
+      <recent name="E:\yongbing\wx\pages\libs" />
       <recent name="E:\yongbing\wx" />
     </key>
   </component>
@@ -398,11 +392,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="128831000" />
+    <option name="totallyTimeSpent" value="128969000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2453505" />
       <window_info id="Structure" order="1" weight="0.25" />
