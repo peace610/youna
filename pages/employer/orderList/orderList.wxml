@@ -1,13 +1,74 @@
 <view class='container'>
-    <view class='list'>
-        <view class='address' bindtap='goEmployer' data-receive-address='浙江大学工商学院浙江大学工商学院浙江大学工商学院浙江大学工商学院'>浙江大学工商学院浙江大学工商学院浙江大学工商学院浙江大学工商学院</view>
-        <view>
-            <text>黄小黄</text>
-            <text>13845645622</text>
-        </view>
-        <view class='oper'>
-            <image src='../../images/icon-edit.png' class='icon-edit' bindtap='editAddress'/>
-            <image src='../../images/icon-del.png' class='icon-del' bindtap='delAddress'/>
-        </view>
+    <view class='orderNull'>
+        <image src='../../images/order-null.png' class='prder-null' />
+        <text>暂无订单</text>
     </view>
+    <navigator url="/pages/employer/orderDetail/orderDetail?id=11" class='list'>
+        <view class='shop'>
+            <text class='name'>弄堂里</text>
+            <text class='state'>订单等待送达</text>
+        </view>
+        <view class='order'>
+            <image src='../../images/receive.png' class='icon-get'/>
+            <view class='info'>
+                <view class='address'>浙江大学工商学院浙江大学工商学院浙</view>
+                <view>2018-09-23 11:45</view>
+            </view>
+            <view class='price'>
+                <text class='unit'>￥</text>
+                <text>2</text>
+            </view>
+        </view>
+    </navigator>
+    <navigator url="/pages/employer/orderDetail/orderDetail?id=11" class='list'>
+        <view class='shop'>
+            <text class='name'>弄堂里</text>
+            <text class='state1'>订单等待送达</text>
+        </view>
+        <view class='order'>
+            <image src='../../images/receive.png' class='icon-get'/>
+            <view class='info'>
+                <view class='address'>浙江大学工商学院浙江大学工商学院浙</view>
+                <view>2018-09-23 11:45</view>
+            </view>
+            <view class='price'>
+                <text class='unit'>￥</text>
+                <text>2</text>
+            </view>
+        </view>
+    </navigator>
+    <navigator url="/pages/employer/orderDetail/orderDetail?id=11" class='list'>
+        <view class='shop'>
+            <text class='name'>弄堂里</text>
+            <text class='state2'>订单等待送达</text>
+        </view>
+        <view class='order'>
+            <image src='../../images/receive.png' class='icon-get'/>
+            <view class='info'>
+                <view class='address'>浙江大学工商学院浙江大学工商学院浙</view>
+                <view>2018-09-23 11:45</view>
+            </view>
+            <view class='price'>
+                <text class='unit'>￥</text>
+                <text>2</text>
+            </view>
+        </view>
+    </navigator>
+    <navigator url="/pages/employer/orderDetail/orderDetail?id=11" class='list'>
+        <view class='shop'>
+            <text class='name'>弄堂里</text>
+            <text class='state3'>订单等待送达</text>
+        </view>
+        <view class='order'>
+            <image src='../../images/receive.png' class='icon-get'/>
+            <view class='info'>
+                <view class='address'>浙江大学工商学院浙江大学工商学院浙</view>
+                <view>2018-09-23 11:45</view>
+            </view>
+            <view class='price'>
+                <text class='unit'>￥</text>
+                <text>2</text>
+            </view>
+        </view>
+    </navigator>
 </view>

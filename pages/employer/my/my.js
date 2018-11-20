@@ -12,5 +12,10 @@ Page({
    */
   onLoad: function (options) {
     
-  }
+  },
+    orderList: function () {
+        wx.navigateTo({
+            url: '/pages/employer/orderList/orderList'
+        })
+    }
 })
