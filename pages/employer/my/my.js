@@ -22,5 +22,10 @@ Page({
         wx.navigateTo({
             url: '/pages/employer/newsList/newsList'
         })
+    },
+    goMercenary: function () {
+        wx.switchTab({
+            url: '/pages/mercenary/index/index'
+        })
     }
 })

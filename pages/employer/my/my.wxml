@@ -34,5 +34,5 @@
             <image src='../../images/next.png' class='icon-next' bindtap='getAddress'/>
         </li>
     </ul>
-    <image src='../../images/my-banner.png' class='my-banner'/>
+    <image src='../../images/my-banner.png' class='my-banner' bindtap='goMercenary'/>
 </view>

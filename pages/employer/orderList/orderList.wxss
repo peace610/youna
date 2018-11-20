@@ -20,7 +20,6 @@ page {
     font-size: 28rpx;
     color: #64818D;
     background: #fff;
-    display: none;
 }
 .shop {
     display: flex;

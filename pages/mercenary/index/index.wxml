@@ -12,7 +12,7 @@
             <text>推荐订单</text>
             <view class='fixed'>
                 <image src='../../images/icon-fixed-s.png' class='icon-fixed' />
-                <text class='fixed-tit'>浙江工业大学之江校区北门校区北门</text>
+                <text class='fixed-tit'>{{fixedText}}</text>
             </view>
         </view>
         <block wx:if="{{listS.length>1}}">
