@@ -1,0 +1,21 @@
+@import '../../../common.wxss'
+page {
+    background: #F6F7F7;
+}
+.topTip {
+    display: flex;
+    align-items: center;
+    height: 80rpx;
+    font-size: 28rpx;
+    color: #2A383E;
+    padding: 0 30rpx;
+    background: #fff;
+}
+.icon-uploadCard {
+    width: 36rpx;
+    height: 36rpx;
+    margin-right: 20rpx;
+}
+.footerButton {
+    bottom: 170rpx;
+}
