@@ -17,5 +17,10 @@ Page({
         wx.navigateTo({
             url: '/pages/employer/orderList/orderList'
         })
+    },
+    newsList: function () {
+        wx.navigateTo({
+            url: '/pages/employer/newsList/newsList'
+        })
     }
 })
