@@ -1,5 +1,5 @@
-var QQMapWX = require('../../../libs/qqmap-wx-jssdk.min.js');
-var qqmapsdk;
+//获取应用实例
+const app = getApp()
 Page({
   /**
    * 页面的初始数据
@@ -32,9 +32,7 @@ Page({
           })
       }
       var vm = this
-      qqmapsdk = new QQMapWX({
-          key: 'A6MBZ-SXPCW-6PDRN-OTXYN-GZFU6-KSBMC'
-      });
+
       vm.resetFixed()
   },
     focusSearchFlag: function () {
@@ -57,7 +55,7 @@ Page({
       var vm = this
         var inputValue = vm.data.searchInput
         var city = vm.data.city
-        qqmapsdk.getSuggestion({
+        app.globalData.qqmapsdk.getSuggestion({
             keyword: inputValue,
             region: city,
             region_fix: 1,
@@ -97,7 +95,7 @@ Page({
         var vm = this
         wx.getLocation({
             success: function(data) {
-                qqmapsdk.reverseGeocoder({
+                app.globalData.qqmapsdk.reverseGeocoder({
                     location: {
                         latitude: data.latitude,
                         longitude: data.longitude

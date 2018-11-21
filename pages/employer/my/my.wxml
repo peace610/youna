@@ -6,13 +6,13 @@
         <text>微信昵称</text>
     </view>
     <ul class='list'>
-        <li>
+        <li bindtap='orderList'>
             <image src='../../images/icon-my-order.png' class='icon-my'/>
             <text class='label'>我的订单</text>
             <text class='tip'></text>
             <image src='../../images/next.png' class='icon-next' bindtap='getAddress'/>
         </li>
-        <li>
+        <li bindtap='newsList'>
             <image src='../../images/icon-my-info.png' class='icon-my'/>
             <text  class='label'>消息中心</text>
             <text class='tip'></text>
@@ -34,5 +34,5 @@
             <image src='../../images/next.png' class='icon-next' bindtap='getAddress'/>
         </li>
     </ul>
-    <image src='../../images/my-banner.png' class='my-banner'/>
+    <image src='../../images/my-banner.png' class='my-banner' bindtap='goMercenary'/>
 </view>

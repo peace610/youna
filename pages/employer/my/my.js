@@ -12,5 +12,20 @@ Page({
    */
   onLoad: function (options) {
     
-  }
+  },
+    orderList: function () {
+        wx.navigateTo({
+            url: '/pages/employer/orderList/orderList'
+        })
+    },
+    newsList: function () {
+        wx.navigateTo({
+            url: '/pages/employer/newsList/newsList'
+        })
+    },
+    goMercenary: function () {
+        wx.switchTab({
+            url: '/pages/mercenary/index/index'
+        })
+    }
 })

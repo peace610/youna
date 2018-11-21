@@ -1,3 +1,5 @@
+//获取应用实例
+const app = getApp()
 Page({
   data: {
     flagCertif: true,
@@ -24,7 +26,32 @@ Page({
     autoplay: false,
     interval: 5000,
     duration: 1000,
+    fixedText: '',
   },
   onLoad: function () {
-  }
+      var vm = this
+      vm.resetFixed()
+  },
+    resetFixed: function () {
+        var vm = this
+        wx.getLocation({
+            success: function(data) {
+                app.globalData.qqmapsdk.reverseGeocoder({
+                    location: {
+                        latitude: data.latitude,
+                        longitude: data.longitude
+                    },
+                    success: function(res) {
+                        vm.setData({
+                            fixedText: res.result.address
+                        })
+                    },
+                    fail: function(res) {
+                    },
+                    complete: function(res) {
+                    }
+                })
+            }
+        })
+    }
 })

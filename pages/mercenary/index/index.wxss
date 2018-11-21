@@ -29,7 +29,7 @@
 }
 .fixed-tit {
   display: -webkit-box;
-  width: 300rpx;
+  width: 375rpx;
   text-overflow: ellipsis;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;

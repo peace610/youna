@@ -8,6 +8,8 @@
     "pages/employer/receiveAddressList/receiveAddressList",
     "pages/employer/orderDetail/orderDetail",
     "pages/employer/my/my",
+    "pages/employer/orderList/orderList",
+    "pages/employer/newsList/newsList",
     "pages/mercenary/index/index",
     "pages/mercenary/material/material",
     "pages/mercenary/uploadCard/uploadCard",

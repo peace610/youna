@@ -1,0 +1,69 @@
+page {
+    background: #F6F7F7;
+}
+.orderNull {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-size: 32rpx;
+    color: #64818D;
+    margin-top: 234rpx;
+}
+.prder-null {
+    width: 120rpx;
+    height: 120rpx;
+    margin-bottom: 20rpx;
+}
+.list {
+    margin-top: 20rpx;
+    padding: 30rpx;
+    font-size: 28rpx;
+    color: #64818D;
+    background: #fff;
+}
+.shop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 30rpx;
+    border-bottom: 2rpx solid #E3EBEB;
+}
+.state {
+    color: #226ABF;
+}
+.state1 {
+    color: #1ABFC0;
+}
+.state2 {
+    color: #99B6CE;
+}
+.state3 {
+    color: #64818D;
+}
+.order {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 30rpx;
+}
+.icon-get {
+    width: 48rpx;
+    height: 48rpx;
+    margin-right: 30rpx;
+}
+.info {
+    width: 560rpx;
+}
+.address {
+    font-size: 32rpx;
+    color: #2A383E;
+    margin-bottom: 20rpx;
+}
+.price {
+    font-size: 40rpx;
+    color: #001A00;
+    margin-left: 30rpx;
+}
+.unit {
+    font-size: 32rpx;
+    color: #2A383E;
+}
