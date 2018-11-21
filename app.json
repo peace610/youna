@@ -14,6 +14,10 @@
     "pages/mercenary/material/material",
     "pages/mercenary/uploadCard/uploadCard",
     "pages/mercenary/cash/cash",
+    "pages/mercenary/orderList/orderList",
+    "pages/mercenary/orderDetail/orderDetail",
+    "pages/mercenary/newsList/newsList",
+    "pages/mercenary/my/my",
     "pages/logs/logs"
   ],
   "window": {
@@ -24,17 +28,28 @@
   },
   "tabBar": {
     "backgroundColor": "#fff",
-    "selectedColor": "#1AAD16",
+    "color": "#AABEC6",
+    "selectedColor": "##1ABFC0",
     "borderStyle": "black",
     "position": "bottom",
     "list": [
       {
+        "iconPath": "pages/images/tabBar-index.png",
+        "selectedIconPath": "pages/images/tabBar-index-s.png",
         "pagePath": "pages/mercenary/index/index",
         "text": "首页"
       },
       {
-        "pagePath": "pages/logs/logs",
-        "text": "日志"
+        "iconPath": "pages/images/tabBar-order.png",
+        "selectedIconPath": "pages/images/tabBar-order-s.png",
+        "pagePath": "pages/mercenary/orderList/orderList",
+        "text": "订单"
+      },
+      {
+        "iconPath": "pages/images/tabBar-my.png",
+        "selectedIconPath": "pages/images/tabBar-my-s.png",
+        "pagePath": "pages/mercenary/my/my",
+        "text": "我的"
       }
     ]
   }
