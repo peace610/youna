@@ -13,6 +13,7 @@
     "pages/mercenary/index/index",
     "pages/mercenary/material/material",
     "pages/mercenary/uploadCard/uploadCard",
+    "pages/mercenary/cash/cash",
     "pages/logs/logs"
   ],
   "window": {

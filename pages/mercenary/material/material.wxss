@@ -3,6 +3,9 @@
 page {
     background: #F6F7F7;
 }
+.container {
+    background: #fff;
+}
 .topTip {
     display: flex;
     align-items: center;
@@ -10,15 +13,11 @@ page {
     font-size: 28rpx;
     color: #2A383E;
     padding: 0 30rpx;
-    background: #fff;
 }
 .icon-material {
     width: 36rpx;
     height: 36rpx;
     margin-right: 20rpx;
-}
-.list {
-    background: #fff;
 }
 .list .li:last-child {
     border-bottom: 2rpx solid #DAE5EE;
@@ -74,5 +73,6 @@ page {
     margin-right: 40rpx;
 }
 .footerButton {
-    bottom: 170rpx;
+    position: relative;
+    margin-top: 60rpx;
 }

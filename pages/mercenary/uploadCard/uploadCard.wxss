@@ -2,6 +2,10 @@
 page {
     background: #F6F7F7;
 }
+.container {
+  background: #fff;
+  padding-bottom: 40rpx;
+}
 .topTip {
     display: flex;
     align-items: center;
@@ -9,13 +13,49 @@ page {
     font-size: 28rpx;
     color: #2A383E;
     padding: 0 30rpx;
-    background: #fff;
 }
 .icon-uploadCard {
     width: 36rpx;
     height: 36rpx;
     margin-right: 20rpx;
 }
+.uploadCard {
+    width: 690rpx;
+    height: 444rpx;
+    margin: 20rpx auto 0;
+    background: #F8F8F8;
+    border: 2rpx solid #E9E9E9;
+    border-radius: 14rpx;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    font-size: 28rpx;
+    color: #64818D;
+    position: relative;
+}
+.icon-addCard {
+    width: 80rpx;
+    height: 80rpx;
+    margin: 160rpx 0 60rpx 0;
+}
+.img {
+    width: 100%;
+    border-radius: 14rpx;
+}
+.tip {
+    position: absolute;
+    padding-left: 28rpx;
+    width: 662rpx;
+    height: 80rpx;
+    background: rgba(26,191,192,0.8);
+    line-height: 80rpx;
+    font-size: 28rpx;
+    color: #FFF;
+    left: 0;
+    bottom: 0;
+    border-radius: 0 0 14rpx 14rpx;
+}
 .footerButton {
-    bottom: 170rpx;
+    position: relative;
+    margin-top: 60rpx;
 }

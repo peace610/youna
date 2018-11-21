@@ -37,8 +37,8 @@
             <input placeholder='请输入您真实身份证号' placeholder-style='color: #AABEC6;' class='input-info' bindinput='card' value='{{card}}'/>
         </view>
     </view>
-    <view class='footerButton'>
-        <button wx:if='{{school !== "" && surname !== "" && name !== "" && tel !== "" && code !== "" && typeCheck !== "" && card !== ""}}' data-address='{{address}}' data-address-detail='{{addressDetail}}' bindtap='submitOrder' class='submitButton'>下一步</button>
-        <button wx:else class='submitButton button-disabled'>下一步</button>
-    </view>
+</view>
+<view class='footerButton'>
+    <button wx:if='{{school !== "" && surname !== "" && name !== "" && tel !== "" && code !== "" && typeCheck !== "" && card !== ""}}' bindtap='submitOrder' class='submitButton'>下一步</button>
+    <button wx:else class='submitButton button-disabled'>下一步</button>
 </view>

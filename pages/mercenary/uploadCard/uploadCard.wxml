@@ -1,9 +1,20 @@
 <view class='container'>
     <view class='topTip'>
-        <image src='../../images/icon-uploadCard.png' class='icon-uploadCard'/>加入我们需完善资料，接单更方便
+        <image src='../../images/icon-uploadCard.png' class='icon-uploadCard'/>上传证件图片
     </view>
-    <view class='footerButton'>
-        <button wx:if='{{school !== "" && surname !== "" && name !== "" && tel !== "" && code !== "" && typeCheck !== "" && card !== ""}}' data-address='{{address}}' data-address-detail='{{addressDetail}}' bindtap='submitOrder' class='submitButton'>下一步</button>
-        <button wx:else class='submitButton button-disabled'>下一步</button>
+    <view class='uploadCard' bindtap='uploadCard'>
+        <block wx:if='{{tempFilePaths}}'>
+            <image src='{{tempFilePaths}}' class='img'/>
+            <text class='tip'>点击图片可重新上传证件图片</text>
+        </block>
+        <block wx:else>
+            <image src='../../images/icon-addCard.png' class='icon-addCard'/>
+            <text>上传学生证，身份证和学生卡任意一种</text>
+        </block>
+
     </view>
+</view>
+<view class='footerButton'>
+    <button wx:if='{{card !== ""}}' bindtap='submitOrder' class='submitButton'>下一步</button>
+    <button wx:else class='submitButton button-disabled'>下一步</button>
 </view>
