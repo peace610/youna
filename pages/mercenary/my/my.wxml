@@ -1,5 +1,5 @@
 <view class='container'>
-    <image src='../../images/my-bg-top.png' class='my-bg-top'/>
+    <image src='../../images/my-bg-top-s.png' class='my-bg-top'/>
     <image src='../../images/my-bg-bottom.png' class='my-bg-bottom'/>
     <view class='info'>
         <image src='http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg' class='pic'/>
@@ -7,9 +7,15 @@
     </view>
     <ul class='list'>
         <li bindtap='orderList'>
-            <image src='../../images/icon-my-order.png' class='icon-my'/>
-            <text class='label'>我的订单</text>
-            <text class='tip'></text>
+            <image src='../../images/icon-my-wallet.png' class='icon-my'/>
+            <text class='label'>我的钱包</text>
+            <text class='price'>0.0元</text>
+            <image src='../../images/next.png' class='icon-next'/>
+        </li>
+        <li bindtap='newsList'>
+            <image src='../../images/icon-my-cash.png' class='icon-my'/>
+            <text  class='label'>缴纳押金</text>
+            <text class='price'>已缴纳</text>
             <image src='../../images/next.png' class='icon-next'/>
         </li>
         <li bindtap='newsList'>
@@ -34,5 +40,5 @@
             <image src='../../images/next.png' class='icon-next'/>
         </li>
     </ul>
-    <image src='../../images/my-banner.png' class='my-banner' bindtap='goMercenary'/>
+    <image src='../../images/my-banner-s.png' class='my-banner' bindtap='goMercenary'/>
 </view>

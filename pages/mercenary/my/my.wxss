@@ -47,11 +47,9 @@
 .label {
     flex-grow: 1;
 }
-.tip {
-    width: 20rpx;
-    height: 20rpx;
-    background: #FF5959;
-    border-radius: 50%;
+.price {
+    font-size: 28rpx;
+    color: #64818D;
     margin-right: 20rpx;
 }
 .icon-next {

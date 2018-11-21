@@ -1,0 +1,42 @@
+<view class='container'>
+    <!--<view class='orderNull'>-->
+        <!--<image src='../../images/order-null.png' class='prder-null' />-->
+        <!--<text>暂无订单</text>-->
+    <!--</view>-->
+    <block>
+        <navigator url="/pages/mercenary/orderDetail/orderDetail?id=11" class='list'>
+            <view class='shop'>
+                <text class='name'>弄堂里</text>
+                <text class='state'>订单等待送达</text>
+            </view>
+            <view class='order'>
+                <image src='../../images/receive.png' class='icon-get'/>
+                <view class='info'>
+                    <view class='address'>浙江大学工商学院浙江大学工商学院浙</view>
+                    <view>2018-09-23 11:45</view>
+                </view>
+                <view class='price'>
+                    <text class='unit'>￥</text>
+                    <text>2</text>
+                </view>
+            </view>
+        </navigator>
+        <navigator url="/pages/mercenary/orderDetail/orderDetail?id=11" class='list'>
+            <view class='shop'>
+                <text class='name'>弄堂里</text>
+                <text class='state1'>订单等待送达</text>
+            </view>
+            <view class='order'>
+                <image src='../../images/receive.png' class='icon-get'/>
+                <view class='info'>
+                    <view class='address'>浙江大学工商学院浙江大学工商学院浙</view>
+                    <view>2018-09-23 11:45</view>
+                </view>
+                <view class='price'>
+                    <text class='unit'>￥</text>
+                    <text>2</text>
+                </view>
+            </view>
+        </navigator>
+    </block>
+</view>
