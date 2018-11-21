@@ -1,0 +1,34 @@
+page {
+    background: #F6F7F7;
+}
+.time {
+    padding: 30rpx 0;
+    font-size: 24rpx;
+    color: #AABEC6;
+    text-align: center;
+}
+.area {
+    background: #fff;
+    padding: 0 30rpx;
+}
+.orderInfo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 32rpx;
+    color: #2A383E;
+    padding: 28rpx 0;
+    border-bottom: 2rpx solid #E3EBEB;
+}
+.tip {
+    width: 20rpx;
+    height: 20rpx;
+    background: #FF5959;
+    border-radius: 50%;
+}
+.des {
+    background: #fff;
+    padding: 30rpx 0;
+    font-size: 28rpx;
+    color: #64818D;
+}

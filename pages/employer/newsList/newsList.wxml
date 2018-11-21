@@ -1,0 +1,38 @@
+<view class='container'>
+    <view class='list'>
+        <view class='time'>刚刚</view>
+        <view class='area'>
+            <view class='orderInfo'>
+                <text>您的订单已被接单</text>
+                <text class='tip'></text>
+            </view>
+            <navigator url="/pages/employer/orderDetail/orderDetail?id=11"  class='des'>
+                <text>您在「浙大生活学区」下的订单已成功被佣兵接单。\n（点击查看详情）</text>
+            </navigator>
+        </view>
+    </view>
+    <view class='list'>
+        <view class='time'>10-12 9:23</view>
+        <view class='area'>
+            <view class='orderInfo'>
+                <text>您的订单已被接单</text>
+                <text class='tip'></text>
+            </view>
+            <navigator url="/pages/employer/orderDetail/orderDetail?id=11"  class='des'>
+                <text>您在「浙大生活学区」下的订单已成功被佣兵接单。\n（点击查看详情）</text>
+            </navigator>
+        </view>
+    </view>
+    <view class='list'>
+        <view class='time'>刚刚</view>
+        <view class='area'>
+            <view class='orderInfo'>
+                <text>您的订单已被接单</text>
+                <text class='tip'></text>
+            </view>
+            <navigator url="/pages/employer/orderDetail/orderDetail?id=11"  class='des'>
+                <text>您在「浙大生活学区」下的订单已成功被佣兵接单。\n（点击查看详情）</text>
+            </navigator>
+        </view>
+    </view>
+</view>
