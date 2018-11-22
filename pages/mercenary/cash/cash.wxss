@@ -1,0 +1,71 @@
+page {
+    background: #f4f1ed;
+}
+.container {
+    padding: 60rpx 70rpx 0 70rpx;
+}
+.bg{
+    width: 100%;
+    height: 426rpx;
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: -1;
+}
+.tit {
+    font-size: 40rpx;
+    color: #734000;
+}
+.con {
+    width: 550rpx;
+    height: 840rpx;
+    background: #fff;
+    padding:0 30rpx;
+    margin: 60rpx auto 0;
+    text-align: center;
+}
+.price {
+    font-size: 96rpx;
+    color: #FF5959;
+    border-bottom: 2rpx solid #F2CB9B;
+    padding: 60rpx 0;
+    margin-bottom: 80rpx;
+}
+.unit {
+    font-size: 48rpx;
+}
+.li {
+    display: flex;
+    align-items: center;
+    font-size: 32rpx;
+    color: #2A383E;
+    padding-left:60rpx;
+    margin-top:40rpx;
+
+}
+.icon-cash {
+    width: 40rpx;
+    height: 40rpx;
+    margin-right: 20rpx;
+}
+.icon-cash-3 {
+    width: 44rpx;
+    height: 38rpx;
+}
+.submitButton {
+    width: 430rpx;
+    height: 94rpx;
+    line-height: 94rpx;
+    margin: 100rpx auto 0;
+    border-radius: 4px;
+    background: linear-gradient(-225deg, #ECAD6A 0%, #DFAA73 100%);
+    box-shadow: 0rpx 2rpx 8rpx 2rpx #ECAD6A;
+    font-size: 32rpx;
+    color: #fff;
+}
+.help {
+    font-size: 28rpx;
+    color: #B2712A;
+    margin-top: 86rpx;
+    text-align: center;
+}

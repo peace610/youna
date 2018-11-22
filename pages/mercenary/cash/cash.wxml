@@ -1,0 +1,21 @@
+<view class='container'>
+    <image src='../../images/cash-bg.png' class='bg'/>
+    <view class='tit'>交纳押金，即刻赚零花钱</view>
+    <view class='con'>
+        <view class='price'><text class='unit'>￥</text>19.9</view>
+        <view class='li'>
+            <image src='../../images/icon-cash-1.png' class='icon-cash'/>
+            <text>优先派高额订单</text>
+        </view>
+        <view class='li'>
+            <image src='../../images/icon-cash-2.png' class='icon-cash'/>
+            <text>享受更多优质订单服务</text>
+        </view>
+        <view class='li'>
+            <image src='../../images/icon-cash-3.png' class='icon-cash icon-cash-3'/>
+            <text>全程一对一服务</text>
+        </view>
+        <button bindtap='submitOrder' class='submitButton'>立即缴纳</button>
+    </view>
+    <view class='help'>帮助中心</view>
+</view>

@@ -1,0 +1,254 @@
+page {
+    background:#fbfcfd;
+}
+.container {
+    padding: 60rpx 30rpx 0rpx 30rpx;
+}
+.bg{
+    width: 100%;
+    height: 606rpx;
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: -1;
+}
+.top {
+    display: flex;
+    flex-direction: column;
+    font-size: 24rpx;
+    color: #fff;
+}
+.state {
+    height: 74rpx;
+    line-height: 48rpx;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    font-size: 52rpx;
+}
+.state-notice {
+    font-size: 40rpx;
+    height: 123rpx;
+    line-height: 58rpx;
+}
+.state-success{
+    height: 150rpx;
+    line-height: 70rpx;
+    align-items: center;
+
+}
+.time {
+    font-size: 32rpx;
+}
+.icon-cancel {
+    width: 72rpx;
+    height: 72rpx;
+}
+.icon-nice {
+    width: 88rpx;
+    height: 98rpx;
+}
+.sub-tit {
+    opacity: 0.7;
+}
+.oper {
+    height: 100rpx;
+    line-height: 100rpx;
+    margin-top: 58rpx;
+    margin-bottom: 20rpx;
+    border-radius: 8rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    padding: 0 30rpx;
+    font-size: 32rpx;
+    color: #64818D;
+}
+.tel {
+    font-size: 40rpx;
+    color: #333;
+}
+.btn {
+    background: #fff;
+    border-radius: 8rpx;
+    font-size: 32rpx;
+    color: #1ABFC0;
+    padding: 14rpx 28rpx;
+    margin-right: 20rpx;
+    display: inline-block;
+}
+.btn-cancel {
+    background: none;
+    opacity: 0.7;
+    border: 1px solid rgba(255,255,255,0.5);
+    color: #fff;
+}
+.btn-resetOrder{
+    color: #558CAF;
+}
+.btn-take{
+    color: #207FBA;
+}
+.tip {
+    font-size: 24rpx;
+    color: #FAA212;
+    margin-left: 12rpx;
+}
+.info {
+    font-size: 32rpx;
+    color: #2A383E;
+}
+.titArea {
+    background: #fff;
+    border-radius: 8rpx 8rpx 0 0;
+    padding-top: 30rpx;
+}
+.tit {
+    padding: 0 30rpx;
+}
+.cut-border {
+    display: block;
+    width: 100%;
+    height: 48rpx;
+    margin-top: 19rpx;
+}
+.cut-border-top {
+    margin-top: 0;
+}
+.list {
+    background: #fff;
+    padding: 19rpx 30rpx;
+    box-shadow: #f6f6f6 0 4rpx 10rpx 0;
+}
+.addressArea {
+    margin-top: 40rpx;
+}
+.addressInfo {
+    display: flex;
+    align-items: center;
+}
+.icon-get {
+    width: 48rpx;
+    height: 48rpx;
+    margin-right: 30rpx;
+}
+.addressDetail{
+    font-size: 28rpx;
+    color: #64818D;
+    margin-left: 78rpx;
+    margin-top: 20rpx;
+}
+.price-list {
+    background: #fff;
+    padding: 19rpx 30rpx;
+    box-shadow: #f6f6f6 0 4rpx 10rpx 0;
+}
+.price-list-s {
+    padding-bottom: 30rpx;
+}
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 32rpx;
+    color: #64818D;
+    margin-bottom: 20rpx;
+}
+.item:last-child {
+    margin-bottom: 0;
+}
+.num {
+    font-size: 40rpx;
+    color: #001A00;
+}
+.icon-tel {
+    width: 40rpx;
+    height: 40rpx;
+}
+.item-tip {
+    font-size: 24rpx;
+    color: #64818D;
+}
+.cut-bottom {
+    display: block;
+    width: 100%;
+    height: 44rpx;
+}
+.btn-area {
+    background: #fff;
+    margin: 0rpx auto;
+    padding: 20rpx 0;
+}
+/*使屏幕变暗 */
+.commodity_screen {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: 0.5;
+    overflow: hidden;
+    z-index: 1;
+    color: #fff;
+}
+/*对话框 */
+.commodity_attr_box {
+    width: 560rpx;
+    height: 348rpx;
+    position: fixed;
+    overflow: hidden;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 2;
+    background: #fff;
+    padding: 52rpx 30rpx 0 30rpx;
+    font-size: 32rpx;
+    color: #2A383E;
+    text-align: center;
+}
+.icon-code-close {
+    position: absolute;
+    width: 28rpx;
+    height: 28rpx;
+    top: 15rpx;
+    right: 15rpx;
+}
+.code_area {
+    width: 500rpx;
+    margin: 40rpx auto;
+}
+.code-info {
+    width: 100%;
+    height: 100rpx;
+    line-height: 100rpx;
+    background: #F9F9F9;
+    border: 2rpx solid #DAE5EE;
+    border-radius: 8rpx;
+    font-size: 48rpx
+}
+.submitCode {
+    width: 500rpx;
+    height: 94rpx;
+    line-height: 94rpx;
+    margin: 0 auto;
+    font-size: 32rpx;
+    color: #fff;
+    border-radius: 8rpx;
+    background: #FFA54A;
+}
+.submitButton {
+    width: 630rpx;
+    height: 94rpx;
+    line-height: 94rpx;
+    margin: 0 auto;
+    font-size: 32rpx;
+    color: #fff;
+    border-radius: 8rpx;
+    background: #FFA54A;
+}
+.button-disabled{
+    background: #DAE5EE;
+}

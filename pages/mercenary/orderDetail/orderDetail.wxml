@@ -1,0 +1,123 @@
+<view class='container'>
+    <block wx:if='{{orderState == 0}}'>
+        <image src='../../images/wait-bg.png' class='bg'></image>
+        <view class='top'>
+            <view class='state'>
+                <text>外卖还未送达指定地点</text>
+            </view>
+            <text class='sub-tit'>您已成功接单，等待同学通知派送</text>
+            <view class='oper'>
+                <text>手机尾号</text>
+                <text class='tel'>9999</text>
+            </view>
+        </view>
+    </block>
+    <block wx:elif='{{orderState == 1}}'>
+        <image src='../../images/cancel-bg.png' class='bg'></image>
+        <view class='top'>
+            <view class='state'>
+                <text>订单已取消</text>
+                <image src='../../images/icon-cancel.png' class='icon-cancel'></image>
+            </view>
+            <text class='sub-tit'>抱歉，您的订单已取消</text>
+            <view class='oper'>
+                <text>手机尾号</text>
+                <text class='tel'>9999</text>
+            </view>
+        </view>
+    </block>
+    <block wx:elif='{{orderState == 2}}'>
+        <image src='../../images/take-bg.png' class='bg'></image>
+        <view class='top'>
+            <view class='state'>
+                <text>已接单，请等待外卖电话</text>
+            </view>
+            <text class='sub-tit'>请您在接到外卖员电话并确认其到达指定地点（取货地点）后，点击“去拿外卖吧”，通知同学帮您拿外卖，预祝您有一次完美的外卖体验</text>
+            <view class='oper'>
+                <text>手机尾号</text>
+                <text class='tel'>9999</text>
+            </view>
+        </view>
+    </block>
+    <block wx:elif='{{orderState == 3}}'>
+        <image src='../../images/receiptNotice-bg.png' class='bg'></image>
+        <view class='top'>
+            <view class='state'>
+                <text>外卖已送达指定地点</text>
+                <text class='time'>00:14:18</text>
+            </view>
+            <text class='sub-tit'>同学已通知派送，请尽快派送</text>
+            <view class='oper'>
+                <text>手机尾号</text>
+                <text class='tel'>9999</text>
+            </view>
+        </view>
+    </block>
+    <block wx:elif='{{orderState == 4}}'>
+        <image src='../../images/serviceSuccess-bg.png' class='bg'></image>
+        <view class='top'>
+            <view class='state'>
+                <text>订单已送达</text>
+            </view>
+            <text class='sub-tit'>您的订单已成功送达</text>
+            <view class='oper'>
+                <text>手机尾号</text>
+                <text class='tel'>9999</text>
+            </view>
+        </view>
+    </block>
+    <view class='info'>
+        <view class='titArea'>
+            <text class='tit'>订单信息</text>
+            <image src='../../images/cut-border.png' class='cut-border'></image>
+        </view>
+        <view class='list'>
+            <view>
+                <view class='addressInfo'>
+                    <image src='../../images/get.png' class='icon-get'/>
+                    <text bindtap='getAddress'>浙江工业大学南门小门旁</text>
+                </view>
+                <text class='addressDetail'>弄堂里</text>
+            </view>
+            <view class='addressArea'>
+                <view class='addressInfo'>
+                    <image src='../../images/receive.png' class='icon-get'/>
+                    <text bindtap='getAddress'>浙江工业大学南门小门旁</text>
+                </view>
+                <text class='addressDetail'>小美 13888888888</text>
+            </view>
+        </view>
+        <image src='../../images/cut-border-s.png' class='cut-border cut-border-top'></image>
+        <view class='price-list'>
+            <view class='item'>
+                <text>酬劳</text>
+                <text>￥<text class='num'>2</text></text>
+            </view>
+        </view>
+        <image src='../../images/cut-border-s.png' class='cut-border cut-border-top'></image>
+        <view class='price-list price-list-s'>
+            <view class='item'>
+                <text>联系同学</text>
+                <image src='../../images/icon-tel.png' class='icon-tel'></image>
+            </view>
+        </view>
+        <view class='btn-area'>
+            <button wx:if='{{orderState == 3}}' bindtap='confirmGet' class='submitButton'>确认送达</button>
+            <button wx:elif='{{orderState == 4}}' class='submitButton'>已送达</button>
+            <button wx:else class='submitButton button-disabled'>等待送达</button>
+        </view>
+        <image src='../../images/cut-bottom-s.png' class='cut-bottom'></image>
+    </view>
+    <!--屏幕背景变暗的背景 -->
+    <view class="commodity_screen" bindtap="hideCode" wx:if="{{showModalStatus}}"></view>
+    <!--弹出框 -->
+    <view class="commodity_attr_box" wx:if="{{showModalStatus}}">
+        <image src='../../images/icon-code-close.png' class='icon-code-close' bindtap='hideCode'></image>
+        <view>送达验证码</view>
+        <view class='code_area'>
+            <input placeholder='输入雇主提供的验证码' type='digit' placeholder-style='color: #AABEC6;font-size:32rpx;' class='code-info' bindinput='setCode'  value='{{code}}' />
+        </view>
+        <button bindtap='submitCode' class='submitCode'>确定</button>
+    </view>
+
+</view>
