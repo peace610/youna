@@ -1,0 +1,7 @@
+.container {
+    padding: 38rpx 30rpx 0 30rpx;
+}
+.info {
+    font-size: 28rpx;
+    color: #2A383E;
+}

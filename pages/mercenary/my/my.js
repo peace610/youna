@@ -18,6 +18,16 @@ Page({
             url: '/pages/mercenary/newsList/newsList'
         })
     },
+    feedback: function () {
+        wx.navigateTo({
+            url: '/pages/feedback/feedback'
+        })
+    },
+    protocol: function () {
+        wx.navigateTo({
+            url: '/pages/protocol/protocol'
+        })
+    },
     goMercenary: function () {
         wx.navigateTo({
             url: '/pages/employer/index/index'

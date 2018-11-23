@@ -23,6 +23,16 @@ Page({
             url: '/pages/employer/newsList/newsList'
         })
     },
+    feedback: function () {
+        wx.navigateTo({
+            url: '/pages/feedback/feedback'
+        })
+    },
+    protocol: function () {
+        wx.navigateTo({
+            url: '/pages/protocol/protocol'
+        })
+    },
     goMercenary: function () {
         wx.switchTab({
             url: '/pages/mercenary/index/index'

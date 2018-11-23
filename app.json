@@ -18,6 +18,8 @@
     "pages/mercenary/orderDetail/orderDetail",
     "pages/mercenary/newsList/newsList",
     "pages/mercenary/my/my",
+    "pages/protocol/protocol",
+    "pages/feedback/feedback",
     "pages/logs/logs"
   ],
   "window": {
