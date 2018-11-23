@@ -6,7 +6,7 @@
                 <text class='money'>1999.90</text>
                 <text>当前余额（元）</text>
             </view>
-            <button class='withdraw'>提现</button>
+            <button class='withdraw' bindtap='withdraw'>提现</button>
         </view>
     </view>
     <view class='detailTip'>账户明细</view>

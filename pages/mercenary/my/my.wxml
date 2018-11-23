@@ -12,7 +12,7 @@
             <text class='price'>0.0元</text>
             <image src='../../images/next.png' class='icon-next'/>
         </li>
-        <li bindtap='newsList'>
+        <li bindtap='cash'>
             <image src='../../images/icon-my-cash.png' class='icon-my'/>
             <text  class='label'>缴纳押金</text>
             <text class='price'>已缴纳</text>

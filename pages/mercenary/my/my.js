@@ -18,6 +18,11 @@ Page({
             url: '/pages/mercenary/myWallet/myWallet'
         })
     },
+    cash: function () {
+        wx.navigateTo({
+            url: '/pages/mercenary/cash/cash'
+        })
+    },
     newsList: function () {
         wx.navigateTo({
             url: '/pages/mercenary/newsList/newsList'

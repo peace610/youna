@@ -1,0 +1,23 @@
+<view class='container'>
+    <image src='../../images/receiveAddress.png' class='bg'/>
+    <view class='infoArea'>
+        <image src='../../images/icon-portrait.png' class='portrait'/>
+        <view class='info'>
+            <text>微信钱包</text>
+            <text class='name'>宁*成</text>
+        </view>
+    </view>
+    <view class='desArea'>
+        <view>提现金额</view>
+        <view class='priceArea'>
+            <text>￥</text>
+            <input placeholder='请输入提现金额' placeholder-style='color: #AABEC6;' class='input-info' bindinput='setPrice' value='{{price}}'/>
+            <text class='all'>全部提现</text>
+        </view>
+        <view class='priceAll'>可提现金额 1999.90 元</view>
+    </view>
+    <view class='footerButton'>
+        <button wx:if='{{price !== ""}}' bindtap='submitOrder' class='submitButton'>下一步</button>
+        <button wx:else class='submitButton button-disabled'>下一步</button>
+    </view>
+</view>

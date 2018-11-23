@@ -5,7 +5,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        price: ''
     },
 
     /**
@@ -14,9 +14,14 @@ Page({
     onLoad: function (options) {
 
     },
-    withdraw: function () {
-        wx.navigateTo({
-            url: '/pages/mercenary/withdraw/withdraw'
+    setPrice: function (e) {
+        this.setData({
+            price: e.detail.value
         })
     },
+    submitOrder: function () {
+        wx.redirectTo({
+            url: '/pages/mercenary/cash/cash'
+        })
+    }
 })

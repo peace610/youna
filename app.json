@@ -19,6 +19,7 @@
     "pages/mercenary/newsList/newsList",
     "pages/mercenary/my/my",
     "pages/mercenary/myWallet/myWallet",
+    "pages/mercenary/withdraw/withdraw",
     "pages/protocol/protocol",
     "pages/feedback/feedback",
     "pages/logs/logs"
