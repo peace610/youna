@@ -41,8 +41,7 @@
                 <text>
                     任务都被人抢光了\r\n趁着有空，先注册认证吧
                 </text>
-                <!--<navigator url='/pages/mercenary/material/material' class='register'>去注册认证</navigator>-->
-                <navigator url='/pages/mercenary/cash/cash' class='register'>去注册认证</navigator>
+                <navigator url='/pages/mercenary/material/material' class='register'>去注册认证</navigator>
             </block>
             <text wx:else>
                 任务都被人抢光了\r\n稍后再来吧

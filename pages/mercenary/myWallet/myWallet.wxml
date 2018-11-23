@@ -47,5 +47,5 @@
             <text class='total'>2</text>
         </view>
     </view>
-    <view class='contact'>退押金联系客服</view>
+    <button class='contact' open-type="contact" bindcontact="handleContact">退押金联系客服</button>
 </view>

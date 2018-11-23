@@ -11,13 +11,16 @@
         <view>提现金额</view>
         <view class='priceArea'>
             <text>￥</text>
-            <input placeholder='请输入提现金额' placeholder-style='color: #AABEC6;' class='input-info' bindinput='setPrice' value='{{price}}'/>
-            <text class='all'>全部提现</text>
+            <input placeholder='请输入提现金额' type='digit' placeholder-style='color: #AABEC6;' class='input-info' bindinput='setPrice' value='{{price}}'/>
+            <text class='all' bindtap='priceAll'>全部提现</text>
         </view>
-        <view class='priceAll'>可提现金额 1999.90 元</view>
+        <view class='priceAll'>可提现金额 {{total}} 元</view>
     </view>
     <view class='footerButton'>
-        <button wx:if='{{price !== ""}}' bindtap='submitOrder' class='submitButton'>下一步</button>
-        <button wx:else class='submitButton button-disabled'>下一步</button>
+        <button wx:if='{{price !== ""}}' bindtap='submitOrder' class='submitButton'>立即提现</button>
+        <button wx:else class='submitButton button-disabled'>立即提现</button>
     </view>
+    <view class='describe'>1.提现金额会到微信钱包</view>
+    <view class='describe'>2.提现申请将在1-3个工作日到账</view>
+    <view class='describe'>2.查看提现记录，请在”我的-收入明细“查看提现记录</view>
 </view>

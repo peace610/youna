@@ -5,7 +5,8 @@ Page({
      * 页面的初始数据
      */
     data: {
-        price: ''
+        price: '',
+        total: 1999.90,
     },
 
     /**
@@ -19,9 +20,21 @@ Page({
             price: e.detail.value
         })
     },
+    priceAll: function () {
+        this.setData({
+            price: this.data.total
+        })
+    },
     submitOrder: function () {
-        wx.redirectTo({
-            url: '/pages/mercenary/cash/cash'
+        wx.showModal({
+            showCancel: false,
+            content: '提现申请提交成功\r\n请耐心等待',
+            confirmColor: '#1ABFC0',
+            success (res) {
+                if (res.confirm) {
+                    console.log('用户点击确定')
+                }
+            }
         })
     }
 })
