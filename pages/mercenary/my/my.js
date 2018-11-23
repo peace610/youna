@@ -13,6 +13,11 @@ Page({
   onLoad: function (options) {
     
   },
+    myWallet: function () {
+        wx.navigateTo({
+            url: '/pages/mercenary/myWallet/myWallet'
+        })
+    },
     newsList: function () {
         wx.navigateTo({
             url: '/pages/mercenary/newsList/newsList'

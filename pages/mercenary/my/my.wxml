@@ -6,7 +6,7 @@
         <text>微信昵称</text>
     </view>
     <ul class='list'>
-        <li bindtap='orderList'>
+        <li bindtap='myWallet'>
             <image src='../../images/icon-my-wallet.png' class='icon-my'/>
             <text class='label'>我的钱包</text>
             <text class='price'>0.0元</text>

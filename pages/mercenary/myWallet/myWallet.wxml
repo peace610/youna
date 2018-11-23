@@ -1,0 +1,51 @@
+<view class='container'>
+    <view class='top'>
+        <image src='../../images/myWallet-bg.png' class='bg'></image>
+        <view class='con'>
+            <view class='price'>
+                <text class='money'>1999.90</text>
+                <text>当前余额（元）</text>
+            </view>
+            <button class='withdraw'>提现</button>
+        </view>
+    </view>
+    <view class='detailTip'>账户明细</view>
+    <view class='list'>
+        <view class='info'>
+            <view>
+                <text>接单收入</text>
+            </view>
+            <text class='time'>2018-11-34</text>
+        </view>
+        <view class='total-des'>
+            <text class='ident'>+</text>
+            <text class='total'>2</text>
+        </view>
+    </view>
+    <view class='list'>
+        <view class='info'>
+            <view>
+                <text>接单收入</text>
+                <text class='sub'>提现中</text>
+            </view>
+            <text class='time'>2018-11-34</text>
+        </view>
+        <view class='total-des'>
+            <text class='ident'>+</text>
+            <text class='total'>2</text>
+        </view>
+    </view>
+    <view class='list'>
+        <view class='info'>
+            <view>
+                <text>接单收入</text>
+            </view>
+            <text class='time'>2018-11-34</text>
+        </view>
+        <view class='total-des'>
+            <text class='ident'>-</text>
+            <text class='total'>2</text>
+        </view>
+    </view>
+    <view class='contact'>退押金联系客服</view>
+</view>

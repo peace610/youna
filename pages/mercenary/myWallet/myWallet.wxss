@@ -1,0 +1,84 @@
+.top {
+    width: 610rpx;
+    height: 298rpx;
+    position: relative;
+    font-size: 28rpx;
+    color: #FFF;
+    padding: 0 40rpx;
+    margin-left: 30rpx;
+}
+.bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left:0;
+    top: 0;
+    z-index: -1;
+}
+.con {
+    height: 248rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.price {
+    display: flex;
+    flex-direction: column;
+}
+.money {
+    font-size: 60rpx;
+}
+.withdraw {
+    width: 140rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 8rpx;
+    font-size: 28rpx;
+    color: #FFF;
+}
+.detailTip {
+    font-size: 28rpx;
+    color: #2A383E;
+    font-weight: bold;
+    padding: 0 30rpx 20rpx 30rpx;
+}
+.list {
+    height: 124rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 28rpx;
+    color: #2A383E;
+    border-top: 2rpx solid #DAE5EE;
+    margin-left: 30rpx;
+    padding-right: 30rpx
+}
+.info {
+    display: flex;
+    flex-direction: column;
+}
+.sub {
+    color: #FA9A36;
+    margin-left: 20rpx;
+}
+.time {
+    font-size: 24rpx;
+    color: #64818D;
+    margin-top: 10rpx;
+}
+.ident {
+    font-size: 32rpx;
+}
+.total {
+    font-size: 36rpx;
+    color: #001A00;
+}
+.contact {
+    position: fixed;
+    bottom: 40rpx;
+    width: 100%;
+    text-align: center;
+    font-size: 28rpx;
+    color: #64818D;
+}
