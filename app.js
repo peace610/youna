@@ -4,7 +4,7 @@ const util = require('./utils/util.js')
 App({
   onLaunch: function () {
       this.globalData.qqmapsdk = new QQMapWX({
-          key: 'A6MBZ-SXPCW-6PDRN-OTXYN-GZFU6-KSBMC'
+          key: 'GIUBZ-DWEWW-6CVRK-OLZWV-26UUH-5OBRT'
       });
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
