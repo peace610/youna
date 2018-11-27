@@ -26,9 +26,10 @@ const ajax = (Type, url, params, successFun, failFun, completeFun) => {
         }).join("&");
         url += '?' + p;
         params = {}
-    } else if (Type == "POST") {
-        methonType = "application/x-www-form-urlencoded"
     }
+    // else if (Type == "POST") {
+    //     methonType = "application/x-www-form-urlencoded"
+    // }
     // 请求接口
     wx.request({
         url: https + url,
@@ -38,22 +39,29 @@ const ajax = (Type, url, params, successFun, failFun, completeFun) => {
         },
         data: params,
         // 成功回调
-        success: res => {
-        successFun(res)
-    },
+        success: (res) => {
+            return typeof successFun == "function" && successFun(res.data)
+            // successFun(res)
+        },
         // 错误回调
         fail: (res) => {
-        if (failFun) {
-            failFun(res)
+            wx.showModal({
+                title: '网络错误',
+                content: '网络出错，请刷新重试',
+                showCancel: false
+            })
+            return typeof cb == "function" && failFun(false)
+            // if (failFun) {
+            //         failFun(res)
+            //     }
+            // }
+        // 接口调用结束的回调函数
+        complete: (res) => {
+            if (completeFun) {
+                completeFun(res)
+            }
         }
-    },
-    // 接口调用结束的回调函数
-    complete: (res) => {
-        if (completeFun) {
-            completeFun(res)
-        }
-    }
-})
+    })
 }
 
 module.exports = {

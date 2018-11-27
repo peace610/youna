@@ -13,15 +13,31 @@ App({
     // 登录
     wx.login({
       success: res => {
-        console.info(res,11)
-      // https://hdzhang.xyz/api/login
-      // util.ajax('GET','/login',{
-      //   pageNum: 1,
-      //   pageSize: 10,
-      // },(res) => {
-      //   console.info(res)
-      //   console.info('成功了')
-      // })
+        // 悠拿登录
+        var param = {
+            post_vars: {
+                appid: 1,
+                secret: "qasdcd",
+                js_code: "1qasxdfg"
+            }
+        }
+        util.ajax('POST','/login',param,(res) => {
+          console.info(res)
+          console.info('成功了')
+          var param_user = {
+              session_id: res.session_id,
+              post_vars: {
+                  user_id: res.user_id,
+                  user_info: "{\"nickName\": \"hdzhang\",\"gender\": 1,\"avatarUrl\": \"AVATARURL\"}",
+                  raw_data: "",
+                  signature: "",
+                  encrypted_data: "",
+                  iv: ""
+              }
+          }
+          // 悠拿用户注册
+          util.ajax('POST','/user',param_user)
+        })
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
     })
