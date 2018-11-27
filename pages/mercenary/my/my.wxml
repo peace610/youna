@@ -1,6 +1,6 @@
 <view class='container'>
     <image src='../../images/my-bg-top-s.png' class='my-bg-top'/>
-    <image src='../../images/my-bg-bottom.png' class='my-bg-bottom'/>
+    <!-- <image src='../../images/my-bg-bottom.png' class='my-bg-bottom'/> -->
     <view class='info'>
         <image src='http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg' class='pic'/>
         <text>微信昵称</text>
