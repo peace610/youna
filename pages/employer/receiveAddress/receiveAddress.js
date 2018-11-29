@@ -9,10 +9,11 @@ Page({
       tel: '', //
       areaArray: ['宿舍', '图书馆', '教学楼', '其它'],
       areaIndex: 0, // 送达区域
-      typeCheck: '1', // 宿舍类型 1男 2女
+      typeCheck: '1', // 宿舍类型 1男 0女
       address: '', // 地址
       addressDetail: '', // 楼号
       defaultCheck: false, // 是否为默认地址
+      location: {}
   },
 
   /**
@@ -20,12 +21,13 @@ Page({
    */
   onLoad: function (options) {
       var address = options && options.address
-      if (address) {
+      var location = options && options.location
+      if (address && location) {
           this.setData({
-              address: address
+              address: address,
+              location: JSON.parse(location),
           })
       }
-    
   },
     surname: function (e) {
         this.setData({
@@ -70,6 +72,37 @@ Page({
         })
     },
     submitOrder: function (e) {
+      // var data = this.data
+      //   var property = 1
+      //   if (data.areaIndex == 0) {
+      //       property = data.typeCheck
+      //   } else {
+      //       property = 2 // 公共场所
+      //   }
+      //   // 悠拿添加收货地址
+      //   var param = {
+      //       session_id: wx.getStorageSync('session_id'),
+      //       post_vars: {
+      //           user_id: wx.getStorageSync('user_id'),
+      //           type: 1,
+      //           property: property,
+      //           shop_name: "",
+      //           first_name: data.surname,
+      //           last_name: data.name,
+      //           phone: data.tel,
+      //           first_address: data.address,
+      //           last_address: data.addressDetail,
+      //           latitude: data.location.lat,
+      //           longitude: data.location.lng,
+      //           default: data.defaultCheck
+      //       }
+      //   }
+      //   util.ajax('POST','/user/addresses',param,(res) => {
+      //       wx.redirectTo({
+      //           url: '/pages/employer/receiveAddressList/receiveAddressList'
+      //       })
+      //   })
+
         var address = e.currentTarget.dataset.address
         var addressDetail = e.currentTarget.dataset.addressDetail
         console.info(address,addressDetail)

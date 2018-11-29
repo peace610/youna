@@ -18,11 +18,11 @@
   <ul class='list'>
     <li>
       <image src='../../images/icon-fixed.png' class='icon-fixed' />
-      <text class='fixedText' data-address='{{fixedText}}' bindtap='goAddress'>{{fixedText}}</text>
+      <text class='fixedText' data-address='{{fixedText}}' data-location='{{location}}' bindtap='goAddress'>{{fixedText}}</text>
       <image src='../../images/reset-fixed.png' class='reset-fixed' />
       <text class='resetText' bindtap='resetFixed'>重新定位</text>
     </li>
-    <li wx:for='{{searchList}}' bindtap='goAddress' data-address='{{item.title}}'>
+    <li wx:for='{{searchList}}' bindtap='goAddress' data-address='{{item.title}}' data-location='{{item.location}}'>
       <image src='../../images/icon-search.png' class='icon-search' />
       <text>{{item.title}}</text>
       <!-- <text>{{item.address}}</text> -->

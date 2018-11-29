@@ -11,6 +11,7 @@ Page({
     searchResult: true,
     city: '',
     fixedText: '',
+    location: {},
     goType: '',
     goUrl: '',
   },
@@ -34,7 +35,11 @@ Page({
       var vm = this
       vm.setData({
           city: wx.getStorageSync('city'),
-          fixedText: wx.getStorageSync('fixedText')
+          fixedText: wx.getStorageSync('fixedText'),
+          location: {
+              lat: wx.getStorageSync('latitude'),
+              lng: wx.getStorageSync('longitude')
+          }
       })
   },
     focusSearchFlag: function () {
@@ -64,6 +69,7 @@ Page({
             success: function (res) {
                 var data = res.data
                 if (data.length >= 1) {
+                    console.info('searchList:',res.data)
                     vm.setData({
                         searchResult: true,
                         searchList: res.data
@@ -89,11 +95,20 @@ Page({
     },
     goAddress: function (e) {
       var address = e.currentTarget.dataset.address
+      var location = e.currentTarget.dataset.location
         wx.redirectTo({
-            url: this.data.goUrl+'?address='+address
+            url: this.data.goUrl+'?address='+address+'&location='+JSON.stringify(location)
         })
     },
     resetFixed: function () {
         app.getFixed()
+        this.setData({
+            city: wx.getStorageSync('city'),
+            fixedText: wx.getStorageSync('fixedText'),
+            location: {
+                lat: wx.getStorageSync('latitude'),
+                lng: wx.getStorageSync('longitude')
+            }
+        })
     },
 })

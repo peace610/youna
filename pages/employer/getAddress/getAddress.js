@@ -6,7 +6,8 @@ Page({
   data: {
       name: '',
       address: '',
-      addressDetail: ''
+      addressDetail: '',
+      location: {},
   },
 
   /**
@@ -14,9 +15,11 @@ Page({
    */
   onLoad: function (options) {
       var address = options && options.address
-      if (address) {
+      var location = options && options.location
+      if (address && location) {
           this.setData({
-              address: address
+              address: address,
+              location: JSON.parse(location),
           })
       }
 
@@ -37,9 +40,28 @@ Page({
         })
     },
     submitOrder: function (e) {
-        // var getAddress = e.currentTarget.dataset.address + e.currentTarget.dataset.addressDetail
-        // wx.navigateTo({
-        //     url: '/pages/employer/employer?getAddress='+getAddress
+        // // 悠拿添加取货地址
+        // var param = {
+        //     session_id: wx.getStorageSync('session_id'),
+        //     post_vars: {
+        //         user_id: wx.getStorageSync('user_id'),
+        //         type: 0,
+        //         property: 2,
+        //         shop_name: this.data.name,
+        //         first_name: "",
+        //         last_name: "",
+        //         phone: "",
+        //         first_address: this.data.address,
+        //         last_address: this.data.addressDetail,
+        //         latitude: this.data.location.lat,
+        //         longitude: this.data.location.lng,
+        //         default: false
+        //     }
+        // }
+        // util.ajax('POST','/user/addresses',param,(res) => {
+        //     wx.navigateTo({
+        //         url: '/pages/employer/index/index'
+        //     })
         // })
         wx.navigateTo({
             url: '/pages/employer/index/index'

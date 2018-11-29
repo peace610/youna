@@ -24,9 +24,9 @@
                 <image wx:if='{{typeCheck === "1"}}' src='../../images/icon-radio-check.png' class='icon-radio' data-type='1' bindtap='typeCheck'/>
                 <image wx:else src='../../images/icon-radio.png' class='icon-radio' data-type='1' bindtap='typeCheck'/>
                 <text class='sex' data-type='1' bindtap='typeCheck'>男</text>
-                <image wx:if='{{typeCheck === "2"}}' src='../../images/icon-radio-check.png' class='icon-radio' data-type='2' bindtap='typeCheck'/>
-                <image wx:else src='../../images/icon-radio.png' class='icon-radio' data-type='2' bindtap='typeCheck'/>
-                <text class='sex' data-type='2' bindtap='typeCheck'>女</text>
+                <image wx:if='{{typeCheck === "0"}}' src='../../images/icon-radio-check.png' class='icon-radio' data-type='0' bindtap='typeCheck'/>
+                <image wx:else src='../../images/icon-radio.png' class='icon-radio' data-type='0' bindtap='typeCheck'/>
+                <text class='sex' data-type='0' bindtap='typeCheck'>女</text>
             </view>
         </view>
         <view  class='li'>
