@@ -1,8 +1,14 @@
+//获取应用实例
+const app = getApp()
 Page({
   data: {
-    count: 1,
-    getAddress: {},
-    receiveAddress: {},
+    count: 0,
+    getAddress: {
+        first_address: '',
+    },
+    receiveAddress: {
+        first_address: '',
+    },
     num: 1,
     des: '',
     price: 2
@@ -43,34 +49,9 @@ Page({
       //         receiveAddress: receiveAddress
       //     })
       // }
+      // 获取定位 到经纬度
+      app.getFixed()
   },
-    resetFixed: function () {
-        var vm = this
-        wx.getLocation({
-            success: function(data) {
-                app.globalData.qqmapsdk.reverseGeocoder({
-                    location: {
-                        latitude: data.latitude,
-                        longitude: data.longitude
-                    },
-                    success: function(res) {
-                        var city = res.result.address_component.city
-                        if(city.indexOf('市')) {
-                            city = city.substr(0,city.length-1)
-                        }
-                        vm.setData({
-                            city: city,
-                            fixedText: res.result.address
-                        })
-                    },
-                    fail: function(res) {
-                    },
-                    complete: function(res) {
-                    }
-                })
-            }
-        })
-    },
     getAddress: function () {
         wx.navigateTo({
             url: '/pages/employer/getAddress/getAddress'

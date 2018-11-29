@@ -32,8 +32,10 @@ Page({
           })
       }
       var vm = this
-
-      vm.resetFixed()
+      vm.setData({
+          city: wx.getStorageSync('city'),
+          fixedText: wx.getStorageSync('fixedText')
+      })
   },
     focusSearchFlag: function () {
         this.setData({
@@ -92,30 +94,6 @@ Page({
         })
     },
     resetFixed: function () {
-        var vm = this
-        wx.getLocation({
-            success: function(data) {
-                app.globalData.qqmapsdk.reverseGeocoder({
-                    location: {
-                        latitude: data.latitude,
-                        longitude: data.longitude
-                    },
-                    success: function(res) {
-                        var city = res.result.address_component.city
-                        if(city.indexOf('市')) {
-                            city = city.substr(0,city.length-1)
-                        }
-                        vm.setData({
-                            city: city,
-                            fixedText: res.result.address
-                        })
-                    },
-                    fail: function(res) {
-                    },
-                    complete: function(res) {
-                    }
-                })
-            }
-        })
-    }
+        app.getFixed()
+    },
 })

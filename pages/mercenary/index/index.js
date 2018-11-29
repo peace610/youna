@@ -30,28 +30,9 @@ Page({
   },
   onLoad: function () {
       var vm = this
-      vm.resetFixed()
-  },
-    resetFixed: function () {
-        var vm = this
-        wx.getLocation({
-            success: function(data) {
-                app.globalData.qqmapsdk.reverseGeocoder({
-                    location: {
-                        latitude: data.latitude,
-                        longitude: data.longitude
-                    },
-                    success: function(res) {
-                        vm.setData({
-                            fixedText: res.result.address
-                        })
-                    },
-                    fail: function(res) {
-                    },
-                    complete: function(res) {
-                    }
-                })
-            }
-        })
-    }
+      app.getFixed()
+      vm.setData({
+          fixedText: wx.getStorageSync('fixedText')
+      })
+  }
 })

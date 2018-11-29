@@ -64,6 +64,33 @@ App({
       }
     })
   },
+  getFixed: function () {
+      var vm = this
+      wx.getLocation({
+          success: function(data) {
+              vm.globalData.qqmapsdk.reverseGeocoder({
+                  location: {
+                      latitude: data.latitude,
+                      longitude: data.longitude
+                  },
+                  success: function(res) {
+                      var city = res.result.address_component.city
+                      if(city.indexOf('市')) {
+                          city = city.substr(0,city.length-1)
+                      }
+                      wx.setStorageSync('latitude',data.latitude)
+                      wx.setStorageSync('longitude',data.longitude)
+                      wx.setStorageSync('city',city);
+                      wx.setStorageSync('fixedText',res.result.address)
+                  },
+                  fail: function(res) {
+                  },
+                  complete: function(res) {
+                  }
+              })
+          }
+      })
+  },
   globalData: {
     userInfo: null,
       qqmapsdk: null,
