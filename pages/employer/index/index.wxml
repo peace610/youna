@@ -14,13 +14,13 @@
     <ul class='list'>
         <li>
             <image src='../../images/get.png' class='icon-get'/>
-            <text wx:if='{{getAddress !=="{}"}}' class='address' bindtap='getAddress'>{{getAddress.first_address}}</text>
+            <text wx:if='{{JSON.stringify(getAddress) !=="{}"}}' class='address' bindtap='getAddress'>{{getAddress.first_address}}</text>
             <text wx:else class='address no-address' bindtap='getAddress'>请填写取外卖地址</text>
             <image src='../../images/next.png' class='icon-next' bindtap='getAddress'/>
         </li>
         <li>
             <image src='../../images/receive.png' class='icon-get'/>
-            <text wx:if='{{receiveAddress !== "{}"}}' class='address' bindtap='receiveAddress'>{{receiveAddress.first_address}}</text>
+            <text wx:if='{{JSON.stringify(receiveAddress) !== "{}"}}' class='address' bindtap='receiveAddress'>{{receiveAddress.first_address}}</text>
             <text wx:else class='address no-address' bindtap='receiveAddress'>请填写送达地址</text>
             <image src='../../images/next.png' class='icon-next' bindtap='receiveAddress'/>
         </li>
