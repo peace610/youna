@@ -55,6 +55,7 @@ const ajax = (Type, url, params, successFun, failFun, completeFun) => {
             //         failFun(res)
             //     }
             // }
+        },
         // 接口调用结束的回调函数
         complete: (res) => {
             if (completeFun) {

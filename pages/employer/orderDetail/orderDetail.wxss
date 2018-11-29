@@ -242,7 +242,7 @@ page {
     border-radius: 8rpx;
 }
 .other-label {
-    width: 164rpx;
+    width: 170rpx;
 }
 .input-info {
     flex-grow: 1;
