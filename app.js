@@ -6,10 +6,6 @@ App({
       this.globalData.qqmapsdk = new QQMapWX({
           key: 'GIUBZ-DWEWW-6CVRK-OLZWV-26UUH-5OBRT'
       });
-    // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
     // 登录
     wx.login({
       success: res => {
@@ -18,7 +14,7 @@ App({
             post_vars: {
                 appid: 'wx002b7e790dfa4a25',
                 secret: "qasdcd",
-                js_code: "1qasxdfg"
+                js_code: res.code
             }
         }
         util.ajax('POST','/login',param,(res) => {

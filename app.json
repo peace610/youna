@@ -21,8 +21,7 @@
     "pages/mercenary/myWallet/myWallet",
     "pages/mercenary/withdraw/withdraw",
     "pages/protocol/protocol",
-    "pages/feedback/feedback",
-    "pages/logs/logs"
+    "pages/feedback/feedback"
   ],
   "window": {
     "backgroundTextStyle": "light",
