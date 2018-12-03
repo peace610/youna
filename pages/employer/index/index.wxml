@@ -6,7 +6,7 @@
       </navigator>
     <view class='tip'>
         <image src='../../images/fixed.png' class='fixed'/>
-        <text>附近有168位同学</text>
+        <text>附近有{{count}}位同学</text>
     </view>
   </view>
   <view class='info'>

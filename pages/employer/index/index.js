@@ -1,4 +1,5 @@
 //获取应用实例
+const util = require('../../../utils/util.js')
 const app = getApp()
 Page({
   data: {
@@ -16,39 +17,57 @@ Page({
   onLoad: function (options) {
       var vm = this
       // 悠拿获取在线人数
-      // var session_id = wx.getStorageSync('session_id')
-      // var paramUser = {
-      //     session_id: session_id,
-      // }
-      // util.ajax('GET','/users',paramUser,(res) => {
-      //     vm.setDate({
-      //       count: res.count,
-      //     })
-      // })
-      // 悠拿获取默认地址
-      // var param = {
-      //     session_id: session_id,
-      //     user_id: wx.getStorageSync('user_id'),
-      // }
-      // util.ajax('GET','/user/addresses',param,(res) => {
-      //    vm.setDate({
-      //         getAddress: res.tack_address,
-      //         receiveAddress: res.recive_address
-      //     })
-      // })
+      var session_id = wx.getStorageSync('session_id')
+      var user_id = wx.getStorageSync('user_id')
+      var paramUser = {
+          session_id: session_id,
+          state: '',
+          status: '',
+          limit:5,
+          offset: 0,
+      }
+      util.ajax('GET','/users',paramUser,(res) => {
+          if (res.status == 200) {
+              console.info(res.data.count,vm)
+              vm.setData({
+                  count: res.data.count,
+              })
+          }
 
-      // var getAddress = options && options.getAddress
-      // var receiveAddress = options && options.receiveAddress
-      // if (getAddress) {
-      //     this.setData({
-      //         getAddress: getAddress
-      //     })
-      // }
-      // if (receiveAddress) {
-      //     this.setData({
-      //         receiveAddress: receiveAddress
-      //     })
-      // }
+      })
+      // 悠拿获取默认地址
+      var param = {
+          session_id: session_id,
+          user_id: user_id,
+      }
+      util.ajax('GET','/user/address/default',param,(res) => {
+          if (res.status == 200) {
+              var data = res.data
+              if (data.tack_address) {
+                  vm.setData({
+                      getAddress: data.tack_address,
+                  })
+              }
+              if (data.recive_address) {
+                  vm.setData({
+                      receiveAddress: data.recive_address
+                  })
+              }
+          }
+      })
+
+      var getAddress = options && options.getAddress
+      var receiveAddress = options && options.receiveAddress
+      if (getAddress) {
+          this.setData({
+              getAddress: getAddress
+          })
+      }
+      if (receiveAddress) {
+          this.setData({
+              receiveAddress: receiveAddress
+          })
+      }
       // 获取定位 到经纬度
       app.getFixed()
   },
@@ -73,7 +92,7 @@ Page({
             count: vm.data.count
         }
         util.ajax('GET','/order/actions/calculate',paramUser,(res) => {
-            vm.setDate({
+            vm.setdata({
                 price: res.amount,
             })
         })
