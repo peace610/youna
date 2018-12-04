@@ -9,16 +9,16 @@ App({
     // 登录
     wx.login({
       success: res => {
+          console.info(res,123)
         // 悠拿登录
         var param = {
             post_vars: {
                 appid: 'wx002b7e790dfa4a25',
-                secret: "qasdcd",
+                secret: '561d8379e6c830ca0ad282d48810ec61',
                 js_code: res.code
             }
         }
         util.ajax('POST','/login',param,(res) => {
-            console.info(res)
             if (res.status == 200) {
                 console.info('成功了')
                 var data = res.data

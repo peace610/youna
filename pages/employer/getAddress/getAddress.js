@@ -1,3 +1,4 @@
+const util = require('../../../utils/util.js')
 Page({
 
   /**
@@ -41,30 +42,29 @@ Page({
     },
     submitOrder: function (e) {
         // // 悠拿添加取货地址
-        // var param = {
-        //     session_id: wx.getStorageSync('session_id'),
-        //     post_vars: {
-        //         user_id: wx.getStorageSync('user_id'),
-        //         type: 0,
-        //         property: 2,
-        //         shop_name: this.data.name,
-        //         first_name: "",
-        //         last_name: "",
-        //         phone: "",
-        //         first_address: this.data.address,
-        //         last_address: this.data.addressDetail,
-        //         latitude: this.data.location.lat,
-        //         longitude: this.data.location.lng,
-        //         default: false
-        //     }
-        // }
-        // util.ajax('POST','/user/addresses',param,(res) => {
-        //     wx.navigateTo({
-        //         url: '/pages/employer/index/index'
-        //     })
-        // })
-        wx.navigateTo({
-            url: '/pages/employer/index/index'
+        var param = {
+            session_id: wx.getStorageSync('session_id'),
+            post_vars: {
+                user_id: wx.getStorageSync('user_id'),
+                type: 0, // type: 0-取货地址，1-收货地址
+                property: 4,
+                shop_name: this.data.name,
+                first_name: "",
+                last_name: "",
+                phone: "",
+                first_address: this.data.address,
+                last_address: this.data.addressDetail,
+                latitude: this.data.location.lat,
+                longitude: this.data.location.lng,
+                default: true
+            }
+        }
+        util.ajax('POST','/user/address',param,(res) => {
+            if (res.status == 200) {
+                wx.navigateTo({
+                    url: '/pages/employer/index/index'
+                })
+            }
         })
     }
 })

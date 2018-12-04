@@ -21,6 +21,7 @@
     "pages/mercenary/myWallet/myWallet",
     "pages/mercenary/withdraw/withdraw",
     "pages/protocol/protocol",
+    "pages/help/help",
     "pages/feedback/feedback"
   ],
   "window": {

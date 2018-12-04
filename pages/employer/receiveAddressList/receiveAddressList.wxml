@@ -1,52 +1,24 @@
 <view class='container'>
-    <view class='list'>
+    <block wx:for='{{imgUrls}}'>
+        <swiper-item>
+            <image src='{{item}}' class='slide-image' width='355' height='150'/>
+        </swiper-item>
+    </block>
+    <view class='list' wx:for='{{list}}'>
       <view class='infoArea'>
         <view class='info'>
-          <view class='address' bindtap='goEmployer' data-receive-address='浙江大学工商学院浙江大学工商学院浙江大学工商学院浙江大学工商学院'>浙江大学工商学院浙江大学工商学院浙江大学工商学院</view>
+          <view class='address' bindtap='goEmployer' data-receive-address='{{item}}'>{{item.first_address}}{{item.last_address}}</view>
           <view>
-              <text>黄小黄</text>
-              <text>13845645622</text>
+              <text>{{item.first_name}}{{item.last_name}} </text>
+              <text>{{item.phone}}</text>
           </view>
         </view>
-        <text class='default-address'>默认</text>
+        <text wx:if='{{item.default}}' class='default-address'>默认</text>
       </view>
       <view class='oper'>
-          <image src='../../images/icon-edit.png' class='icon-edit' bindtap='editAddress'/>
-          <image src='../../images/icon-del.png' class='icon-del' bindtap='delAddress'/>
+          <image src='../../images/icon-edit.png' class='icon-edit' data-id='{{item.id}}' bindtap='editAddress'/>
+          <image src='../../images/icon-del.png' class='icon-del' data-id='{{item.id}}' bindtap='delAddress'/>
       </view>        
-    </view>
-    <view class='list'>
-        <view class='address' bindtap='goEmployer' data-receive-address='浙江大学工商学院浙江大学工商学院浙江大学工商学院浙江大学工商学院'>浙江大学工商学院浙江大学工商学院浙江大学工商学院浙江大学工商学院</view>
-        <view>
-            <text>黄小黄</text>
-            <text>13845645622</text>
-        </view>
-        <view class='oper'>
-            <image src='../../images/icon-edit.png' class='icon-edit' bindtap='editAddress'/>
-            <image src='../../images/icon-del.png' class='icon-del' bindtap='delAddress'/>
-        </view>
-    </view>
-    <view class='list'  bindtap='goEmployer'>
-        <view class='address'>浙江大学工商学院</view>
-        <view>
-            <text>黄小黄</text>
-            <text>13845645622</text>
-        </view>
-        <view class='oper'>
-            <image src='../../images/icon-edit.png' class='icon-edit' bindtap='editAddress'/>
-            <image src='../../images/icon-del.png' class='icon-del' bindtap='delAddress'/>
-        </view>
-    </view>
-    <view class='list'>
-        <view class='address'>浙江大学工商学院浙江大学工商学院浙江大学工商学院浙江大学工商学院</view>
-        <view>
-            <text>黄小黄</text>
-            <text>13845645622</text>
-        </view>
-        <view class='oper'>
-            <image src='../../images/icon-edit.png' class='icon-edit'/>
-            <image src='../../images/icon-del.png' class='icon-del'/>
-        </view>
     </view>
     <button class='submitButton' bindtap='receiveAddress'>+ 新增收外卖地址</button>
 </view>

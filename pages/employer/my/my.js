@@ -33,6 +33,11 @@ Page({
             url: '/pages/protocol/protocol'
         })
     },
+    help: function () {
+        wx.navigateTo({
+            url: '/pages/help/help'
+        })
+    },
     goMercenary: function () {
         wx.switchTab({
             url: '/pages/mercenary/index/index'

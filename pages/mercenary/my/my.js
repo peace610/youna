@@ -38,6 +38,11 @@ Page({
             url: '/pages/protocol/protocol'
         })
     },
+    help: function () {
+        wx.navigateTo({
+            url: '/pages/help/help'
+        })
+    },
     goMercenary: function () {
         wx.navigateTo({
             url: '/pages/employer/index/index'

@@ -1,5 +1,7 @@
+page {
+  background: #DAE5EE;
+}
 .container {
-    background: #DAE5EE;
     padding: 20rpx 0 100rpx 0;
 }
 .list{

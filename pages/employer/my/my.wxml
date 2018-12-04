@@ -28,7 +28,7 @@
             <text  class='label'>用户协议</text>
             <image src='../../images/next.png' class='icon-next'/>
         </li>
-        <li>
+        <li bindtap='help'>
             <image src='../../images/icon-my-help.png' class='icon-my'/>
             <text  class='label'>帮助说明</text>
             <image src='../../images/next.png' class='icon-next'/>

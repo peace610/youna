@@ -21,10 +21,10 @@
         <view  class='li' wx:if='{{areaIndex == 0}}'>
             <text class='label'>宿舍类型</text>
             <view class='input-info type'>
-                <image wx:if='{{typeCheck === "1"}}' src='../../images/icon-radio-check.png' class='icon-radio' data-type='1' bindtap='typeCheck'/>
+                <image wx:if='{{typeCheck == "1"}}' src='../../images/icon-radio-check.png' class='icon-radio' data-type='1' bindtap='typeCheck'/>
                 <image wx:else src='../../images/icon-radio.png' class='icon-radio' data-type='1' bindtap='typeCheck'/>
                 <text class='sex' data-type='1' bindtap='typeCheck'>男</text>
-                <image wx:if='{{typeCheck === "0"}}' src='../../images/icon-radio-check.png' class='icon-radio' data-type='0' bindtap='typeCheck'/>
+                <image wx:if='{{typeCheck == "0"}}' src='../../images/icon-radio-check.png' class='icon-radio' data-type='0' bindtap='typeCheck'/>
                 <image wx:else src='../../images/icon-radio.png' class='icon-radio' data-type='0' bindtap='typeCheck'/>
                 <text class='sex' data-type='0' bindtap='typeCheck'>女</text>
             </view>
@@ -40,13 +40,13 @@
             <input placeholder='如：XX宿舍楼15楼101' placeholder-style='color: #AABEC6;' class='input-info' bindinput='addressDetail' value='{{addressDetail}}'/>
         </view>
     </view>
-    <view class='setDefault'>
-        <image wx:if='{{defaultCheck}}' src='../../images/icon-radio-check.png' class='icon-radio' bindtap='defaultCheck'/>
-        <image wx:else src='../../images/icon-radio.png' class='icon-radio' bindtap='defaultCheck'/>
-        <text class='input-info'>是否设为默认地址</text>
-    </view>
-    <view class='footerButton'>
-        <button wx:if='{{surname !== "" && name !== "" && tel !== "" && areaIndex !== "" && typeCheck !== "" && address !== "" && addressDetail !== ""}}' data-address='{{address}}' data-address-detail='{{addressDetail}}' bindtap='submitOrder' class='submitButton'>保存</button>
-        <button wx:else class='submitButton button-disabled'>保存</button>
-    </view>
+</view>
+<view class='setDefault'>
+    <image wx:if='{{defaultCheck}}' src='../../images/icon-radio-check.png' class='icon-radio' bindtap='defaultCheck'/>
+    <image wx:else src='../../images/icon-radio.png' class='icon-radio' bindtap='defaultCheck'/>
+    <text class='input-info'>是否设为默认地址</text>
+</view>
+<view class='footerButton'>
+    <button wx:if='{{surname !== "" && name !== "" && tel !== "" && areaIndex !== "" && typeCheck !== "" && address !== "" && addressDetail !== ""}}' data-address='{{address}}' data-address-detail='{{addressDetail}}' bindtap='submitOrder' class='submitButton'>保存</button>
+    <button wx:else class='submitButton button-disabled'>保存</button>
 </view>

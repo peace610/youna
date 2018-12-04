@@ -48,7 +48,13 @@ Page({
                       getAddress: data.tack_address,
                   })
               }
-              if (data.recive_address) {
+              var receiveAddress = options && options.receiveAddress
+              console.info(options,receiveAddress,345)
+              if (receiveAddress) {
+                  vm.setData({
+                      receiveAddress: JSON.parse(receiveAddress)
+                  })
+              } else if (data.recive_address) {
                   vm.setData({
                       receiveAddress: data.recive_address
                   })
@@ -56,18 +62,6 @@ Page({
           }
       })
 
-      var getAddress = options && options.getAddress
-      var receiveAddress = options && options.receiveAddress
-      if (getAddress) {
-          this.setData({
-              getAddress: getAddress
-          })
-      }
-      if (receiveAddress) {
-          this.setData({
-              receiveAddress: receiveAddress
-          })
-      }
       // 获取定位 到经纬度
       app.getFixed()
   },

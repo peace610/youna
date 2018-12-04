@@ -20,13 +20,13 @@ const ajax = (Type, url, params, successFun, failFun, completeFun) => {
     var methonType = 'application/json'
     // 访问主域名
     var https = 'https://hdzhang.xyz/api'
-    if (Type === 'PUT') {
-        var p = Object.keys(params).map(function (key) {
-            return encodeURIComponent(key) + "=" + encodeURIComponent(params[key]);
-        }).join("&");
-        url += '?' + p;
-        params = {}
-    }
+    // if (Type === 'PUT') {
+    //     var p = Object.keys(params).map(function (key) {
+    //         return encodeURIComponent(key) + "=" + encodeURIComponent(params[key]);
+    //     }).join("&");
+    //     url += '?' + p;
+    //     params = {}
+    // }
     // else if (Type == "POST") {
     //     methonType = "application/x-www-form-urlencoded"
     // }
