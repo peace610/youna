@@ -14,6 +14,7 @@ Page({
     location: {},
     goType: '',
     goUrl: '',
+    id: '',
   },
 
   /**
@@ -21,6 +22,7 @@ Page({
    */
   onLoad: function (options) {
       var type = options && options.type
+      var id = options && options.id
       if (type && type === 'getAddress') {
           this.setData({
               goType: type,
@@ -29,7 +31,8 @@ Page({
       } else if (type && type === 'receiveAddress') {
           this.setData({
               goType: type,
-              goUrl: '/pages/employer/receiveAddress/receiveAddress'
+              goUrl: '/pages/employer/receiveAddress/receiveAddress',
+              id: id,
           })
       }
       var vm = this
@@ -69,7 +72,6 @@ Page({
             success: function (res) {
                 var data = res.data
                 if (data.length >= 1) {
-                    console.info('searchList:',res.data)
                     vm.setData({
                         searchResult: true,
                         searchList: res.data
@@ -97,7 +99,7 @@ Page({
       var address = e.currentTarget.dataset.address
       var location = e.currentTarget.dataset.location
         wx.redirectTo({
-            url: this.data.goUrl+'?address='+address+'&location='+JSON.stringify(location)
+            url: this.data.goUrl+'?address='+address+'&location='+JSON.stringify(location)+'&id='+this.data.id
         })
     },
     resetFixed: function () {

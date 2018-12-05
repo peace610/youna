@@ -98,7 +98,6 @@ Page({
     },
     setPriceItem: function (e) {
         var priceItem = e.currentTarget.dataset.price
-        console.info(priceItem,111)
         this.setData({
             priceItem: priceItem,
             price: ''

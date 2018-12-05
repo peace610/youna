@@ -28,7 +28,6 @@ Page({
       }
       util.ajax('GET','/users',paramUser,(res) => {
           if (res.status == 200) {
-              console.info(res.data.count,vm)
               vm.setData({
                   count: res.data.count,
               })
@@ -49,7 +48,6 @@ Page({
                   })
               }
               var receiveAddress = options && options.receiveAddress
-              console.info(options,receiveAddress,345)
               if (receiveAddress) {
                   vm.setData({
                       receiveAddress: JSON.parse(receiveAddress)
@@ -83,12 +81,15 @@ Page({
         var session_id = wx.getStorageSync('session_id')
         var paramUser = {
             session_id: session_id,
-            count: vm.data.count
+            count: vm.data.num
         }
         util.ajax('GET','/order/actions/calculate',paramUser,(res) => {
-            vm.setdata({
-                price: res.amount,
-            })
+            if (res.status == 200) {
+                vm.setData({
+                    price: res.data.amount,
+                })
+            }
+
         })
     },
     subtractNum: function () {
@@ -119,35 +120,37 @@ Page({
         var data = vm.data
         // 获取在线人数
         var session_id = wx.getStorageSync('session_id')
-        var paramUser = {
+        var user_id = wx.getStorageSync('user_id')
+        var param = {
             session_id: session_id,
             post_vars: {
-                master_id: 1,
-                tack_address: {
-                    first_address: data.getAddress.first_address,
-                    last_address: data.getAddress.last_address,
-                    nick_name: data.getAddress.nick_name,
-                    phone: data.getAddress.phone,
-                    latitude: "纬度",
-                    longitude: "经度"
-                },
-                recive_address: {
-                    first_address: "收货地址(大致地址)",
-                    last_address: "收货地址(详细地址)",
-                    nick_name: "昵称2",
-                    phone: "189xxxxxxxx",
-                    latitude: "纬度",
-                    longitude: "经度"
-                },
+                master_id: user_id,
+                tack_address_id: vm.data.getAddress.id,
+                recive_address_id: vm.data.receiveAddress.id,
                 takeaway_state: 0,
-                amount: data.count,
+                amount: data.price,
                 description: data.des
             }
         }
-        util.ajax('GET','/users',paramUser,(res) => {
-            wx.navigateTo({
-                url: '/pages/employer/orderDetail/orderDetail'
-            })
+        util.ajax('POST','/order',param,(res) => {
+            var data = res.data
+            if (res.status == 200) {
+                wx.requestPayment(
+                    {
+                        timeStamp: data.time_stamp,
+                        nonceStr: data.nonce_str,
+                        package: data.package,
+                        signType: data.sign_type,
+                        paySign: data.paySign,
+                        'success':function(res){
+                            wx.navigateTo({
+                                url: '/pages/employer/orderDetail/orderDetail'
+                            })
+                        },
+                        'fail':function(res){},
+                        'complete':function(res){}
+                    })
+            }
         })
     },
     scan: function () {

@@ -57,7 +57,6 @@ Page({
     submitOrder: function (e) {
         var address = e.currentTarget.dataset.address
         var addressDetail = e.currentTarget.dataset.addressDetail
-        console.info(address,addressDetail)
         wx.redirectTo({
             url: '/pages/mercenary/uploadCard/uploadCard'
         })

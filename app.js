@@ -9,7 +9,6 @@ App({
     // 登录
     wx.login({
       success: res => {
-          console.info(res,123)
         // 悠拿登录
         var param = {
             post_vars: {

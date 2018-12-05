@@ -49,10 +49,10 @@ Page({
                       tel: data.phone,
                       areaIndex: areaIndex,
                       typeCheck: typeCheck,
-                      address: data.first_address,
+                      address: address || data.first_address,
                       addressDetail: data.last_address,
                       defaultCheck: data.default,
-                      location: {
+                      location: location ? JSON.parse(location) : {
                           lat: data.longitude,
                           lng: data.longitude,
                       }
@@ -94,7 +94,7 @@ Page({
     },
     addressSearch: function () {
         wx.redirectTo({
-            url: '/pages/employer/addressSearch/addressSearch?type=receiveAddress'
+            url: '/pages/employer/addressSearch/addressSearch?type=receiveAddress&id='+this.data.id
         })
     },
     addressDetail: function (e) {
