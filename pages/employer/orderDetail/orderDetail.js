@@ -1,29 +1,50 @@
+const util = require('../../../utils/util.js')
 Page({
     /**
      * 页面的初始数据
      */
     data: {
+        id: '',
         showModalStatus: false,
         animationData: {},
         animationDataCar: {},
         priceItem: '',
         price: '',
-        orderState: 0, // 0:等待同学接单 1:订单已取消 2：已接单 3：同学已收到您的通知 4：外卖已送达
+        orderState: 0, // 0:未支付 1:未接单(等待同学接单)  2：已接单 3：配送中(同学已收到您的通知) 4：外卖已送达(订单完成) 6:订单已取消
+        orderDetail: {},
     },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        if (this.data.orderState == 3) {
-            var animation = wx.createAnimation({
-                duration: 14000,
-                timingFunction: "linear",
-                delay: 0
-            })
-            this.animation = animation
-            animation.translateX(300).step()
-            this.setData({
-                animationDataCar: animation.export(),
+        var vm = this
+        var id = options && options.id
+        if (id) {
+            var param = {
+                session_id: wx.getStorageSync('session_id'),
+                order_id: id,
+            }
+            util.ajax('GET','/order',param,(res) => {
+                var data = res.data
+                if (res.status == 200) {
+                    vm.setData({
+                        id: id,
+                        orderState: data.state,
+                        orderDetail: data,
+                    })
+                    if (data.state == 3) {
+                        var animation = wx.createAnimation({
+                            duration: 14000,
+                            timingFunction: "linear",
+                            delay: 0
+                        })
+                        vm.animation = animation
+                        animation.translateX(300).step()
+                        vm.setData({
+                            animationDataCar: animation.export(),
+                        })
+                    }
+                }
             })
         }
     },
@@ -111,6 +132,30 @@ Page({
         })
     },
     submitPrice: function () {
-        
+        var vm = this
+        var param = {
+            session_id: wx.getStorageSync('session_id'),
+            post_vars: {
+                order_id: vm.data.id,
+                amount: vm.data.price || vm.data.priceItem,
+                descrpition: ''
+            }
+        }
+        util.ajax('POST','/order/actions/addtip',param,(res) => {
+            var data = res.data
+            if (res.status == 200) {
+                wx.requestPayment(
+                    {
+                        timeStamp: data.time_stamp,
+                        nonceStr: data.nonce_str,
+                        package: data.package,
+                        signType: data.sign_type,
+                        paySign: data.paySign,
+                        success: function(res){},
+                        fail: function(res){},
+                        complete: function(res){}
+                    })
+            }
+        })
     }
 })

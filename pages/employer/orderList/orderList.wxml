@@ -1,76 +1,26 @@
 <view class='container'>
-    <view class='orderNull'>
+    <view class='orderNull' wx:if='{{list.length == 0}}'>
         <image src='../../images/order-null.png' class='prder-null' />
         <text>暂无订单</text>
     </view>
-    <block>
-        <navigator url="/pages/employer/orderDetail/orderDetail?id=11" class='list'>
+    <block wx:else>
+        <navigator wx:for='{{list}}' url="/pages/employer/orderDetail/orderDetail?id={{item.id}}" class='list'>
             <view class='shop'>
-                <text class='name'>弄堂里</text>
-                <text class='state'>订单等待送达</text>
+                <text class='name'>{{item.tack_address.shop_name}}</text>
+                <text class='state'>{{state[item.state]}}</text>
             </view>
             <view class='order'>
                 <image src='../../images/receive.png' class='icon-get'/>
                 <view class='info'>
-                    <view class='address'>浙江大学工商学院浙江大学工商学院浙</view>
-                    <view>2018-09-23 11:45</view>
+                    <view class='address'>{{item.recive_address.first_address}}{{item.recive_address.last_address}}</view>
+                    <view>{{item.create_time}}</view>
                 </view>
                 <view class='price'>
                     <text class='unit'>￥</text>
-                    <text>2</text>
+                    <text>{{item.amount}}</text>
                 </view>
             </view>
         </navigator>
-        <navigator url="/pages/employer/orderDetail/orderDetail?id=11" class='list'>
-            <view class='shop'>
-                <text class='name'>弄堂里</text>
-                <text class='state1'>订单等待送达</text>
-            </view>
-            <view class='order'>
-                <image src='../../images/receive.png' class='icon-get'/>
-                <view class='info'>
-                    <view class='address'>浙江大学工商学院浙江大学工商学院浙</view>
-                    <view>2018-09-23 11:45</view>
-                </view>
-                <view class='price'>
-                    <text class='unit'>￥</text>
-                    <text>2</text>
-                </view>
-            </view>
-        </navigator>
-        <navigator url="/pages/employer/orderDetail/orderDetail?id=11" class='list'>
-            <view class='shop'>
-                <text class='name'>弄堂里</text>
-                <text class='state2'>订单等待送达</text>
-            </view>
-            <view class='order'>
-                <image src='../../images/receive.png' class='icon-get'/>
-                <view class='info'>
-                    <view class='address'>浙江大学工商学院浙江大学工商学院浙</view>
-                    <view>2018-09-23 11:45</view>
-                </view>
-                <view class='price'>
-                    <text class='unit'>￥</text>
-                    <text>2</text>
-                </view>
-            </view>
-        </navigator>
-        <navigator url="/pages/employer/orderDetail/orderDetail?id=11" class='list'>
-            <view class='shop'>
-                <text class='name'>弄堂里</text>
-                <text class='state3'>订单等待送达</text>
-            </view>
-            <view class='order'>
-                <image src='../../images/receive.png' class='icon-get'/>
-                <view class='info'>
-                    <view class='address'>浙江大学工商学院浙江大学工商学院浙</view>
-                    <view>2018-09-23 11:45</view>
-                </view>
-                <view class='price'>
-                    <text class='unit'>￥</text>
-                    <text>2</text>
-                </view>
-            </view>
-        </navigator>
+
     </block>
 </view>

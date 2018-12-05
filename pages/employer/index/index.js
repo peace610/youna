@@ -12,7 +12,7 @@ Page({
     },
     num: 1,
     des: '',
-    price: 2
+    price: 0.02
   },
   onLoad: function (options) {
       var vm = this
@@ -142,13 +142,13 @@ Page({
                         package: data.package,
                         signType: data.sign_type,
                         paySign: data.paySign,
-                        'success':function(res){
+                        success: function(res){
                             wx.navigateTo({
                                 url: '/pages/employer/orderDetail/orderDetail'
                             })
                         },
-                        'fail':function(res){},
-                        'complete':function(res){}
+                        fail: function(res){},
+                        complete: function(res){}
                     })
             }
         })
