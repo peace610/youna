@@ -4,23 +4,24 @@
         <text>暂无订单</text>
     </view>
     <block wx:else>
-        <navigator wx:for='{{list}}' url="/pages/employer/orderDetail/orderDetail?id={{item.id}}" class='list'>
-            <view class='shop'>
-                <text class='name'>{{item.tack_address.shop_name}}</text>
-                <text class='state'>{{state[item.state]}}</text>
-            </view>
-            <view class='order'>
-                <image src='../../images/receive.png' class='icon-get'/>
-                <view class='info'>
-                    <view class='address'>{{item.recive_address.first_address}}{{item.recive_address.last_address}}</view>
-                    <view>{{item.create_time}}</view>
+        <block wx:for='{{list}}'>
+            <navigator wx:if='{{item.state != 0}}' url="/pages/employer/orderDetail/orderDetail?id={{item.id}}" class='list'>
+                <view class='shop'>
+                    <text class='name'>{{item.tack_address.shop_name}}</text>
+                    <text class='state'>{{state[item.state]}}</text>
                 </view>
-                <view class='price'>
-                    <text class='unit'>￥</text>
-                    <text>{{item.amount}}</text>
+                <view class='order'>
+                    <image src='../../images/receive.png' class='icon-get'/>
+                    <view class='info'>
+                        <view class='address'>{{item.recive_address.first_address}}{{item.recive_address.last_address}}</view>
+                        <view>{{item.create_time}}</view>
+                    </view>
+                    <view class='price'>
+                        <text class='unit'>￥</text>
+                        <text>{{item.amount}}</text>
+                    </view>
                 </view>
-            </view>
-        </navigator>
-
+            </navigator>
+        </block>
     </block>
 </view>

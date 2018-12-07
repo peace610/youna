@@ -20,36 +20,44 @@ Page({
         var vm = this
         var id = options && options.id
         if (id) {
-            var param = {
-                session_id: wx.getStorageSync('session_id'),
-                order_id: id,
-            }
-            util.ajax('GET','/order',param,(res) => {
-                var data = res.data
-                if (res.status == 200) {
-                    vm.setData({
-                        id: id,
-                        orderState: data.state,
-                        orderDetail: data,
-                    })
-                    if (data.state == 3) {
-                        var animation = wx.createAnimation({
-                            duration: 14000,
-                            timingFunction: "linear",
-                            delay: 0
-                        })
-                        vm.animation = animation
-                        animation.translateX(300).step()
-                        vm.setData({
-                            animationDataCar: animation.export(),
-                        })
-                    }
-                }
+            vm.setData({
+                id: id,
             })
+            vm.getOrderDetail()
         }
+    },
+    getOrderDetail: function () {
+        var vm = this
+        var id = vm.data.id
+        var param = {
+            session_id: wx.getStorageSync('session_id'),
+            order_id: id,
+        }
+        util.ajax('GET','/order',param,(res) => {
+            var data = res.data
+            if (res.status == 200) {
+                vm.setData({
+                    orderState: data.state,
+                    orderDetail: data,
+                })
+                if (data.state == 3) {
+                    var animation = wx.createAnimation({
+                        duration: 14000,
+                        timingFunction: "linear",
+                        delay: 0
+                    })
+                    vm.animation = animation
+                    animation.translateX(300).step()
+                    vm.setData({
+                        animationDataCar: animation.export(),
+                    })
+                }
+            }
+        })
     },
     cancelOrder: function () {
         var vm = this
+        var id = vm.data.id
         wx.showModal({
             content: '正在拼命寻找空闲的同学\r\n真的不再等下嘛？',
             cancelText: '不等了',
@@ -57,10 +65,19 @@ Page({
             confirmColor: '#1ABFC0',
             success: function(res){
                 if (res.confirm) {
-                    console.log('用户点击确定')
                 } else if (res.cancel) {
-                    vm.setData({
-                        orderState: 1
+                    var param = {
+                        session_id: wx.getStorageSync('session_id'),
+                        post_vars: {
+                            order_id: id,
+                            user_id: wx.getStorageSync('user_id'),
+                            description: '',
+                        }
+                    }
+                    util.ajax('POST','/order/actions/cancle',param,(res) => {
+                        if (res.status == 200) {
+                            vm.getOrderDetail()
+                        }
                     })
                     console.log('用户点击取消')
                 }
@@ -146,10 +163,10 @@ Page({
             if (res.status == 200) {
                 wx.requestPayment(
                     {
-                        timeStamp: data.time_stamp,
-                        nonceStr: data.nonce_str,
+                        timeStamp: data.timeStamp,
+                        nonceStr: data.nonceStr,
                         package: data.package,
-                        signType: data.sign_type,
+                        signType: data.signType,
                         paySign: data.paySign,
                         success: function(res){},
                         fail: function(res){},

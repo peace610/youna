@@ -137,18 +137,23 @@ Page({
             if (res.status == 200) {
                 wx.requestPayment(
                     {
-                        timeStamp: data.time_stamp,
-                        nonceStr: data.nonce_str,
+                        timeStamp: data.timeStamp,
+                        nonceStr: data.nonceStr,
                         package: data.package,
-                        signType: data.sign_type,
+                        signType: data.signType,
                         paySign: data.paySign,
                         success: function(res){
+                            console.info(res,3)
                             wx.navigateTo({
                                 url: '/pages/employer/orderDetail/orderDetail'
                             })
                         },
-                        fail: function(res){},
-                        complete: function(res){}
+                        fail: function(res){
+                            console.info(res,1)
+                        },
+                        complete: function(res){
+                            console.info(res,2)
+                        }
                     })
             }
         })

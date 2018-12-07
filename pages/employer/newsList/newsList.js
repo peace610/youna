@@ -1,66 +1,43 @@
-// pages/employer/newsList/newsList.js
+const util = require('../../../utils/util.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    offset: 0,
+    list: [],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getNews()
   },
+    getNews: function () {
+        var vm = this
+        // 悠拿获取在线人数
+        var session_id = wx.getStorageSync('session_id')
+        var user_id = wx.getStorageSync('user_id')
+        var param = {
+            session_id: session_id,
+            user_id: user_id,
+            type: '',
+            limit:5,
+            offset: vm.data.offset,
+        }
+        util.ajax('GET','/user/messages',param,(res) => {
+            if (res.status == 200) {
+                vm.setData({
+                    offset: vm.data.offset + 5,
+                    list: vm.data.list.concat(res.data.message_list),
+                })
+            }
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
+        })
+    },
+    onReachBottom: function () {
+        this.getNews()
+    }
 })
