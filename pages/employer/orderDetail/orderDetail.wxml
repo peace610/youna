@@ -80,7 +80,7 @@
                     <image src='../../images/receive.png' class='icon-get'/>
                     <text bindtap='getAddress' class='addressDes'>{{orderDetail.recive_address.first_address}}{{orderDetail.recive_address.last_address}}</text>
                 </view>
-                <text class='addressDetail'>小美 {{orderDetail.recive_address.phone}}</text>
+                <text class='addressDetail'>{{orderDetail.recive_address.first_name}}{{orderDetail.recive_address.last_name}} {{orderDetail.recive_address.phone}}</text>
             </view>
         </view>
         <image src='../../images/cut-border-s.png' class='cut-border cut-border-top'></image>

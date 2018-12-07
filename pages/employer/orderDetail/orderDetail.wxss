@@ -114,6 +114,9 @@ page {
 .addressArea {
     margin-top: 40rpx;
 }
+.addressArea:first-child {
+  margin-top: 0;
+}
 .addressInfo {
     display: flex;
     align-items: center;
