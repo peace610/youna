@@ -51,7 +51,7 @@ page {
     margin-right: 30rpx;
 }
 .info {
-    width: 560rpx;
+    width: 456rpx;
 }
 .address {
     font-size: 32rpx;

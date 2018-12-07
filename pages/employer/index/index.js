@@ -145,7 +145,7 @@ Page({
                         success: function(res){
                             console.info(res,3)
                             wx.navigateTo({
-                                url: '/pages/employer/orderDetail/orderDetail'
+                                url: '/pages/employer/orderDetail/orderDetail?id='+data.id
                             })
                         },
                         fail: function(res){
