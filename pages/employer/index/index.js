@@ -46,6 +46,12 @@ Page({
                   vm.setData({
                       getAddress: data.tack_address,
                   })
+              } else {
+                  vm.setData({
+                      getAddress: {
+                          first_address: '',
+                      },
+                  })
               }
               var receiveAddress = options && options.receiveAddress
               if (receiveAddress) {
@@ -55,6 +61,12 @@ Page({
               } else if (data.recive_address) {
                   vm.setData({
                       receiveAddress: data.recive_address
+                  })
+              } else {
+                  vm.setData({
+                      receiveAddress: {
+                          first_address: '',
+                      }
                   })
               }
           }
@@ -69,8 +81,11 @@ Page({
         })
     },
     receiveAddress: function () {
-      // var goUrl = '/pages/receiveAddress/receiveAddress'
-      var goUrl = '/pages/employer/receiveAddressList/receiveAddressList'
+      var receiveAddress = this.data.receiveAddress
+      var goUrl = '/pages/employer/receiveAddress/receiveAddress'
+        if (receiveAddress.first_address) {
+            goUrl = '/pages/employer/receiveAddressList/receiveAddressList'
+        }
         wx.navigateTo({
             url: goUrl
         })
