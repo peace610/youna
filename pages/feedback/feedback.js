@@ -54,9 +54,8 @@ Page({
                         var data = resData.data
                         if (resData.status == 200) {
                             wx.showToast({
-                                title: '上专成功',
-                                icon: 'success',
-                                duration: 2000
+                                title: '上传成功',
+                                icon: 'none'
                             })
                             // vm.setData({
                             //     filePaths: data.path
@@ -80,9 +79,7 @@ Page({
             }
         }
         util.ajax('POST','/user/actions/suggestion',param,(res) => {
-            if (res.status == 200) {
-                wx.navigateBack()
-            }
+            wx.navigateBack()
         })
     }
 })

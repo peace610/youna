@@ -32,32 +32,30 @@ Page({
               id: id,
           }
           util.ajax('GET','/user/address',param,(res) => {
-              if (res.status == 200) {
-                  var data= res.data
-                  var typeCheck = '1'
-                  var areaIndex = 0
-                  if (data.property == 0 || data.property == 1) {
-                      areaIndex = 0
-                      typeCheck = data.property
-                  } else {
-                      areaIndex = parseInt(data.property) - 1
-                  }
-                  vm.setData({
-                      id: id,
-                      surname: data.first_name,
-                      name: data.last_name,
-                      tel: data.phone,
-                      areaIndex: areaIndex,
-                      typeCheck: typeCheck,
-                      address: address || data.first_address,
-                      addressDetail: data.last_address,
-                      defaultCheck: data.default,
-                      location: location ? JSON.parse(location) : {
-                          lat: data.longitude,
-                          lng: data.longitude,
-                      }
-                  })
+              var data= res.data
+              var typeCheck = '1'
+              var areaIndex = 0
+              if (data.property == 0 || data.property == 1) {
+                  areaIndex = 0
+                  typeCheck = data.property
+              } else {
+                  areaIndex = parseInt(data.property) - 1
               }
+              vm.setData({
+                  id: id,
+                  surname: data.first_name,
+                  name: data.last_name,
+                  tel: data.phone,
+                  areaIndex: areaIndex,
+                  typeCheck: typeCheck,
+                  address: address || data.first_address,
+                  addressDetail: data.last_address,
+                  defaultCheck: data.default,
+                  location: location ? JSON.parse(location) : {
+                      lat: data.longitude,
+                      lng: data.longitude,
+                  }
+              })
           })
       } else if (address && location) {
           this.setData({
@@ -141,11 +139,9 @@ Page({
             type = 'PUT'
         }
         util.ajax(type,'/user/address',param,(res) => {
-            if (res.status == 200) {
-                wx.redirectTo({
-                    url: '/pages/employer/receiveAddressList/receiveAddressList'
-                })
-            }
+            wx.redirectTo({
+                url: '/pages/employer/receiveAddressList/receiveAddressList'
+            })
         })
     }
 })

@@ -60,11 +60,9 @@ Page({
             }
         }
         util.ajax('POST','/user/address',param,(res) => {
-            if (res.status == 200) {
-                wx.navigateTo({
-                    url: '/pages/employer/index/index'
-                })
-            }
+            wx.navigateTo({
+                url: '/pages/employer/index/index'
+            })
         })
     }
 })

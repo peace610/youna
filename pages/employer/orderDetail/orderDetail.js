@@ -35,23 +35,21 @@ Page({
         }
         util.ajax('GET','/order',param,(res) => {
             var data = res.data
-            if (res.status == 200) {
-                vm.setData({
-                    orderState: data.state,
-                    orderDetail: data,
+            vm.setData({
+                orderState: data.state,
+                orderDetail: data,
+            })
+            if (data.state == 3) {
+                var animation = wx.createAnimation({
+                    duration: 14000,
+                    timingFunction: "linear",
+                    delay: 0
                 })
-                if (data.state == 3) {
-                    var animation = wx.createAnimation({
-                        duration: 14000,
-                        timingFunction: "linear",
-                        delay: 0
-                    })
-                    vm.animation = animation
-                    animation.translateX(300).step()
-                    vm.setData({
-                        animationDataCar: animation.export(),
-                    })
-                }
+                vm.animation = animation
+                animation.translateX(300).step()
+                vm.setData({
+                    animationDataCar: animation.export(),
+                })
             }
         })
     },
@@ -75,9 +73,7 @@ Page({
                         }
                     }
                     util.ajax('POST','/order/actions/cancle',param,(res) => {
-                        if (res.status == 200) {
-                            vm.getOrderDetail()
-                        }
+                        vm.getOrderDetail()
                     })
                     console.log('用户点击取消')
                 }
@@ -169,24 +165,22 @@ Page({
         util.ajax('POST','/order/actions/addtip',param,(res) => {
             var data = res.data
             var vm = this
-            if (res.status == 200) {
-                wx.requestPayment(
-                    {
-                        timeStamp: data.timeStamp,
-                        nonceStr: data.nonceStr,
-                        package: data.package,
-                        signType: data.signType,
-                        paySign: data.paySign,
-                        success: function(res){
-                            vm.getOrderDetail()
-                        },
-                        fail: function(res){
-                        },
-                        complete: function(res){
-                            vm.hideModal()
-                        }
-                    })
-            }
+            wx.requestPayment(
+                {
+                    timeStamp: data.timeStamp,
+                    nonceStr: data.nonceStr,
+                    package: data.package,
+                    signType: data.signType,
+                    paySign: data.paySign,
+                    success: function(res){
+                        vm.getOrderDetail()
+                    },
+                    fail: function(res){
+                    },
+                    complete: function(res){
+                        vm.hideModal()
+                    }
+                })
         })
     }
 })

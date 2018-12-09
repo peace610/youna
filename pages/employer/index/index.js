@@ -27,12 +27,9 @@ Page({
           offset: 0,
       }
       util.ajax('GET','/users',paramUser,(res) => {
-          if (res.status == 200) {
-              vm.setData({
-                  count: res.data.count,
-              })
-          }
-
+          vm.setData({
+              count: res.data.count,
+          })
       })
       // 悠拿获取默认地址
       var param = {
@@ -40,35 +37,33 @@ Page({
           user_id: user_id,
       }
       util.ajax('GET','/user/address/default',param,(res) => {
-          if (res.status == 200) {
-              var data = res.data
-              if (data.tack_address) {
-                  vm.setData({
-                      getAddress: data.tack_address,
-                  })
-              } else {
-                  vm.setData({
-                      getAddress: {
-                          first_address: '',
-                      },
-                  })
-              }
-              var receiveAddress = options && options.receiveAddress
-              if (receiveAddress) {
-                  vm.setData({
-                      receiveAddress: JSON.parse(receiveAddress)
-                  })
-              } else if (data.recive_address) {
-                  vm.setData({
-                      receiveAddress: data.recive_address
-                  })
-              } else {
-                  vm.setData({
-                      receiveAddress: {
-                          first_address: '',
-                      }
-                  })
-              }
+          var data = res.data
+          if (data.tack_address) {
+              vm.setData({
+                  getAddress: data.tack_address,
+              })
+          } else {
+              vm.setData({
+                  getAddress: {
+                      first_address: '',
+                  },
+              })
+          }
+          var receiveAddress = options && options.receiveAddress
+          if (receiveAddress) {
+              vm.setData({
+                  receiveAddress: JSON.parse(receiveAddress)
+              })
+          } else if (data.recive_address) {
+              vm.setData({
+                  receiveAddress: data.recive_address
+              })
+          } else {
+              vm.setData({
+                  receiveAddress: {
+                      first_address: '',
+                  }
+              })
           }
       })
 
@@ -99,11 +94,9 @@ Page({
             count: vm.data.num
         }
         util.ajax('GET','/order/actions/calculate',paramUser,(res) => {
-            if (res.status == 200) {
-                vm.setData({
-                    price: res.data.amount,
-                })
-            }
+            vm.setData({
+                price: res.data.amount,
+            })
         })
     },
     subtractNum: function () {
@@ -148,27 +141,25 @@ Page({
         }
         util.ajax('POST','/order',param,(res) => {
             var data = res.data
-            if (res.status == 200) {
-                wx.requestPayment(
-                    {
-                        timeStamp: data.timeStamp,
-                        nonceStr: data.nonceStr,
-                        package: data.package,
-                        signType: data.signType,
-                        paySign: data.paySign,
-                        success: function(res){
-                            setTimeout(() => {
-                                wx.navigateTo({
-                                    url: '/pages/employer/orderDetail/orderDetail?id='+data.id
-                                })
-                            },100)
-                        },
-                        fail: function(res){
-                        },
-                        complete: function(res){
-                        }
-                    })
-            }
+            wx.requestPayment(
+                {
+                    timeStamp: data.timeStamp,
+                    nonceStr: data.nonceStr,
+                    package: data.package,
+                    signType: data.signType,
+                    paySign: data.paySign,
+                    success: function(res){
+                        setTimeout(() => {
+                            wx.navigateTo({
+                                url: '/pages/employer/orderDetail/orderDetail?id='+data.id
+                            })
+                        },100)
+                    },
+                    fail: function(res){
+                    },
+                    complete: function(res){
+                    }
+                })
         })
     },
     scan: function () {

@@ -34,25 +34,22 @@ App({
                                       }
                                   }
                                   util.ajax('POST','/login',param,(res) => {
-                                      if (res.status == 200) {
-                                          var data = res.data
-                                          wx.setStorageSync('session_id',data.session_id);
-                                          wx.setStorageSync('user_id',data.user_id);
-                                          var param_user = {
-                                              session_id: data.session_id,
-                                              post_vars: {
-                                                  user_id: data.user_id,
-                                                  user_info: JSON.stringify(this.globalData.userInfo),
-                                                  raw_data: "",
-                                                  signature: "",
-                                                  encrypted_data: "",
-                                                  iv: ""
-                                              }
+                                      var data = res.data
+                                      wx.setStorageSync('session_id',data.session_id);
+                                      wx.setStorageSync('user_id',data.user_id);
+                                      var param_user = {
+                                          session_id: data.session_id,
+                                          post_vars: {
+                                              user_id: data.user_id,
+                                              user_info: JSON.stringify(this.globalData.userInfo),
+                                              raw_data: "",
+                                              signature: "",
+                                              encrypted_data: "",
+                                              iv: ""
                                           }
-                                          // 悠拿用户注册
-                                          util.ajax('POST','/user',param_user)
                                       }
-
+                                      // 悠拿用户注册
+                                      util.ajax('POST','/user',param_user)
                                   })
                                   // 发送 res.code 到后台换取 openId, sessionKey, unionId
                               }

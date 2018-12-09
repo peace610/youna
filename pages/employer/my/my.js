@@ -22,11 +22,9 @@ Page({
           user_id: user_id
       }
       util.ajax('GET','/user',param,(res) => {
-          if (res.status == 200) {
-              vm.setData({
-                  userInfo: res.data
-              })
-          }
+          vm.setData({
+              userInfo: res.data
+          })
       })
   },
     myWallet: function () {

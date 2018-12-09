@@ -28,11 +28,9 @@ Page({
             offset: 0,
         }
         util.ajax('GET','/user/addresses',param,(res) => {
-            if (res.status == 200) {
-                vm.setData({
-                    list: res.data.address_list,
-                })
-            }
+            vm.setData({
+                list: res.data.address_list,
+            })
         })
     },
     goEmployer: function (e) {
@@ -57,9 +55,7 @@ Page({
             }
         }
         util.ajax('DELETE','/user/address',param,(res) => {
-            if (res.status == 200) {
-                this.getList()
-            }
+            this.getList()
         })
     },
     receiveAddress: function () {

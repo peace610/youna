@@ -40,7 +40,14 @@ const ajax = (Type, url, params, successFun, failFun, completeFun) => {
         data: params,
         // 成功回调
         success: (res) => {
-            return typeof successFun == "function" && successFun(res.data)
+            if (res.data.status == 200) {
+                return typeof successFun == "function" && successFun(res.data)
+            } else {
+                // wx.showToast({
+                //     title: '出错了',
+                //     icon: 'none'
+                // })
+            }
             // successFun(res)
         },
         // 错误回调

@@ -28,13 +28,10 @@ Page({
             offset: vm.data.offset,
         }
         util.ajax('GET','/orders',paramUser,(res) => {
-            if (res.status == 200) {
-                vm.setData({
-                    offset: vm.data.offset + 5,
-                    list: vm.data.list.concat(res.data.order_list),
-                })
-            }
-
+            vm.setData({
+                offset: vm.data.offset + 5,
+                list: vm.data.list.concat(res.data.order_list),
+            })
         })
     },
     onReachBottom: function () {

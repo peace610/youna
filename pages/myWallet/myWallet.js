@@ -22,11 +22,9 @@ Page({
             user_id: user_id,
         }
         util.ajax('GET','/user/account',param,(res) => {
-            if (res.status == 200) {
-                vm.setData({
-                    amountInfo: res.data
-                })
-            }
+            vm.setData({
+                amountInfo: res.data
+            })
         })
     },
     // getAmountList: function () {
