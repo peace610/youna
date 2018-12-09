@@ -43,10 +43,10 @@ const ajax = (Type, url, params, successFun, failFun, completeFun) => {
             if (res.data.status == 200) {
                 return typeof successFun == "function" && successFun(res.data)
             } else {
-                // wx.showToast({
-                //     title: '出错了',
-                //     icon: 'none'
-                // })
+                wx.showToast({
+                    title: res.data.message,
+                    icon: 'none'
+                })
             }
             // successFun(res)
         },

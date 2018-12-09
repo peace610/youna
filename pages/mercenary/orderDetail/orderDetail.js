@@ -35,7 +35,7 @@ Page({
             var data = res.data
             var phone = data.recive_address.phone
             vm.setData({
-                orderState: data.state,
+                orderState: 3 || data.state,
                 orderDetail: data,
                 tel: phone.substr(phone.length-4)
             })
@@ -65,6 +65,19 @@ Page({
         })
     },
     submitCode: function () {
-
+        var vm = this
+        var data = vm.data
+        var param = {
+            session_id: wx.getStorageSync('session_id'),
+            post_vars: {
+                order_id: data.id,
+                user_id: wx.getStorageSync('user_id'),
+                verification_code: data.code,
+                description: '',
+            }
+        }
+        util.ajax('POST','/order/actions/finish',param,(res) => {
+            vm.getOrderDetail()
+        })
     }
 })
