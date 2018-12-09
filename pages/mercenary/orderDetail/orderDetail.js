@@ -35,7 +35,7 @@ Page({
             var data = res.data
             var phone = data.recive_address.phone
             vm.setData({
-                orderState: 3 || data.state,
+                orderState: data.state,
                 orderDetail: data,
                 tel: phone.substr(phone.length-4)
             })
