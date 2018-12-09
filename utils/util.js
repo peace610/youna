@@ -55,6 +55,7 @@ const ajax = (Type, url, params, successFun, failFun, completeFun) => {
             wx.showModal({
                 title: '网络错误',
                 content: '网络出错，请刷新重试',
+                confirmColor: '#1ABFC0',
                 showCancel: false
             })
             return typeof cb == "function" && failFun(false)

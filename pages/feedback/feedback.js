@@ -7,6 +7,7 @@ Page({
     data: {
         des: '',
         filePaths: '',
+        submitFilePaths: '',
         tel: '',
     },
 
@@ -57,9 +58,9 @@ Page({
                                 title: '上传成功',
                                 icon: 'none'
                             })
-                            // vm.setData({
-                            //     filePaths: data.path
-                            // })
+                            vm.setData({
+                                submitFilePaths: data.path
+                            })
                         }
                     }
                 })
@@ -74,7 +75,7 @@ Page({
             post_vars: {
                 user_id: wx.getStorageSync('user_id'),
                 context: data.des,
-                path: data.filePaths,
+                path: data.submitFilePaths,
                 contact: data.tel
             }
         }

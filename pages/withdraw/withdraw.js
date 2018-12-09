@@ -47,22 +47,22 @@ Page({
                 amount: parseFloat(vm.data.price)
             }
         }
-        util.ajax('POST','/user/account/actions/withdraw',param,(res) => {
-            wx.showToast({
-                title: '提现申请提交成功\r\n请耐心等待',
-                icon: 'none'
-            })
+        wx.showModal({
+            title: '温馨提示',
+            showCancel: false,
+            content: '受微信政策影响，提现请加微信"xxx",我们会人工审核打款一般1-3个工作日到账',
+            confirmColor: '#1ABFC0',
+            confirmText: '我知道',
+            success(res) {
+                if (res.confirm) {
+                    util.ajax('POST','/user/account/actions/withdraw',param,(res) => {
+                        wx.showToast({
+                            title: '提现成功',
+                            icon: 'none'
+                        })
+                    })
+                }
+            }
         })
-
-        // wx.showModal({
-        //     showCancel: false,
-        //     content: '提现申请提交成功\r\n请耐心等待',
-        //     confirmColor: '#1ABFC0',
-        //     success (res) {
-        //         if (res.confirm) {
-        //             console.log('用户点击确定')
-        //         }
-        //     }
-        // })
     }
 })
