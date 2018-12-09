@@ -14,12 +14,10 @@
         <view class='list' wx:for='{{amountInfo.transaction_list}}'>
             <view class='info'>
                 <view>
-                    <!--<text wx:if='{{item.type == 0}}'>下单支出</text>-->
-                    <!--<text wx:elif='{{item.type == 1}}'>接单收入</text>-->
-                    <!--<text wx:elif='{{item.type == 2}}'>缴纳押金</text>-->
-                    <!--<text wx:elif='{{item.type == 3}}'>账户充值</text>-->
-                    <!--<text wx:elif='{{item.type == 4}}'>余额提现</text>-->
-                    <text>{{item.description}}</text>
+                    <text wx:if='{{item.type == 0}}'>雇主下单</text>
+                    <text wx:elif='{{item.type == 1}}'>增加小费</text>
+                    <text wx:elif='{{item.type == 2}}'>取消订单</text>
+                    <text wx:elif='{{item.type == 3}}'>佣兵收款</text>
                 </view>
                 <text class='time'>{{item.createtime}}</text>
             </view>

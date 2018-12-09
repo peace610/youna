@@ -3,7 +3,7 @@
         <view class='time'>{{item.create_time}}</view>
         <view class='area'>
             <view class='orderInfo'>
-                <text class='read'>您的订单已被接单</text>
+                <text class='read'>{{item.title}}</text>
                 <text class='tip'></text>
             </view>
             <navigator url="/pages/employer/orderDetail/orderDetail?id={{item.id}}"  class='des'>

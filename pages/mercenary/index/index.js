@@ -1,22 +1,11 @@
+const util = require('../../../utils/util.js')
 //获取应用实例
 const app = getApp()
 Page({
   data: {
-    flagCertif: true,
-      listS: [],
-    list: [{
-      name: '弄堂里',
-        address: '浙江工业大学之江校区北门校区北门',
-        price: 3,
-    }, {
-        name: '弄堂里1',
-        address: '浙江工业大学之江校区北门校区北门江工业大学之江校区北门',
-        price: 3,
-    }, {
-        name: '弄堂里2',
-        address: '浙江工业大学之江校区北门校区北门',
-        price: 33,
-    }],
+      offset: 0,
+    flagCertif: false,
+    list: [],
     imgUrls: [
       'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
       'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
@@ -28,11 +17,69 @@ Page({
     duration: 1000,
     fixedText: '',
   },
-  onLoad: function () {
-      var vm = this
-      app.getFixed()
-      vm.setData({
-          fixedText: wx.getStorageSync('fixedText')
-      })
-  }
+    onLoad: function (options) {
+        var vm = this
+        app.getFixed()
+        vm.setData({
+            fixedText: wx.getStorageSync('fixedText')
+        })
+        var session_id = wx.getStorageSync('session_id')
+        var user_id = wx.getStorageSync('user_id')
+        var param = {
+            session_id: session_id,
+            user_id: user_id
+        }
+        util.ajax('GET','/user',param,(res) => {
+            vm.setData({
+                flagCertif: res.data.state == 2 ? true : false
+            })
+        })
+        this.getList()
+    },
+    getList: function () {
+        var vm = this
+        var session_id = wx.getStorageSync('session_id')
+        var user_id = wx.getStorageSync('user_id')
+        var param = {
+            session_id: session_id,
+            user_id: user_id,
+            longitude: wx.getStorageSync('longitude'),
+            latitude: wx.getStorageSync('latitude'),
+            limit:5,
+            offset: vm.data.offset,
+        }
+        util.ajax('GET','/orders/actions/suggest',param,(res) => {
+            vm.setData({
+                offset: vm.data.offset + 5,
+                list: vm.data.list.concat(res.data.order_list),
+            })
+        })
+    },
+    onReachBottom: function () {
+        this.getList()
+    },
+    getOrder: function (e) {
+        var vm = this
+        if (vm.data.flagCertif) {
+            var id = e.currentTarget.dataset.id
+            var session_id = wx.getStorageSync('session_id')
+            var user_id = wx.getStorageSync('user_id')
+            var param = {
+                session_id: session_id,
+                post_vars: {
+                    user_id: user_id,
+                    order_id: id
+                }
+            }
+            util.ajax('POST','/order/actions/accept',param,(res) => {
+                wx.navigateTo({
+                    url: '/pages/mercenary/orderDetail/orderDetail?id='+id
+                })
+            })
+        } else {
+            wx.navigateTo({
+                url: '/pages/mercenary/material/material'
+            })
+        }
+    }
 })

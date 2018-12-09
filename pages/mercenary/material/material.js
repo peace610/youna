@@ -1,3 +1,4 @@
+const util = require('../../../utils/util.js')
 Page({
 
     /**
@@ -8,9 +9,11 @@ Page({
         surname: '', // 姓氏
         name: '', // 名字
         tel: '', //
-        code: '', // 送达区域
-        typeCheck: '1', // 宿舍类型 1男 2女
+        code: '', // 验证码
+        typeCheck: '1', //  1男 0女
         card: '', // 身份证号码
+        filePaths: '', //图片
+        submitFilePaths: '',
     },
 
     /**
@@ -49,16 +52,91 @@ Page({
             typeCheck: type
         })
     },
+    getCode: function () {
+        var vm = this
+        var session_id = wx.getStorageSync('session_id')
+        var param = {
+            session_id: session_id,
+            phone: vm.data.tel
+        }
+        util.ajax('GET','/verification',param,(res) => {
+
+        })
+    },
     card: function (e) {
         this.setData({
             card: e.detail.value
         })
     },
-    submitOrder: function (e) {
-        var address = e.currentTarget.dataset.address
-        var addressDetail = e.currentTarget.dataset.addressDetail
-        wx.redirectTo({
-            url: '/pages/mercenary/uploadCard/uploadCard'
+    uploadImg: function () {
+        const vm = this
+        wx.chooseImage({
+            count: 1,
+            sizeType: ['original', 'compressed'],
+            sourceType: ['album', 'camera'],
+            success (res) {
+                const filePaths = res.tempFilePaths
+                vm.setData({
+                    filePaths: filePaths[0]
+                })
+                wx.uploadFile({
+                    url: 'https://hdzhang.xyz/api/upload',
+                    filePath: filePaths[0],
+                    name: 'file',
+                    header: {
+                        'content-type': 'multipart/form-data',
+                    },
+                    formData: {
+                        session_id: wx.getStorageSync('session_id'),
+                        user_id: wx.getStorageSync('user_id'),
+                        type: 0
+                    },
+                    success (res){
+                        var resData = JSON.parse(res.data)
+                        var data = resData.data
+                        if (resData.status == 200) {
+                            wx.showToast({
+                                title: '上传成功',
+                                icon: 'none'
+                            })
+                            vm.setData({
+                                submitFilePaths: data.path
+                            })
+                        }
+                    }
+                })
+            }
         })
+    },
+    submitOrder: function (e) {
+        var vm = this
+        var data = vm.data
+        var session_id = wx.getStorageSync('session_id')
+        var user_id = wx.getStorageSync('user_id')
+        var param = {
+            session_id: session_id,
+            post_vars: {
+                user_id: user_id,
+                school: data.school,
+                first_name: data.surname,
+                last_name: data.name,
+                phone: data.tel,
+                verification_code: data.code,
+                gender: data.typeCheck,
+                id_number: data.card,
+                id_photo_path: data.submitFilePaths,
+            }
+        }
+        util.ajax('PUT','/user',param,(res) => {
+            wx.navigateTo({
+                url: '/pages/mercenary/cash/cash'
+            })
+        })
+
+        // var address = e.currentTarget.dataset.address
+        // var addressDetail = e.currentTarget.dataset.addressDetail
+        // wx.redirectTo({
+        //     url: '/pages/mercenary/uploadCard/uploadCard'
+        // })
     }
 })

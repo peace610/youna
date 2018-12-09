@@ -1,3 +1,4 @@
+const util = require('../../../utils/util.js')
 Page({
 
   /**
@@ -14,18 +15,35 @@ Page({
 
   },
     submitOrder: function () {
-    // 微信支付
-        wx.requestPayment(
-            {
-                'timeStamp': '',
-                'nonceStr': '',
-                'package': '',
-                'signType': 'MD5',
-                'paySign': '',
-                'success':function(res){},
-                'fail':function(res){},
-                'complete':function(res){}
-            })
+        var vm = this
+        var param = {
+            session_id: wx.getStorageSync('session_id'),
+            post_vars: {
+                user_id: wx.getStorageSync('user_id'),
+                amount: 19.9
+            }
+        }
+        util.ajax('POST','/user/account/actions/deposit',param,(res) => {
+            var data = res.data
+            var vm = this
+            wx.requestPayment(
+                {
+                    timeStamp: data.timeStamp,
+                    nonceStr: data.nonceStr,
+                    package: data.package,
+                    signType: data.signType,
+                    paySign: data.paySign,
+                    success: function(res){
+                        wx.switchTab({
+                            url: '/pages/mercenary/my/my'
+                        })
+                    },
+                    fail: function(res){
+                    },
+                    complete: function(res){
+                        vm.hideModal()
+                    }
+                })
+        })
     }
-
 })

@@ -1,5 +1,5 @@
 <view class='container'>
-    <block wx:if='{{orderState == 0}}'>
+    <block wx:if='{{orderState == 1}}'>
         <image src='../../images/wait-bg.png' class='bg'></image>
         <view class='top'>
             <view class='state'>
@@ -8,21 +8,7 @@
             <text class='sub-tit'>您已成功接单，等待同学通知派送</text>
             <view class='oper'>
                 <text>手机尾号</text>
-                <text class='tel'>9999</text>
-            </view>
-        </view>
-    </block>
-    <block wx:elif='{{orderState == 1}}'>
-        <image src='../../images/cancel-bg.png' class='bg'></image>
-        <view class='top'>
-            <view class='state'>
-                <text>订单已取消</text>
-                <image src='../../images/icon-cancel.png' class='icon-cancel'></image>
-            </view>
-            <text class='sub-tit'>抱歉，您的订单已取消</text>
-            <view class='oper'>
-                <text>手机尾号</text>
-                <text class='tel'>9999</text>
+                <text class='tel'>{{tel}}</text>
             </view>
         </view>
     </block>
@@ -35,7 +21,7 @@
             <text class='sub-tit'>请您在接到外卖员电话并确认其到达指定地点（取货地点）后，点击“去拿外卖吧”，通知同学帮您拿外卖，预祝您有一次完美的外卖体验</text>
             <view class='oper'>
                 <text>手机尾号</text>
-                <text class='tel'>9999</text>
+                <text class='tel'>{{tel}}</text>
             </view>
         </view>
     </block>
@@ -49,7 +35,7 @@
             <text class='sub-tit'>同学已通知派送，请尽快派送</text>
             <view class='oper'>
                 <text>手机尾号</text>
-                <text class='tel'>9999</text>
+                <text class='tel'>{{tel}}</text>
             </view>
         </view>
     </block>
@@ -62,7 +48,21 @@
             <text class='sub-tit'>您的订单已成功送达</text>
             <view class='oper'>
                 <text>手机尾号</text>
-                <text class='tel'>9999</text>
+                <text class='tel'>{{tel}}</text>
+            </view>
+        </view>
+    </block>
+    <block wx:elif='{{orderState == 6}}'>
+        <image src='../../images/cancel-bg.png' class='bg'></image>
+        <view class='top'>
+            <view class='state'>
+                <text>订单已取消</text>
+                <image src='../../images/icon-cancel.png' class='icon-cancel'></image>
+            </view>
+            <text class='sub-tit'>抱歉，您的订单已取消</text>
+            <view class='oper'>
+                <text>手机尾号</text>
+                <text class='tel'>{{tel}}</text>
             </view>
         </view>
     </block>
@@ -75,30 +75,30 @@
             <view>
                 <view class='addressInfo'>
                     <image src='../../images/get.png' class='icon-get'/>
-                    <text bindtap='getAddress'>浙江工业大学南门小门旁</text>
+                    <text bindtap='getAddress'>{{orderDetail.tack_address.first_address}}{{orderDetail.tack_address.last_address}}</text>
                 </view>
-                <text class='addressDetail'>弄堂里</text>
+                <text class='addressDetail'>{{orderDetail.tack_address.shop_name}}</text>
             </view>
             <view class='addressArea'>
                 <view class='addressInfo'>
                     <image src='../../images/receive.png' class='icon-get'/>
-                    <text bindtap='getAddress'>浙江工业大学南门小门旁</text>
+                    <text bindtap='getAddress'>{{orderDetail.recive_address.first_address}}{{orderDetail.recive_address.last_address}}</text>
                 </view>
-                <text class='addressDetail'>小美 13888888888</text>
+                <text class='addressDetail'>{{orderDetail.recive_address.first_name}}{{orderDetail.recive_address.last_name}} {{orderDetail.recive_address.phone}}</text>
             </view>
         </view>
         <image src='../../images/cut-border-s.png' class='cut-border cut-border-top'></image>
         <view class='price-list'>
             <view class='item'>
                 <text>酬劳</text>
-                <text>￥<text class='num'>2</text></text>
+                <text>￥<text class='num'>{{orderDetail.amount}}</text></text>
             </view>
         </view>
         <image src='../../images/cut-border-s.png' class='cut-border cut-border-top'></image>
         <view class='price-list price-list-s'>
             <view class='item'>
                 <text>联系同学</text>
-                <image src='../../images/icon-tel.png' class='icon-tel'></image>
+                <image src='../../images/icon-tel.png' class='icon-tel' data-reply-phone='{{orderDetail.recive_address.phone}}' bindtap="phoneCall"></image>
             </view>
         </view>
         <view class='btn-area'>

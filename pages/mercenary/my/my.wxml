@@ -2,26 +2,27 @@
     <image src='../../images/my-bg-top-s.png' class='my-bg-top'/>
     <!-- <image src='../../images/my-bg-bottom.png' class='my-bg-bottom'/> -->
     <view class='info'>
-        <image src='http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg' class='pic'/>
-        <text>微信昵称</text>
+        <image src='{{userInfo.avatar_url}}' class='pic'/>
+        <text>{{userInfo.nick_name}}</text>
     </view>
     <ul class='list'>
         <li bindtap='myWallet'>
             <image src='../../images/icon-my-wallet.png' class='icon-my'/>
             <text class='label'>我的钱包</text>
-            <text class='price'>0.0元</text>
+            <text class='price'>{{userInfo.amount}}元</text>
             <image src='../../images/next.png' class='icon-next'/>
         </li>
         <li bindtap='cash'>
             <image src='../../images/icon-my-cash.png' class='icon-my'/>
             <text  class='label'>缴纳押金</text>
-            <text class='price'>已缴纳</text>
+            <text class='price' wx:if='{{userInfo.state == 1}}'>未缴纳</text>
+            <text class='price' wx:if='{{userInfo.state == 2}}'>已缴纳</text>
             <image src='../../images/next.png' class='icon-next'/>
         </li>
         <li bindtap='newsList'>
             <image src='../../images/icon-my-info.png' class='icon-my'/>
             <text  class='label'>消息中心</text>
-            <text class='tip'></text>
+            <text class='tip' wx:if='{{userInfo.unread_message_count > 0}}'></text>
             <image src='../../images/next.png' class='icon-next'/>
         </li>
         <li bindtap='feedback'>

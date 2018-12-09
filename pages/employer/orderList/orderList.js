@@ -1,6 +1,5 @@
 const util = require('../../../utils/util.js')
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -22,7 +21,8 @@ Page({
         var user_id = wx.getStorageSync('user_id')
         var paramUser = {
             session_id: session_id,
-            user_id: user_id,
+            master_id: user_id,
+            slave_id: '',
             state: '',
             limit:5,
             offset: vm.data.offset,

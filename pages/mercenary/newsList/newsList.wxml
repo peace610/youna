@@ -1,36 +1,13 @@
 <view class='container'>
-    <view class='list'>
-        <view class='time'>刚刚</view>
+    <view class='list' wx:for='{{list}}'>
+        <view class='time'>{{item.create_time}}</view>
         <view class='area'>
             <view class='orderInfo'>
-                <text class='read'>您的订单已被接单</text>
+                <text class='read'>{{item.title}}</text>
                 <text class='tip'></text>
             </view>
             <navigator url="/pages/mercenary/orderDetail/orderDetail?id=11"  class='des'>
-                <text>您在「浙大生活学区」下的订单已成功被佣兵接单。\n（点击查看详情）</text>
-            </navigator>
-        </view>
-    </view>
-    <view class='list'>
-        <view class='time'>10-12 9:23</view>
-        <view class='area'>
-            <view class='orderInfo'>
-                <text class='read'>您的订单已被接单</text>
-                <text class='tip'></text>
-            </view>
-            <navigator url="/pages/mercenary/orderDetail/orderDetail?id=11"  class='des'>
-                <text>您在「浙大生活学区」下的订单已成功被佣兵接单。\n（点击查看详情）</text>
-            </navigator>
-        </view>
-    </view>
-    <view class='list'>
-        <view class='time'>刚刚</view>
-        <view class='area'>
-            <view class='orderInfo'>
-                <text>您的订单已被接单</text>
-            </view>
-            <navigator url="/pages/mercenary/orderDetail/orderDetail?id=11"  class='des'>
-                <text>您在「浙大生活学区」下的订单已成功被佣兵接单。\n（点击查看详情）</text>
+                <text>{{item.context}}。\n（点击查看详情）</text>
             </navigator>
         </view>
     </view>

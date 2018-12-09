@@ -19,7 +19,7 @@
         </view>
         <view  class='li'>
             <input placeholder='请输入短信验证码' type='number' maxlength='11' placeholder-style='color: #AABEC6;' class='input-info' bindinput='code' value='{{code}}'/>
-            <text class='label label-code'>获取验证码</text>
+            <text class='label label-code' bindtap='getCode'>获取验证码</text>
         </view>
         <view  class='li'>
             <text class='label'>性别</text>
@@ -27,14 +27,28 @@
                 <image wx:if='{{typeCheck === "1"}}' src='../../images/icon-radio-check.png' class='icon-radio' data-type='1' bindtap='typeCheck'/>
                 <image wx:else src='../../images/icon-radio.png' class='icon-radio' data-type='1' bindtap='typeCheck'/>
                 <text class='sex' data-type='1' bindtap='typeCheck'>男</text>
-                <image wx:if='{{typeCheck === "2"}}' src='../../images/icon-radio-check.png' class='icon-radio' data-type='2' bindtap='typeCheck'/>
+                <image wx:if='{{typeCheck === "0"}}' src='../../images/icon-radio-check.png' class='icon-radio' data-type='2' bindtap='typeCheck'/>
                 <image wx:else src='../../images/icon-radio.png' class='icon-radio' data-type='2' bindtap='typeCheck'/>
-                <text class='sex' data-type='2' bindtap='typeCheck'>女</text>
+                <text class='sex' data-type='0' bindtap='typeCheck'>女</text>
             </view>
         </view>
         <view  class='li'>
             <text class='label'>身份证号</text>
             <input placeholder='请输入您真实身份证号' placeholder-style='color: #AABEC6;' class='input-info' bindinput='card' value='{{card}}'/>
+        </view>
+        <view class='topTip'>
+            <image src='../../images/icon-uploadCard.png' class='icon-uploadCard'/>上传证件图片
+        </view>
+        <view class='uploadCard' bindtap='uploadImg'>
+            <block wx:if='{{filePaths}}'>
+                <image src='{{filePaths}}' class='img'/>
+                <text class='tip'>点击图片可重新上传证件图片</text>
+            </block>
+            <block wx:else>
+                <image src='../../images/icon-addCard.png' class='icon-addCard'/>
+                <text>上传学生证，身份证和学生卡任意一种</text>
+            </block>
+
         </view>
     </view>
 </view>

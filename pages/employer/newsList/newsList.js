@@ -17,7 +17,6 @@ Page({
   },
     getNews: function () {
         var vm = this
-        // 悠拿获取在线人数
         var session_id = wx.getStorageSync('session_id')
         var user_id = wx.getStorageSync('user_id')
         var param = {
