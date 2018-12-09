@@ -15,7 +15,7 @@ Page({
   },
     myWallet: function () {
         wx.navigateTo({
-            url: '/pages/mercenary/myWallet/myWallet'
+            url: '/pages/myWallet/myWallet'
         })
     },
     cash: function () {

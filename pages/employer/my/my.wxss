@@ -47,6 +47,11 @@
 .label {
     flex-grow: 1;
 }
+.price {
+    font-size: 28rpx;
+    color: #64818D;
+    margin-right: 20rpx;
+}
 .tip {
     width: 20rpx;
     height: 20rpx;

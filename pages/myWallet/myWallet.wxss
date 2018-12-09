@@ -43,6 +43,10 @@
     font-weight: bold;
     padding: 0 30rpx 20rpx 30rpx;
 }
+.listArea {
+    height: 740rpx;
+    overflow-y: auto;
+}
 .list {
     height: 124rpx;
     display: flex;

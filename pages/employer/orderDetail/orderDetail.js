@@ -134,6 +134,14 @@ Page({
             })
         }.bind(this), 200)
     },
+    phoneCall: function (e) {
+        wx.makePhoneCall({
+            phoneNumber: e.currentTarget.dataset.replyPhone,
+            success: function () {
+                console.log("成功拨打电话")
+            },
+        })
+    },
     setPriceItem: function (e) {
         var priceItem = e.currentTarget.dataset.price
         this.setData({
@@ -160,6 +168,7 @@ Page({
         }
         util.ajax('POST','/order/actions/addtip',param,(res) => {
             var data = res.data
+            var vm = this
             if (res.status == 200) {
                 wx.requestPayment(
                     {
@@ -168,9 +177,14 @@ Page({
                         package: data.package,
                         signType: data.signType,
                         paySign: data.paySign,
-                        success: function(res){},
-                        fail: function(res){},
-                        complete: function(res){}
+                        success: function(res){
+                            vm.getOrderDetail()
+                        },
+                        fail: function(res){
+                        },
+                        complete: function(res){
+                            vm.hideModal()
+                        }
                     })
             }
         })

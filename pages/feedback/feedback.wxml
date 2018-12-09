@@ -1,8 +1,8 @@
 <view class='container'>
     <view class='info'>
         <textarea placeholder='请详细描述您的问题或建议，我们将及时跟进解决（建议添加相关问题截图）' placeholder-style='color: #AABEC6;' class='des' bindinput='des' value='{{des}}'/>
-        <block wx:if='{{tempFilePaths}}'>
-            <image src='{{tempFilePaths}}' class='addImg'/>
+        <block wx:if='{{filePaths}}'>
+            <image src='{{filePaths}}' class='addImg'/>
         </block>
         <block wx:else>
             <image src='../images/feedback-addImg.png' class='addImg' bindtap='uploadImg'/>
@@ -12,7 +12,7 @@
         <input placeholder='请留下您的手机号/邮箱/微信（选填）' placeholder-style='color: #AABEC6;' class='input-info' bindinput='setTel' value='{{tel}}'/>
     </view>
     <view class='footerButton'>
-        <button wx:if='{{des !== "" && tel != ""}}' bindtap='submitOrder' class='submitButton'>提交</button>
+        <button wx:if='{{des !== ""}}' bindtap='submitOrder' class='submitButton'>提交</button>
         <button wx:else class='submitButton button-disabled'>提交</button>
     </view>
 </view>

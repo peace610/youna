@@ -1,0 +1,34 @@
+<view class='container'>
+    <view class='top'>
+        <image src='../images/myWallet-bg.png' class='bg'></image>
+        <view class='con'>
+            <view class='price'>
+                <text class='money'>{{amountInfo.amount}}</text>
+                <text>当前余额（元）</text>
+            </view>
+            <button class='withdraw' bindtap='withdraw'>提现</button>
+        </view>
+    </view>
+    <view class='detailTip'>账户明细</view>
+    <view class='listArea'>
+        <view class='list' wx:for='{{amountInfo.transaction_list}}'>
+            <view class='info'>
+                <view>
+                    <!--<text wx:if='{{item.type == 0}}'>下单支出</text>-->
+                    <!--<text wx:elif='{{item.type == 1}}'>接单收入</text>-->
+                    <!--<text wx:elif='{{item.type == 2}}'>缴纳押金</text>-->
+                    <!--<text wx:elif='{{item.type == 3}}'>账户充值</text>-->
+                    <!--<text wx:elif='{{item.type == 4}}'>余额提现</text>-->
+                    <text>{{item.description}}</text>
+                </view>
+                <text class='time'>{{item.createtime}}</text>
+            </view>
+            <view class='total-des'>
+                <text class='ident' wx:if='{{item.is_income}}'>+</text>
+                <text class='ident' wx:else='{{item.is_income}}'>-</text>
+                <text class='total'>{{item.amount}}</text>
+            </view>
+        </view>
+    </view>
+    <button class='contact' open-type="contact" bindcontact="handleContact">退押金联系客服</button>
+</view>

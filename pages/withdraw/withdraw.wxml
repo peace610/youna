@@ -1,7 +1,7 @@
 <view class='container'>
-    <image src='../../images/receiveAddress.png' class='bg'/>
+    <image src='../images/receiveAddress.png' class='bg'/>
     <view class='infoArea'>
-        <image src='../../images/icon-portrait.png' class='portrait'/>
+        <image src='../images/icon-portrait.png' class='portrait'/>
         <view class='info'>
             <text>微信钱包</text>
             <text class='name'>宁*成</text>

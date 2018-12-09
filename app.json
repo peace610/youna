@@ -18,8 +18,8 @@
     "pages/mercenary/orderDetail/orderDetail",
     "pages/mercenary/newsList/newsList",
     "pages/mercenary/my/my",
-    "pages/mercenary/myWallet/myWallet",
-    "pages/mercenary/withdraw/withdraw",
+    "pages/myWallet/myWallet",
+    "pages/withdraw/withdraw",
     "pages/protocol/protocol",
     "pages/help/help",
     "pages/feedback/feedback"

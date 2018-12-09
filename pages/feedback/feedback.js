@@ -1,3 +1,4 @@
+const util = require('../../utils/util.js')
 Page({
 
     /**
@@ -5,7 +6,7 @@ Page({
      */
     data: {
         des: '',
-        tempFilePaths: '',
+        filePaths: '',
         tel: '',
     },
 
@@ -29,32 +30,59 @@ Page({
         const vm = this
         wx.chooseImage({
             count: 1,
-            // sizeType: ['original', 'compressed'],
-            // sourceType: ['album', 'camera'],
+            sizeType: ['original', 'compressed'],
+            sourceType: ['album', 'camera'],
             success (res) {
-                console.info(res)
-                const tempFilePaths = res.tempFilePaths
+                const filePaths = res.tempFilePaths
                 vm.setData({
-                    tempFilePaths: tempFilePaths.join(','),
+                    filePaths: filePaths[0]
                 })
-                // wx.uploadFile({
-                //     url: 'https://example.weixin.qq.com/upload', //仅为示例，非真实的接口地址
-                //     filePath: tempFilePaths[0],
-                //     name: 'file',
-                //     formData: {
-                //         'user': 'test'
-                //     },
-                //     success (res){
-                //         const data = res.data
-                //         //do something
-                //     }
-                // })
+                wx.uploadFile({
+                    url: 'https://hdzhang.xyz/api/upload',
+                    filePath: filePaths[0],
+                    name: 'file',
+                    header: {
+                        'content-type': 'multipart/form-data',
+                    },
+                    formData: {
+                        session_id: wx.getStorageSync('session_id'),
+                        user_id: wx.getStorageSync('user_id'),
+                        type: 1
+                    },
+                    success (res){
+                        var resData = JSON.parse(res.data)
+                        var data = resData.data
+                        if (resData.status == 200) {
+                            wx.showToast({
+                                title: '上专成功',
+                                icon: 'success',
+                                duration: 2000
+                            })
+                            // vm.setData({
+                            //     filePaths: data.path
+                            // })
+                        }
+                    }
+                })
             }
         })
     },
     submitOrder: function () {
-        wx.redirectTo({
-            url: '/pages/mercenary/cash/cash'
+        var vm = this
+        var data = vm.data
+        var param = {
+            session_id: wx.getStorageSync('session_id'),
+            post_vars: {
+                user_id: wx.getStorageSync('user_id'),
+                context: data.des,
+                path: data.filePaths,
+                contact: data.tel
+            }
+        }
+        util.ajax('POST','/user/actions/suggestion',param,(res) => {
+            if (res.status == 200) {
+                wx.navigateBack()
+            }
         })
     }
 })

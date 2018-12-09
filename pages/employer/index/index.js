@@ -1,5 +1,5 @@
-//获取应用实例
 const util = require('../../../utils/util.js')
+//获取应用实例
 const app = getApp()
 Page({
   data: {
@@ -104,7 +104,6 @@ Page({
                     price: res.data.amount,
                 })
             }
-
         })
     },
     subtractNum: function () {
@@ -158,16 +157,15 @@ Page({
                         signType: data.signType,
                         paySign: data.paySign,
                         success: function(res){
-                            console.info(res,3)
-                            wx.navigateTo({
-                                url: '/pages/employer/orderDetail/orderDetail?id='+data.id
-                            })
+                            setTimeout(() => {
+                                wx.navigateTo({
+                                    url: '/pages/employer/orderDetail/orderDetail?id='+data.id
+                                })
+                            },100)
                         },
                         fail: function(res){
-                            console.info(res,1)
                         },
                         complete: function(res){
-                            console.info(res,2)
                         }
                     })
             }

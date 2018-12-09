@@ -42,7 +42,7 @@
         </li>
     </ul>
     <view class='footerButton'>
-        <button wx:if='{{getAddress !== "" && receiveAddress !== "" && num !== "" && des !== "" && price !== ""}}' bindtap='submitOrder' class='submitButton'>立即下单</button>
+        <button wx:if='{{getAddress !== "" && receiveAddress !== "" && num !== "" && price !== ""}}' bindtap='submitOrder' class='submitButton'>立即下单</button>
         <button wx:else bindtap='submitOrder' class='submitButton button-disabled' bindtap='submitOrder'>立即下单</button>
     </view>
   </view>
