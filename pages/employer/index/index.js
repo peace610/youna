@@ -12,7 +12,7 @@ Page({
     },
     num: 1,
     des: '',
-    price: 0.02
+    price: 0
   },
   onLoad: function (options) {
       var vm = this
@@ -69,6 +69,8 @@ Page({
 
       // 获取定位 到经纬度
       app.getFixed()
+      // 计算金额
+      vm.calculate()
   },
     getAddress: function () {
         wx.navigateTo({

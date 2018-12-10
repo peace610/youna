@@ -27,9 +27,12 @@ page {
     margin-right: 48rpx;
 }
 .label-code {
-    width: 160rpx;
+    width: 180rpx;
     margin-right: 0;
     color: #AABEC6;
+}
+.label-code-flag {
+    color: #1ABFC0;
 }
 .address {
     width: 500rpx;

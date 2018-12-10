@@ -19,7 +19,8 @@
         </view>
         <view  class='li'>
             <input placeholder='请输入短信验证码' type='number' maxlength='11' placeholder-style='color: #AABEC6;' class='input-info' bindinput='code' value='{{code}}'/>
-            <text class='label label-code' bindtap='getCode'>获取验证码</text>
+            <text wx:if='{{codeFlag}}' class='label label-code'>{{authCodeText}}</text>
+            <text wx:else class='label label-code label-code-flag' bindtap='getCode'>{{authCodeText}}</text>
         </view>
         <view  class='li'>
             <text class='label'>性别</text>

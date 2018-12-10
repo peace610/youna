@@ -10,6 +10,8 @@ Page({
         name: '', // 名字
         tel: '', //
         code: '', // 验证码
+        codeFlag: false, // 验证码是否发送
+        authCodeText: '获取验证码',
         typeCheck: '1', //  1男 0女
         card: '', // 身份证号码
         filePaths: '', //图片
@@ -60,7 +62,27 @@ Page({
             phone: vm.data.tel
         }
         util.ajax('GET','/verification',param,(res) => {
-
+            vm.setData({
+                codeFlag: true
+            })
+            var i = 59
+            vm.setData({
+                authCodeText: `${i}s重新获取`
+            })
+            i--
+            const counter = setInterval(() => {
+                vm.setData({
+                    authCodeText: `${i}s重新获取`
+                })
+                i--
+                if (i < 0) {
+                    clearInterval(counter)
+                    vm.setData({
+                        authCodeText: `获取验证码`,
+                        codeFlag: false
+                    })
+                }
+            }, 1000)
         })
     },
     card: function (e) {
