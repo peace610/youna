@@ -75,14 +75,14 @@
             <view>
                 <view class='addressInfo'>
                     <image src='../../images/get.png' class='icon-get'/>
-                    <text bindtap='getAddress'>{{orderDetail.tack_address.first_address}}{{orderDetail.tack_address.last_address}}</text>
+                    <text bindtap='getAddress' class='addressDes'>{{orderDetail.tack_address.first_address}}{{orderDetail.tack_address.last_address}}</text>
                 </view>
                 <text class='addressDetail'>{{orderDetail.tack_address.shop_name}}</text>
             </view>
             <view class='addressArea'>
                 <view class='addressInfo'>
                     <image src='../../images/receive.png' class='icon-get'/>
-                    <text bindtap='getAddress'>{{orderDetail.recive_address.first_address}}{{orderDetail.recive_address.last_address}}</text>
+                    <text bindtap='getAddress' class='addressDes'>{{orderDetail.recive_address.first_address}}{{orderDetail.recive_address.last_address}}</text>
                 </view>
                 <text class='addressDetail'>{{orderDetail.recive_address.first_name}}{{orderDetail.recive_address.last_name}} {{orderDetail.recive_address.phone}}</text>
             </view>

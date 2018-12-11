@@ -17,6 +17,7 @@
   padding: 0 20rpx;
 }
 .city {
+  width: 70rpx;
   /* margin-left: 20rpx; */
 }
 .downArea {
@@ -87,7 +88,7 @@
   color: #64818d;
 }
 .searchBtn {
-  width: 64rpx;
+  width: 70rpx;
   height: 68rpx;
   line-height: 68rpx;
   font-size: 32rpx;

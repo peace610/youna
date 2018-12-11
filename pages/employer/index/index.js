@@ -74,7 +74,7 @@ Page({
   },
     getAddress: function () {
         wx.navigateTo({
-            url: '/pages/employer/getAddress/getAddress'
+            url: '/pages/employer/getAddress/getAddress?goIndex="index"&getAddress='+JSON.stringify(this.data.getAddress)
         })
     },
     receiveAddress: function () {

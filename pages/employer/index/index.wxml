@@ -1,6 +1,8 @@
 <view class='container'>
   <view class='top'>
-    <image src='../../images/employerTop.png' class='banner'/>
+    <navigator url=''>
+        <image src='../../images/employerTop.png' class='banner'/>
+    </navigator>
       <navigator url="/pages/employer/my/my">
           <image src='../../images/my.png' class='my-img'/>
       </navigator>
@@ -42,7 +44,7 @@
         </li>
     </ul>
     <view class='footerButton'>
-        <button wx:if='{{getAddress !== "" && receiveAddress !== "" && num !== "" && price !== ""}}' bindtap='submitOrder' class='submitButton'>立即下单</button>
+        <button wx:if='{{getAddress.first_address !=="" && receiveAddress.first_address !== "" && num !== "" && price !== ""}}' bindtap='submitOrder' class='submitButton'>立即下单</button>
         <button wx:else bindtap='submitOrder' class='submitButton button-disabled' bindtap='submitOrder'>立即下单</button>
     </view>
   </view>

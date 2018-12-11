@@ -4,10 +4,10 @@
         <view class='area'>
             <view class='orderInfo'>
                 <text class='read'>{{item.title}}</text>
-                <text class='tip'></text>
+                <!--<text class='tip'></text>-->
             </view>
             <navigator url="/pages/employer/orderDetail/orderDetail?id={{item.id}}"  class='des'>
-                <text>{{item.context}}。\n（点击查看详情）</text>
+                <text>{{item.context}}</text>
             </navigator>
         </view>
     </view>

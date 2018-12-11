@@ -22,7 +22,8 @@
     "pages/withdraw/withdraw",
     "pages/protocol/protocol",
     "pages/help/help",
-    "pages/feedback/feedback"
+    "pages/feedback/feedback",
+    "pages/webView/webView"
   ],
   "window": {
     "backgroundTextStyle": "light",

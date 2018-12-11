@@ -39,6 +39,7 @@ page {
 
 }
 .time {
+    width: 135rpx;
     font-size: 32rpx;
 }
 .icon-cancel {
@@ -119,7 +120,6 @@ page {
 }
 .addressInfo {
     display: flex;
-    align-items: center;
 }
 .icon-get {
     width: 48rpx;
@@ -127,7 +127,7 @@ page {
     margin-right: 30rpx;
 }
 .addressDes {
-    width: 564rpx;
+    width: 540rpx;
 }
 .addressDetail{
     font-size: 28rpx;

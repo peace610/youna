@@ -12,19 +12,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      var vm = this
-      var session_id = wx.getStorageSync('session_id')
-      var user_id = wx.getStorageSync('user_id')
-      var param = {
-          session_id: session_id,
-          user_id: user_id
-      }
-      util.ajax('GET','/user',param,(res) => {
-          vm.setData({
-              userInfo: res.data
-          })
-      })
+
   },
+    onShow: function () {
+        var vm = this
+        var session_id = wx.getStorageSync('session_id')
+        var user_id = wx.getStorageSync('user_id')
+        var param = {
+            session_id: session_id,
+            user_id: user_id
+        }
+        util.ajax('GET','/user',param,(res) => {
+            vm.setData({
+                userInfo: res.data
+            })
+        })
+    },
     myWallet: function () {
         wx.navigateTo({
             url: '/pages/myWallet/myWallet'

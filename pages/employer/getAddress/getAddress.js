@@ -17,17 +17,43 @@ Page({
   onLoad: function (options) {
       var address = options && options.address
       var location = options && options.location
-      if (address && location) {
+      var goIndex = options && options.goIndex
+      var getAddress = options && options.getAddress
+      if (goIndex && getAddress) {
+          var data = JSON.parse(getAddress)
           this.setData({
-              address: address,
-              location: JSON.parse(location),
+            name: data.shop_name,
+            address: data.first_address,
+            addressDetail: data.last_address,
+              location: {
+                  lat: data.latitude,
+                  lng: data.longitude
+              },
           })
+      } else {
+          if (address && location) {
+              this.setData({
+                  address: address,
+                  location: JSON.parse(location),
+              })
+          }
+          if (getAddress) {
+              var getAddress = JSON.parse(getAddress)
+              this.setData({
+                  name: getAddress.name,
+                  addressDetail: getAddress.addressDetail,
+              })
+          }
       }
-
   },
     addressSearch: function () {
+      var data = this.data
+      var  getAddress= {
+          name: data.name,
+          addressDetail: data.addressDetail
+      }
         wx.redirectTo({
-            url: '/pages/employer/addressSearch/addressSearch?type=getAddress'
+            url: '/pages/employer/addressSearch/addressSearch?type=getAddress&getAddress='+JSON.stringify(getAddress)
         })
     },
     setName: function (e) {

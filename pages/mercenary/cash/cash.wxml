@@ -2,7 +2,7 @@
     <image src='../../images/cash-bg.png' class='bg'/>
     <view class='tit'>交纳押金，即刻赚零花钱</view>
     <view class='con'>
-        <view class='price'><text class='unit'>￥</text>19.9</view>
+        <view class='price'><text class='unit'>￥</text>{{amount}}</view>
         <view class='li'>
             <image src='../../images/icon-cash-1.png' class='icon-cash'/>
             <text>优先派高额订单</text>
@@ -17,5 +17,5 @@
         </view>
         <button bindtap='submitOrder' class='submitButton'>立即缴纳</button>
     </view>
-    <view class='help'>帮助中心</view>
+    <navigator url='/pages/help/help' class='help'>帮助中心</navigator>
 </view>

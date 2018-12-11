@@ -126,12 +126,14 @@ page {
 }
 .addressInfo {
     display: flex;
-    align-items: center;
 }
 .icon-get {
     width: 48rpx;
     height: 48rpx;
     margin-right: 30rpx;
+}
+.addressDes {
+    width: 540rpx;
 }
 .addressDetail{
     font-size: 28rpx;

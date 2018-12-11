@@ -13,8 +13,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getOrder()
+
   },
+    onShow: function () {
+        this.setData({
+            offset: 0,
+            list: [],
+        })
+        this.getOrder()
+    },
     getOrder: function () {
         var vm = this
         var session_id = wx.getStorageSync('session_id')

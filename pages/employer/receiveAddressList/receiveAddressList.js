@@ -46,6 +46,7 @@ Page({
         })
     },
     delAddress: function (e) {
+        var vm = this
         var id = e.currentTarget.dataset.id
         var session_id = wx.getStorageSync('session_id')
         var param = {
@@ -54,8 +55,17 @@ Page({
                 id: id
             }
         }
-        util.ajax('DELETE','/user/address',param,(res) => {
-            this.getList()
+        wx.showModal({
+            content: '是否确认要删除?',
+            confirmColor: '#1ABFC0',
+            success: function(res){
+                if (res.confirm) {
+                    util.ajax('DELETE','/user/address',param,(res) => {
+                        vm.getList()
+                    })
+                } else if (res.cancel) {
+                }
+            }
         })
     },
     receiveAddress: function () {

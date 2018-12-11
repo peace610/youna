@@ -14,7 +14,7 @@ Page({
       typeCheck: '1', // 宿舍类型 1男 0女
       address: '', // 地址
       addressDetail: '', // 楼号
-      defaultCheck: false, // 是否为默认地址
+      defaultCheck: true, // 是否为默认地址
       location: {}
   },
 
@@ -25,6 +25,7 @@ Page({
       var vm = this
       var address = options && options.address
       var location = options && options.location
+      var receiveAddress = options && options.receiveAddress
       var id = options && options.id
       if (id) {
           var param = {
@@ -41,28 +42,44 @@ Page({
               } else {
                   areaIndex = parseInt(data.property) - 1
               }
+              var receiveAddressInfo = receiveAddress? JSON.parse(receiveAddress) : {}
               vm.setData({
                   id: id,
-                  surname: data.first_name,
-                  name: data.last_name,
-                  tel: data.phone,
-                  areaIndex: areaIndex,
-                  typeCheck: typeCheck,
+                  surname: receiveAddressInfo.surname || data.first_name,
+                  name: receiveAddressInfo.name || data.last_name,
+                  tel: receiveAddressInfo.tel || data.phone,
+                  areaIndex: receiveAddressInfo.areaIndex || areaIndex,
+                  typeCheck: receiveAddressInfo.typeCheck || typeCheck,
                   address: address || data.first_address,
-                  addressDetail: data.last_address,
-                  defaultCheck: data.default,
+                  addressDetail: receiveAddressInfo.addressDetail || data.last_address,
+                  defaultCheck: receiveAddressInfo.defaultCheck || data.default,
                   location: location ? JSON.parse(location) : {
                       lat: data.longitude,
                       lng: data.longitude,
                   }
               })
           })
-      } else if (address && location) {
-          this.setData({
-              address: address,
-              location: JSON.parse(location),
-          })
+      } else {
+          if (address && location) {
+              vm.setData({
+                  address: address,
+                  location: JSON.parse(location),
+              })
+          }
+          if (receiveAddress) {
+              var receiveAddress = JSON.parse(receiveAddress)
+              vm.setData({
+                  surname: receiveAddress.surname,
+                  name: receiveAddress.name,
+                  tel: receiveAddress.tel,
+                  areaIndex: receiveAddress.areaIndex,
+                  typeCheck: receiveAddress.typeCheck,
+                  addressDetail: receiveAddress.addressDetail,
+                  defaultCheck: receiveAddress.defaultCheck
+              })
+          }
       }
+
   },
     surname: function (e) {
         this.setData({
@@ -91,8 +108,18 @@ Page({
         })
     },
     addressSearch: function () {
+        var data = this.data
+        var  receiveAddress= {
+            surname: data.surname,
+            name: data.name,
+            tel: data.tel,
+            areaIndex: data.areaIndex,
+            typeCheck: data.typeCheck,
+            addressDetail: data.addressDetail,
+            defaultCheck: data.defaultCheck
+        }
         wx.redirectTo({
-            url: '/pages/employer/addressSearch/addressSearch?type=receiveAddress&id='+this.data.id
+            url: '/pages/employer/addressSearch/addressSearch?type=receiveAddress&id='+data.id+'&receiveAddress='+JSON.stringify(receiveAddress)
         })
     },
     addressDetail: function (e) {
@@ -140,7 +167,7 @@ Page({
         }
         util.ajax(type,'/user/address',param,(res) => {
             wx.redirectTo({
-                url: '/pages/employer/receiveAddressList/receiveAddressList'
+                url: '/pages/employer/index/index'
             })
         })
     }

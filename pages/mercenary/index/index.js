@@ -6,11 +6,7 @@ Page({
       offset: 0,
     flagCertif: false,
     list: [],
-    imgUrls: [
-      'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
-    ],
+    imgUrls: [],
     indicatorDots: true,
     autoplay: false,
     interval: 5000,
@@ -18,17 +14,29 @@ Page({
     fixedText: '',
   },
     onLoad: function (options) {
+    },
+    onShow: function () {
         var vm = this
         app.getFixed()
         vm.setData({
+            offset: 0,
+            list: [],
             fixedText: wx.getStorageSync('fixedText')
         })
         var session_id = wx.getStorageSync('session_id')
         var user_id = wx.getStorageSync('user_id')
+        var paramBanner = {
+            session_id: session_id
+        }
         var param = {
             session_id: session_id,
             user_id: user_id
         }
+        util.ajax('GET','/adbanner',paramBanner,(res) => {
+            vm.setData({
+                imgUrls: res.data
+            })
+        })
         util.ajax('GET','/user',param,(res) => {
             vm.setData({
                 flagCertif: res.data.state == 2 ? true : false

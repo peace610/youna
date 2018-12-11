@@ -54,6 +54,6 @@
     </view>
 </view>
 <view class='footerButton'>
-    <button wx:if='{{school !== "" && surname !== "" && name !== "" && tel !== "" && code !== "" && typeCheck !== "" && card !== ""}}' bindtap='submitOrder' class='submitButton'>下一步</button>
+    <button wx:if='{{school !== "" && surname !== "" && name !== "" && tel !== "" && code !== "" && typeCheck !== "" && card !== "" && filePaths !== ""}}' bindtap='submitOrder' class='submitButton'>下一步</button>
     <button wx:else class='submitButton button-disabled'>下一步</button>
 </view>

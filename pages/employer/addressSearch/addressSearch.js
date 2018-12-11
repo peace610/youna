@@ -15,6 +15,8 @@ Page({
     goType: '',
     goUrl: '',
     id: '',
+    getAddress: '{}',
+    redeiveAddress: '{}',
   },
 
   /**
@@ -23,16 +25,20 @@ Page({
   onLoad: function (options) {
       var type = options && options.type
       var id = options && options.id
-      if (type && type === 'getAddress') {
+      var getAddress = options && options.getAddress
+      var receiveAddress = options && options.receiveAddress
+      if (type && type == 'getAddress') {
           this.setData({
               goType: type,
-              goUrl: '/pages/employer/getAddress/getAddress'
+              goUrl: '/pages/employer/getAddress/getAddress',
+              getAddress: getAddress,
           })
-      } else if (type && type === 'receiveAddress') {
+      } else if (type && type == 'receiveAddress') {
           this.setData({
               goType: type,
               goUrl: '/pages/employer/receiveAddress/receiveAddress',
               id: id,
+              receiveAddress: receiveAddress
           })
       }
       var vm = this
@@ -98,8 +104,15 @@ Page({
     goAddress: function (e) {
       var address = e.currentTarget.dataset.address
       var location = e.currentTarget.dataset.location
+        var url = ''
+        var data = this.data
+        if (data.goType == 'getAddress') {
+            url = data.goUrl+'?address='+address+'&location='+JSON.stringify(location)+'&getAddress='+data.getAddress
+        }else if (data.goType == 'receiveAddress') {
+            url = data.goUrl+'?address='+address+'&location='+JSON.stringify(location)+'&id='+data.id+'&receiveAddress='+data.receiveAddress
+        }
         wx.redirectTo({
-            url: this.data.goUrl+'?address='+address+'&location='+JSON.stringify(location)+'&id='+this.data.id
+            url: url
         })
     },
     resetFixed: function () {

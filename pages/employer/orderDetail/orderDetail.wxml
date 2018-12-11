@@ -4,7 +4,7 @@
         <view class='top'>
             <view class='state'>
                 <text>等待同学接单</text>
-                <text class='time'>00:14:18</text>
+                <text class='time'>{{timeStr}}</text>
             </view>
             <text class='sub-tit'>正在为您寻找附近有空的同学，请稍等</text>
             <view class='oper'>
@@ -30,7 +30,7 @@
         <view class='top'>
             <view class='state state-notice'>
                 <text>同学已收到您的通知\n正拿着您的外卖火速赶来</text>
-                <text class='time'>00:14:18</text>
+                <text class='time'>{{timeStr}}</text>
             </view>
             <text class='sub-tit'>您的外卖已接单，请耐心等待</text>
             <view class='oper oper-cart'>

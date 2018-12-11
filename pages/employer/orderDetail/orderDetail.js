@@ -12,6 +12,9 @@ Page({
         price: '',
         orderState: 0, // 0:未支付 1:未接单(等待同学接单)  2：已接单 3：配送中(同学已收到您的通知) 4：外卖已送达(订单完成) 6:订单已取消
         orderDetail: {},
+        counter: 0,
+        time: 0,
+        timeStr: '',
     },
     /**
      * 生命周期函数--监听页面加载
@@ -26,9 +29,13 @@ Page({
             vm.getOrderDetail()
         }
     },
+    onUnload: function () {
+        this.clearCount()
+    },
     getOrderDetail: function () {
         var vm = this
         var id = vm.data.id
+        vm.clearCount()
         var param = {
             session_id: wx.getStorageSync('session_id'),
             order_id: id,
@@ -39,7 +46,28 @@ Page({
                 orderState: data.state,
                 orderDetail: data,
             })
-            if (data.state == 3) {
+            if (data.state == 2) {
+                var create_time = new Date(res.data.create_time);
+                this.setData({
+                    time: create_time.getTime(),
+                })
+                vm.countTime()
+                vm.setData({
+                    counter: setInterval(() => {
+                        vm.countTime()
+                    }, 1000)
+                })
+            } else if (data.state == 3) {
+                var distribution_time = new Date(res.data.distribution_time);
+                this.setData({
+                    time: distribution_time.getTime(),
+                })
+                vm.countTime()
+                vm.setData({
+                    counter: setInterval(() => {
+                        vm.countTime()
+                    }, 1000)
+                })
                 var animation = wx.createAnimation({
                     duration: 14000,
                     timingFunction: "linear",
@@ -51,6 +79,24 @@ Page({
                     animationDataCar: animation.export(),
                 })
             }
+        })
+    },
+    countTime: function () {
+        var time = this.data.time;
+        var date = new Date(time);
+        var h = date.getHours();
+        var m =  date.getMinutes();
+        var s = date.getSeconds();
+        this.setData({
+            time : ( time/1000 + 1 ) * 1000,
+            timeStr: (h >= 10 ? h : '0'+ h) + ':' + (m >= 10 ? m : '0'+ m) + ':' + (s >= 10 ? s : '0'+ s)
+        })
+    },
+    clearCount: function () {
+        clearInterval(this.data.counter)
+        this.setData({
+            time : 0,
+            timeStr: ''
         })
     },
     cancelOrder: function () {
@@ -75,13 +121,23 @@ Page({
                     util.ajax('POST','/order/actions/cancle',param,(res) => {
                         vm.getOrderDetail()
                     })
-                    console.log('用户点击取消')
                 }
             }
         })
     },
     takeOrder: function () {
-
+        var vm = this
+        var id = vm.data.id
+        var param = {
+            session_id: wx.getStorageSync('session_id'),
+            post_vars: {
+                order_id: id,
+                user_id: wx.getStorageSync('user_id'),
+            }
+        }
+        util.ajax('POST','/order/actions/arrive',param,(res) => {
+            vm.getOrderDetail()
+        })
     },
     resetOrder: function () {
         wx.redirectTo({

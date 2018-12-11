@@ -7,14 +7,19 @@
         <block wx:for='{{list}}'>
             <navigator url="/pages/employer/orderDetail/orderDetail?id={{item.id}}" class='list'>
                 <view class='shop'>
-                    <text class='name'>{{item.tack_address.shop_name}}</text>
+                    <text class='name'>{{item.create_time}}</text>
                     <text class='state'>{{state[item.state]}}</text>
                 </view>
                 <view class='order'>
-                    <image src='../../images/receive.png' class='icon-get'/>
-                    <view class='info'>
-                        <view class='address'>{{item.recive_address.first_address}}{{item.recive_address.last_address}}</view>
-                        <view>{{item.create_time}}</view>
+                    <view class='addressArea'>
+                        <view class='info'>
+                            <image src='../../images/get.png' class='icon-get'/>
+                            <view class='address'>{{item.tack_address.first_address}}{{item.tack_address.last_address}}</view>
+                        </view>
+                        <view class='info'>
+                            <image src='../../images/receive.png' class='icon-get'/>
+                            <view class='address'>{{item.recive_address.first_address}}{{item.recive_address.last_address}}</view>
+                        </view>
                     </view>
                     <view class='price'>
                         <text class='unit'>￥</text>

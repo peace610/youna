@@ -68,4 +68,5 @@ page {
     color: #B2712A;
     margin-top: 86rpx;
     text-align: center;
+    background: none;
 }

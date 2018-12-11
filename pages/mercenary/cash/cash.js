@@ -5,14 +5,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+      amount: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      var session_id = wx.getStorageSync('session_id')
+      var user_id = wx.getStorageSync('user_id')
+      var vm = this
+      var param = {
+          session_id: session_id,
+      }
+      util.ajax('GET','/config',param,(res) => {
+          vm.setData({
+              amount: parseFloat(res.data.deposit)
+          })
+      })
   },
     submitOrder: function () {
         var vm = this
@@ -20,7 +30,7 @@ Page({
             session_id: wx.getStorageSync('session_id'),
             post_vars: {
                 user_id: wx.getStorageSync('user_id'),
-                amount: 19.9
+                amount: vm.data.amount
             }
         }
         util.ajax('POST','/user/account/actions/deposit',param,(res) => {
@@ -34,9 +44,11 @@ Page({
                     signType: data.signType,
                     paySign: data.paySign,
                     success: function(res){
-                        wx.switchTab({
-                            url: '/pages/mercenary/my/my'
-                        })
+                        setTimeout(() => {
+                            wx.switchTab({
+                                url: '/pages/mercenary/my/my'
+                            })
+                        },100)
                     },
                     fail: function(res){
                     },

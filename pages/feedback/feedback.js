@@ -80,7 +80,16 @@ Page({
             }
         }
         util.ajax('POST','/user/actions/suggestion',param,(res) => {
-            wx.navigateBack()
+            wx.showToast({
+                title: res.message,
+                icon: 'none',
+                complete: function () {
+                    setTimeout(() => {
+                        wx.navigateBack()
+                    },1000)
+                }
+            })
+
         })
     }
 })

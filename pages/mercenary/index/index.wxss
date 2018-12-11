@@ -47,7 +47,6 @@
 }
 .item {
   display: flex;
-  align-items: center;
 }
 .list .item:first-child {
   margin-bottom: 24rpx;
@@ -57,6 +56,7 @@
   height: 20rpx;
   background: #60A6F3;
   border-radius: 50%;
+  margin-top: 8rpx;
   margin-right: 16rpx;
 }
 .cir-s {
@@ -74,7 +74,7 @@
   margin-left: 10rpx;
 }
 .address {
-  width: 540rpx;
+  width: 470rpx;
   color: #2A383E;
 }
 .item-s {

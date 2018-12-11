@@ -154,11 +154,5 @@ Page({
                 url: '/pages/mercenary/cash/cash'
             })
         })
-
-        // var address = e.currentTarget.dataset.address
-        // var addressDetail = e.currentTarget.dataset.addressDetail
-        // wx.redirectTo({
-        //     url: '/pages/mercenary/uploadCard/uploadCard'
-        // })
     }
 })

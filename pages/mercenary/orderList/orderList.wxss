@@ -40,15 +40,19 @@ page {
     padding-top: 30rpx;
 }
 .icon-get {
-    width: 48rpx;
-    height: 48rpx;
-    margin-right: 30rpx;
+    width: 36rpx;
+    height: 36rpx;
+    margin-right: 16rpx;
+}
+.addressArea {
+    flex-grow: 1;
 }
 .info {
-    width: 560rpx;
+    display: flex;
 }
 .address {
-    font-size: 32rpx;
+    width: 505rpx;
+    font-size: 28rpx;
     color: #2A383E;
     margin-bottom: 20rpx;
 }
