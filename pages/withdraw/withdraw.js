@@ -56,10 +56,6 @@ Page({
             success(res) {
                 if (res.confirm) {
                     util.ajax('POST','/user/account/actions/withdraw',param,(res) => {
-                        wx.showToast({
-                            title: '提现成功',
-                            icon: 'none'
-                        })
                     })
                 }
             }

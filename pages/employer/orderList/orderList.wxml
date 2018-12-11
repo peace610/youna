@@ -7,7 +7,7 @@
         <block wx:for='{{list}}'>
             <navigator url="/pages/employer/orderDetail/orderDetail?id={{item.id}}" class='list'>
                 <view class='shop'>
-                    <text class='name'>{{item.create_time}}</text>
+                    <text class='name'>{{item.order_time}}</text>
                     <text class='state'>{{state[item.state]}}</text>
                 </view>
                 <view class='order'>
