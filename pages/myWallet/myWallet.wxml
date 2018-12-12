@@ -11,7 +11,7 @@
     </view>
     <view class='detailTip'>账户明细</view>
     <view class='listArea'>
-        <view class='list' wx:for='{{amountInfo.transaction_list}}'>
+        <view class='list' wx:for='{{amountInfo.transaction_list}}' wx:key="*this">
             <view class='info'>
                 <view>
                     <text wx:if='{{item.type == 0}}'>雇主下单</text>
@@ -19,7 +19,7 @@
                     <text wx:elif='{{item.type == 2}}'>取消订单</text>
                     <text wx:elif='{{item.type == 3}}'>佣兵收款</text>
                 </view>
-                <text class='time'>{{item.createtime}}</text>
+                <text class='time'>{{item.create_time}}</text>
             </view>
             <view class='total-des'>
                 <text class='ident' wx:if='{{item.is_income}}'>+</text>

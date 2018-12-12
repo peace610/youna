@@ -4,7 +4,6 @@
         <view class='top'>
             <view class='state'>
                 <text>等待同学接单</text>
-                <text class='time'>{{timeStr}}</text>
             </view>
             <text class='sub-tit'>正在为您寻找附近有空的同学，请稍等</text>
             <view class='oper'>
@@ -18,6 +17,7 @@
         <view class='top'>
             <view class='state'>
                 <text>已接单，请等待外卖电话</text>
+                <text class='time'>{{timeStr}}</text>
             </view>
             <text class='sub-tit'>请您在接到外卖员电话并确认其到达指定地点（取货地点）后，点击“去拿外卖吧”，通知同学帮您拿外卖，预祝您有一次完美的外卖体验</text>
             <view class='oper'>
@@ -86,6 +86,16 @@
         <image src='../../images/cut-border-s.png' class='cut-border cut-border-top'></image>
         <view class='price-list'>
             <view class='item'>
+                <text>外卖数量</text>
+                <text>￥<text class='num'>{{orderDetail.amount}}</text></text>
+            </view>
+            <view class='item'>
+                <text>无备份</text>
+            </view>
+        </view>
+        <image src='../../images/cut-border-s.png' class='cut-border cut-border-top'></image>
+        <view class='price-list'>
+            <view class='item'>
                 <text>酬劳</text>
                 <text>￥<text class='num'>{{orderDetail.amount}}</text></text>
             </view>
@@ -95,7 +105,7 @@
             </view>
             <view class='item'>
                 <text>总计</text>
-                <text>￥<text class='num'>{{orderDetail.total_amount}}</text></text>
+                <text>￥<text class='num'>{{orderDetail.mater_amount}}</text></text>
             </view>
         </view>
         <image src='../../images/cut-border-s.png' class='cut-border cut-border-top'></image>
@@ -136,5 +146,4 @@
         <button wx:if='{{priceItem !== "" || price !== ""}}' bindtap='submitPrice' class='submitButton'>去支付</button>
         <button wx:else class='submitButton button-disabled'>保存</button>
     </view>
-
 </view>

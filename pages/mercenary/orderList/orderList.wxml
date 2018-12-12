@@ -4,7 +4,7 @@
         <text>暂无订单</text>
     </view>
     <block wx:else>
-        <block wx:for='{{list}}'>
+        <block wx:for='{{list}}' wx:key="*this">
             <navigator url="/pages/mercenary/orderDetail/orderDetail?id={{item.id}}" class='list'>
                 <view class='shop'>
                     <text class='name'>{{item.order_time}}</text>
@@ -23,7 +23,7 @@
                     </view>
                     <view class='price'>
                         <text class='unit'>￥</text>
-                        <text>{{item.amount}}</text>
+                        <text>{{item.slave_amount}}</text>
                     </view>
                 </view>
             </navigator>

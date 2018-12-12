@@ -82,7 +82,14 @@
   border-top: 2rpx solid #DBE6EF;
   padding-top: 12rpx;
   margin-top: 24rpx;
+  align-items: center;
   justify-content: space-between;
+}
+.waimai {
+  color: #FFA54A;
+  border-right: 2rpx solid #dae5ee;
+  padding-right: 30rpx;
+  margin-right: 30rpx;
 }
 .btn {
   width: 140rpx;

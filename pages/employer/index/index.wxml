@@ -44,8 +44,30 @@
         </li>
     </ul>
     <view class='footerButton'>
-        <button wx:if='{{getAddress.first_address !=="" && receiveAddress.first_address !== "" && num !== "" && price !== ""}}' bindtap='submitOrder' class='submitButton'>立即下单</button>
-        <button wx:else bindtap='submitOrder' class='submitButton button-disabled' bindtap='submitOrder'>立即下单</button>
+        <button wx:if='{{getAddress.first_address !=="" && receiveAddress.first_address !== "" && num !== "" && price !== ""}}' bindtap='showModal' class='submitButton'>立即下单</button>
+        <button wx:else class='submitButton button-disabled'>立即下单</button>
     </view>
   </view>
+    <!--屏幕背景变暗的背景 -->
+    <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+    <!--弹出框 -->
+    <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+        <view class='box-tit'>
+            <image src='../../images/icon-close.png' class='icon-close' bindtap="hideModal"></image>
+            支付
+        </view>
+        <view class="priceList">
+            <text class='des'>支付金额</text>
+            <text><text class='pri'>5</text>元</text>
+        </view>
+        <view class="priceList">
+            <text class='des'>余额抵扣</text>
+            <text><text class='pri'>5</text>元</text>
+        </view>
+        <view class="priceList">
+            <text class='des'>剩余支付</text>
+            <text><text class='pri pri_s'>5</text>元</text>
+        </view>
+        <button  bindtap='submitOrder' class='submitButton submitButton_s'>立即支付</button>
+    </view>
 </view>

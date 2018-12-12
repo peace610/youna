@@ -1,12 +1,12 @@
 <view class='container'>
-    <view class='list' wx:for='{{list}}'>
+    <view class='list' wx:for='{{list}}' wx:key="*this">
         <view class='time'>{{item.create_time}}</view>
         <view class='area'>
             <view class='orderInfo'>
                 <text class='read'>{{item.title}}</text>
-                <text class='tip'></text>
+                <!--<text class='tip'></text>-->
             </view>
-            <navigator url="/pages/mercenary/orderDetail/orderDetail?id=11"  class='des'>
+            <navigator url="/pages/mercenary/orderDetail/orderDetail?id={{item.id}}"  class='des'>
                 <text>{{item.context}}</text>
             </navigator>
         </view>

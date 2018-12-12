@@ -22,7 +22,7 @@
       <image src='../../images/reset-fixed.png' class='reset-fixed' />
       <text class='resetText' bindtap='resetFixed'>重新定位</text>
     </li>
-    <li wx:for='{{searchList}}' bindtap='goAddress' data-address='{{item.title}}' data-location='{{item.location}}'>
+    <li wx:for='{{searchList}}' wx:key="*this" bindtap='goAddress' data-address='{{item.title}}' data-location='{{item.location}}'>
       <image src='../../images/icon-search.png' class='icon-search' />
       <text>{{item.title}}</text>
       <!-- <text>{{item.address}}</text> -->

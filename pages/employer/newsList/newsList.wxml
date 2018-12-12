@@ -1,5 +1,5 @@
 <view class='container'>
-    <view class='list' wx:for='{{list}}'>
+    <view class='list' wx:for='{{list}}' wx:key="*this">
         <view class='time'>{{item.create_time}}</view>
         <view class='area'>
             <view class='orderInfo'>

@@ -167,7 +167,7 @@ Page({
         }
         util.ajax(type,'/user/address',param,(res) => {
             wx.redirectTo({
-                url: '/pages/employer/index/index'
+                url: '/pages/employer/receiveAddressList/receiveAddressList'
             })
         })
     }

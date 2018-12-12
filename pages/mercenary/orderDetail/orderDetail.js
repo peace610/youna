@@ -10,6 +10,9 @@ Page({
         orderDetail: {},
         tel: '',
         code: '',
+        counter: 0,
+        time: 0,
+        timeStr: '',
     },
     /**
      * 生命周期函数--监听页面加载
@@ -24,9 +27,13 @@ Page({
             vm.getOrderDetail()
         }
     },
+    onUnload: function () {
+        this.clearCount()
+    },
     getOrderDetail: function () {
         var vm = this
         var id = vm.data.id
+        vm.clearCount()
         var param = {
             session_id: wx.getStorageSync('session_id'),
             order_id: id,
@@ -39,6 +46,36 @@ Page({
                 orderDetail: data,
                 tel: phone.substr(phone.length-4)
             })
+            if (data.state == 3) {
+                var distribution_time = new Date(res.data.distribution_time);
+                vm.setData({
+                    time: distribution_time.getTime(),
+                })
+                vm.countTime()
+                vm.setData({
+                    counter: setInterval(() => {
+                        vm.countTime()
+                    }, 1000)
+                })
+            }
+        })
+    },
+    countTime: function () {
+        var time = this.data.time;
+        var date = new Date(time);
+        var h = date.getHours();
+        var m =  date.getMinutes();
+        var s = date.getSeconds();
+        this.setData({
+            time : ( time/1000 + 1 ) * 1000,
+            timeStr: (h >= 10 ? h : '0'+ h) + ':' + (m >= 10 ? m : '0'+ m) + ':' + (s >= 10 ? s : '0'+ s)
+        })
+    },
+    clearCount: function () {
+        clearInterval(this.data.counter)
+        this.setData({
+            time : 0,
+            timeStr: ''
         })
     },
     phoneCall: function (e) {
@@ -77,6 +114,9 @@ Page({
             }
         }
         util.ajax('POST','/order/actions/finish',param,(res) => {
+            this.setData({
+                showModalStatus: false,
+            })
             vm.getOrderDetail()
         })
     }
