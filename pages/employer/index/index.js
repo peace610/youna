@@ -14,6 +14,7 @@ Page({
     des: '',
     price: 0,
     showModalStatus: false,
+    showAreaStatus: false,
     animationData: {},
   },
   onLoad: function (options) {
@@ -143,9 +144,11 @@ Page({
         setTimeout(function () {
             animation.translateY(0).step()
             this.setData({
-                animationData: animation.export()
+                animationData: animation.export(),
+                showAreaStatus: true
             })
         }.bind(this), 200)
+        console.info(this.data.des,111)
     },
     //隐藏对话框
     hideModal: function () {
@@ -159,6 +162,7 @@ Page({
         animation.translateY(300).step()
         this.setData({
             animationData: animation.export(),
+            showAreaStatus: false
         })
         setTimeout(function () {
             animation.translateY(0).step()
@@ -182,6 +186,7 @@ Page({
                 recive_address_id: vm.data.receiveAddress.id,
                 takeaway_state: 0,
                 amount: data.price,
+                count: data.num,
                 description: data.des
             }
         }

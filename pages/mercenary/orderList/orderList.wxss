@@ -31,7 +31,7 @@ page {
 .state {
     color: #64818D;
 }
-.state1 {
+.state3 {
     color: #FFA54A;
 }
 .order {

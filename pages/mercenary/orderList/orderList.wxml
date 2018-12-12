@@ -7,8 +7,8 @@
         <block wx:for='{{list}}' wx:key="*this">
             <navigator url="/pages/mercenary/orderDetail/orderDetail?id={{item.id}}" class='list'>
                 <view class='shop'>
-                    <text class='name'>{{item.order_time}}</text>
-                    <text class='state'>{{state[item.state]}}</text>
+                    <text class='name'>{{item.create_time}}</text>
+                    <text class='{{item.state == 3 ? "state3" : "state"}}'>{{state[item.state]}}</text>
                 </view>
                 <view class='order'>
                     <view class='addressArea'>

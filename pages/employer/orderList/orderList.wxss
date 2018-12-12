@@ -28,17 +28,20 @@ page {
     padding-bottom: 30rpx;
     border-bottom: 2rpx solid #E3EBEB;
 }
-.state {
-    color: #226ABF;
-}
 .state1 {
     color: #1ABFC0;
 }
 .state2 {
-    color: #99B6CE;
+    color: #64818D;
 }
 .state3 {
+    color: #226ABF;
+}
+.state5 {
     color: #64818D;
+}
+.state6 {
+    color: #99B6CE;
 }
 .order {
     display: flex;

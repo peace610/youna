@@ -33,8 +33,8 @@
                 </view>
                 <view class='item item-s'>
                     <view>
-                        <text class='waimai'>{{item.distance}}份外卖</text>
-                        <text>距离 {{item.distance}}米</text>
+                        <text class='waimai'>{{item.takeaway_info.count}}份外卖</text>
+                        <text>距离 {{item.distance}}</text>
                     </view>
                     <button class='btn' bindtap='getOrder' data-id='{{item.id}}'>立即接单</button>
                 </view>

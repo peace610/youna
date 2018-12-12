@@ -6,9 +6,9 @@
                 <text class='read'>{{item.title}}</text>
                 <!--<text class='tip'></text>-->
             </view>
-            <navigator url="/pages/mercenary/orderDetail/orderDetail?id={{item.id}}"  class='des'>
+            <view class='des'>
                 <text>{{item.context}}</text>
-            </navigator>
+            </view>
         </view>
     </view>
 </view>

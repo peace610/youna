@@ -35,7 +35,7 @@
                 <image src='../../images/add.png' class='num-img' bindtap='addNum'/>
             </view>
         </li>
-        <li>
+        <li wx:if='{{!showAreaStatus}}'>
             <textarea placeholder='童鞋你有何送达要求(40字内)' maxlength='40' auto-height placeholder-style='color: #AABEC6;' class='input-info' bindinput='des' value='{{des}}'/>
         </li>
         <li>

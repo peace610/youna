@@ -6,15 +6,21 @@ Page({
   data: {
     offset: 0,
     list: [],
-    state: ['未支付', '未接单', '已接单', '配送中', '已送达', '', '已取消'],
+    state: ['未支付', '等待同学接单', '配送中', '订单等待送达', '已送达', '订单已送达', '订单已取消'],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      this.getOrder()
   },
+    onShow: function () {
+        this.setData({
+            offset: 0,
+            list: [],
+        })
+        this.getOrder()
+    },
     getOrder: function () {
         var vm = this
         var session_id = wx.getStorageSync('session_id')

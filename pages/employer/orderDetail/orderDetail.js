@@ -10,7 +10,7 @@ Page({
         animationDataCar: {},
         priceItem: '',
         price: '',
-        orderState: 0, // 0:未支付 1:未接单(等待同学接单)  2：已接单 3：配送中(同学已收到您的通知) 4：外卖已送达(订单完成) 6:订单已取消
+        orderState: 0, // 0:未支付 1:未接单(等待同学接单)  2：已接单 3：配送中(同学已收到您的通知) 4：外卖已送达 5：订单完成 6:订单已取消
         orderDetail: {},
         counter: 0,
         time: 0,
