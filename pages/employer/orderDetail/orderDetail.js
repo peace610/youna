@@ -46,7 +46,7 @@ Page({
                 orderState: data.state,
                 orderDetail: data,
             })
-            if (data.state == 2) {
+            if (data.state == 0 || data.state == 1) {
                 var create_time = new Date(res.data.create_time);
                 this.setData({
                     time: create_time.getTime(),
@@ -84,9 +84,9 @@ Page({
     countTime: function () {
         var time = this.data.time;
         var date = new Date(time);
-        var h = date.getHours();
-        var m =  date.getMinutes();
-        var s = date.getSeconds();
+        var h = parseInt(date.getHours(),10);
+        var m = parseInt(date.getMinutes(),10);
+        var s = parseInt(date.getSeconds(),10);
         this.setData({
             time : ( time/1000 + 1 ) * 1000,
             timeStr: (h >= 10 ? h : '0'+ h) + ':' + (m >= 10 ? m : '0'+ m) + ':' + (s >= 10 ? s : '0'+ s)

@@ -35,13 +35,13 @@ Page({
     },
     goEmployer: function (e) {
         var receiveAddress = e.currentTarget.dataset.receiveAddress
-        wx.navigateTo({
+        wx.redirectTo({
             url: '/pages/employer/index/index?receiveAddress='+JSON.stringify(receiveAddress)
         })
     },
     editAddress: function (e) {
         var id = e.currentTarget.dataset.id
-        wx.redirectTo({
+        wx.navigateTo({
             url: '/pages/employer/receiveAddress/receiveAddress?id='+id
         })
     },

@@ -94,7 +94,7 @@
                 <text><text class='num'>{{orderDetail.takeaway_info.count}}</text></text>
             </view>
             <view class='item'>
-                <text>{{orderDetail.description ? orderDetail.description : "无备份"}}</text>
+                <text>{{orderDetail.description ? orderDetail.description : "无备注"}}</text>
             </view>
         </view>
         <image src='../../images/cut-border-s.png' class='cut-border cut-border-top'></image>
@@ -114,7 +114,7 @@
         <view class='btn-area'>
             <button wx:if='{{orderState == 2}}' class='submitButton button-disabled'>等待送达</button>
             <button wx:elif='{{orderState == 3}}' bindtap='confirmGet' class='submitButton'>确认送达</button>
-            <button wx:elif='{{orderState == 5}}' class='submitButton'>已送达</button>
+            <!--<button wx:elif='{{orderState == 5}}' class='submitButton'>已送达</button>-->
         </view>
         <image src='../../images/cut-bottom-s.png' class='cut-bottom'></image>
     </view>

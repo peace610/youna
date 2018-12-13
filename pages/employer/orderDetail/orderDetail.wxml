@@ -1,14 +1,16 @@
 <view class='container'>
-    <block wx:if='{{orderState == 1}}'>
+    <block wx:if='{{orderState == 0 || orderState == 1}}'>
         <image src='../../images/wait-bg.png' class='bg'></image>
         <view class='top'>
             <view class='state'>
                 <text>等待同学接单</text>
+                <text class='time'>{{timeStr}}</text>
             </view>
             <text class='sub-tit'>正在为您寻找附近有空的同学，请稍等</text>
             <view class='oper'>
                 <button class='btn btn-cancel' bindtap='cancelOrder'>取消订单</button>
-                <button class='btn' bindtap='showModal'>感谢费<text class='tip'>接单更快</text></button>
+                <button wx:if='{{orderDetail.tip != "0.00"}}' class='btn btn-disabled'>已加感谢费</button>
+                <button wx:else class='btn' bindtap='showModal'>感谢费<text class='tip'>接单更快</text></button>
             </view>
         </view>
     </block>
@@ -17,7 +19,6 @@
         <view class='top'>
             <view class='state'>
                 <text>已接单，请等待外卖电话</text>
-                <text class='time'>{{timeStr}}</text>
             </view>
             <text class='sub-tit'>请您在接到外卖员电话并确认其到达指定地点（取货地点）后，点击“去拿外卖吧”，通知同学帮您拿外卖，预祝您有一次完美的外卖体验</text>
             <view class='oper'>
@@ -90,7 +91,7 @@
                 <text><text class='num'>{{orderDetail.takeaway_info.count}}</text></text>
             </view>
             <view class='item'>
-                <text>{{orderDetail.description ? orderDetail.description : "无备份"}}</text>
+                <text>{{orderDetail.description ? orderDetail.description : "无备注"}}</text>
             </view>
         </view>
         <image src='../../images/cut-border-s.png' class='cut-border cut-border-top'></image>
@@ -144,6 +145,6 @@
             <text>元</text>
         </view>
         <button wx:if='{{priceItem !== "" || price !== ""}}' bindtap='submitPrice' class='submitButton'>去支付</button>
-        <button wx:else class='submitButton button-disabled'>保存</button>
+        <button wx:else class='submitButton button-disabled'>去支付</button>
     </view>
 </view>

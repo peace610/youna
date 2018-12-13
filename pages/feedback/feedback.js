@@ -81,7 +81,7 @@ Page({
         }
         util.ajax('POST','/user/actions/suggestion',param,(res) => {
             wx.showToast({
-                title: res.message,
+                title: '提交成功',
                 icon: 'none',
                 complete: function () {
                     setTimeout(() => {

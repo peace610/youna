@@ -13,68 +13,117 @@ Page({
     num: 1,
     des: '',
     price: 0,
+    balance: 0,
+    wx_amount: 0,
     showModalStatus: false,
     showAreaStatus: false,
     animationData: {},
   },
-  onLoad: function (options) {
-      var vm = this
-      // 悠拿获取在线人数
-      var session_id = wx.getStorageSync('session_id')
-      var user_id = wx.getStorageSync('user_id')
-      var paramUser = {
-          session_id: session_id,
-          state: '',
-          status: '',
-          limit:5,
-          offset: 0,
-      }
-      util.ajax('GET','/users',paramUser,(res) => {
-          vm.setData({
-              count: res.data.count,
-          })
-      })
-      // 悠拿获取默认地址
-      var param = {
-          session_id: session_id,
-          user_id: user_id,
-      }
-      util.ajax('GET','/user/address/default',param,(res) => {
-          var data = res.data
-          if (data.tack_address) {
-              vm.setData({
-                  getAddress: data.tack_address,
-              })
-          } else {
-              vm.setData({
-                  getAddress: {
-                      first_address: '',
-                  },
-              })
-          }
-          var receiveAddress = options && options.receiveAddress
-          if (receiveAddress) {
-              vm.setData({
-                  receiveAddress: JSON.parse(receiveAddress)
-              })
-          } else if (data.recive_address) {
-              vm.setData({
-                  receiveAddress: data.recive_address
-              })
-          } else {
-              vm.setData({
-                  receiveAddress: {
-                      first_address: '',
-                  }
-              })
-          }
-      })
-
-      // 获取定位 到经纬度
-      app.getFixed()
-      // 计算金额
-      vm.calculate()
+    onLoad: function (options) {
+        var vm = this
+        if (!wx.getStorageSync('user_id')) {
+            // 登录
+            wx.login({
+                success: res => {
+                    // 悠拿登录
+                    var param = {
+                        post_vars: {
+                            appid: 'wx002b7e790dfa4a25',
+                            secret: '561d8379e6c830ca0ad282d48810ec61',
+                            js_code: res.code
+                        }
+                    }
+                    util.ajax('POST','/login',param,(res) => {
+                        var data = res.data
+                        wx.setStorageSync('session_id',data.session_id);
+                        wx.setStorageSync('user_id',data.user_id);
+                        var param_user = {
+                            session_id: data.session_id,
+                            post_vars: {
+                                user_id: data.user_id,
+                                user_info: JSON.stringify(app.globalData.userInfo),
+                                raw_data: "",
+                                signature: "",
+                                encrypted_data: "",
+                                iv: ""
+                            }
+                        }
+                        // 悠拿用户注册
+                        util.ajax('POST','/user',param_user, (res) => {
+                            vm.init(options)
+                        })
+                    })
+                    // 发送 res.code 到后台换取 openId, sessionKey, unionId
+                }
+            })
+        } else {
+            vm.init(options)
+        }
   },
+    init: function (options) {
+        var vm = this
+        // 悠拿获取在线人数
+        var session_id = wx.getStorageSync('session_id')
+        var user_id = wx.getStorageSync('user_id')
+        var paramUser = {
+            session_id: session_id,
+            state: '',
+            status: '',
+            limit:5,
+            offset: 0,
+        }
+        util.ajax('GET','/users',paramUser,(res) => {
+            vm.setData({
+                count: res.data.count,
+            })
+        })
+        // 悠拿获取默认地址
+        var param = {
+            session_id: session_id,
+            user_id: user_id,
+        }
+        util.ajax('GET','/user/address/default',param,(res) => {
+            var data = res.data
+            if (data.tack_address) {
+                vm.setData({
+                    getAddress: data.tack_address,
+                })
+            } else {
+                vm.setData({
+                    getAddress: {
+                        first_address: '',
+                    },
+                })
+            }
+            var receiveAddress = options && options.receiveAddress
+            if (receiveAddress) {
+                vm.setData({
+                    receiveAddress: JSON.parse(receiveAddress)
+                })
+            } else if (data.recive_address) {
+                vm.setData({
+                    receiveAddress: data.recive_address
+                })
+            } else {
+                vm.setData({
+                    receiveAddress: {
+                        first_address: '',
+                    }
+                })
+            }
+        })
+
+        // 获取定位 到经纬度
+        app.getFixed()
+        // 计算金额
+        this.calculate()
+    },
+    onShow: function () {
+        // 计算金额
+        if (this.data.price) {
+            this.calculate()
+        }
+    },
     getAddress: function () {
         wx.navigateTo({
             url: '/pages/employer/getAddress/getAddress?goIndex="index"&getAddress='+JSON.stringify(this.data.getAddress)
@@ -94,13 +143,17 @@ Page({
         var vm = this
         // 计算订单金额
         var session_id = wx.getStorageSync('session_id')
+        var user_id = wx.getStorageSync('user_id')
         var paramUser = {
             session_id: session_id,
+            user_id: user_id,
             count: vm.data.num
         }
         util.ajax('GET','/order/actions/calculate',paramUser,(res) => {
             vm.setData({
                 price: res.data.amount,
+                balance: res.data.balance,
+                wx_amount: res.data.wx_amount,
             })
         })
     },
@@ -148,7 +201,6 @@ Page({
                 showAreaStatus: true
             })
         }.bind(this), 200)
-        console.info(this.data.des,111)
     },
     //隐藏对话框
     hideModal: function () {
@@ -175,7 +227,7 @@ Page({
     submitOrder: function () {
         var vm = this
         var data = vm.data
-        // 获取在线人数
+        var wx_amount = data.wx_amount
         var session_id = wx.getStorageSync('session_id')
         var user_id = wx.getStorageSync('user_id')
         var param = {
@@ -192,26 +244,34 @@ Page({
         }
         util.ajax('POST','/order',param,(res) => {
             var data = res.data
-            wx.requestPayment(
-                {
-                    timeStamp: data.timeStamp,
-                    nonceStr: data.nonceStr,
-                    package: data.package,
-                    signType: data.signType,
-                    paySign: data.paySign,
-                    success: function(res){
-                        setTimeout(() => {
-                            wx.navigateTo({
-                                url: '/pages/employer/orderDetail/orderDetail?id='+data.id
-                            })
-                        },100)
-                    },
-                    fail: function(res){
-                    },
-                    complete: function(res){
-                    }
-                })
+            if (parseFloat(wx_amount)) {
+                wx.requestPayment(
+                    {
+                        timeStamp: data.timeStamp,
+                        nonceStr: data.nonceStr,
+                        package: data.package,
+                        signType: data.signType,
+                        paySign: data.paySign,
+                        success: function(res){
+                            vm.goOrderDetail(data.id)
+                        },
+                        fail: function(res){
+                        },
+                        complete: function(res){
+                        }
+                    })
+            } else {
+                vm.goOrderDetail(data.id)
+            }
         })
+    },
+    goOrderDetail: function (id) {
+        this.hideModal()
+        setTimeout(() => {
+            wx.navigateTo({
+                url: '/pages/employer/orderDetail/orderDetail?id='+id
+            })
+        },100)
     },
     scan: function () {
       wx.scanCode({
