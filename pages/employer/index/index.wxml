@@ -12,7 +12,7 @@
     </view>
   </view>
   <view class='info'>
-    <p class='tit'>请填写外卖信息</p>
+    <view class='tit'>请填写外卖信息</view>
     <ul class='list'>
         <li>
             <image src='../../images/get.png' class='icon-get'/>
