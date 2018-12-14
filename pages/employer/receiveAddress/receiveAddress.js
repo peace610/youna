@@ -54,7 +54,7 @@ Page({
                   addressDetail: receiveAddressInfo.addressDetail || data.last_address,
                   defaultCheck: receiveAddressInfo.defaultCheck || data.default,
                   location: location ? JSON.parse(location) : {
-                      lat: data.longitude,
+                      lat: data.latitude,
                       lng: data.longitude,
                   }
               })
@@ -118,7 +118,7 @@ Page({
             addressDetail: data.addressDetail,
             defaultCheck: data.defaultCheck
         }
-        wx.redirectTo({
+        wx.navigateTo({
             url: '/pages/employer/addressSearch/addressSearch?type=receiveAddress&id='+data.id+'&receiveAddress='+JSON.stringify(receiveAddress)
         })
     },

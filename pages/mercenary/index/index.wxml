@@ -19,7 +19,7 @@
                 <text class='fixed-tit'>{{fixedText}}</text>
             </view>
         </view>
-        <block wx:if="{{list.length > 1}}">
+        <block wx:if="{{list.length > 0}}">
             <view class='list' wx:for="{{list}}" wx:key="*this">
                 <view class='item'>
                     <text class='cir'></text>
@@ -44,14 +44,15 @@
         </block>
         <view wx:else class='taskInfo'>
             <image src='../../images/icon-task.png' class='icon-task'></image>
-            <text wx:if="{{flagCertif}}">
+            <text wx:if="{{flagCertif && deposit}}">
                 任务被人接完了\r\n可以再等等试试哦
             </text>
             <block wx:else>
                 <text>
                     可以再等等试试哦\r\n空闲时间，先完成认证吧
                 </text>
-                <navigator url='/pages/mercenary/material/material' class='register'>去注册认证</navigator>
+                <navigator wx:if='{{!flagCertif}}' url='/pages/mercenary/material/material' class='register'>去注册认证</navigator>
+                <navigator wx:elif='{{!deposit}}'  url='/pages/mercenary/cash/cash' class='register'>去注册认证</navigator>
             </block>
 
         </view>

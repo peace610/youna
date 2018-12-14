@@ -1,4 +1,5 @@
 const util = require('../../../utils/util.js')
+var  counter = 0
 Page({
     /**
      * 页面的初始数据
@@ -12,8 +13,7 @@ Page({
         price: '',
         orderState: 0, // 0:未支付 1:未接单(等待同学接单)  2：已接单 3：配送中(同学已收到您的通知) 4：外卖已送达 5：订单完成 6:订单已取消
         orderDetail: {},
-        counter: 0,
-        time: 0,
+        timer: 0,
         timeStr: '',
     },
     /**
@@ -46,35 +46,32 @@ Page({
                 orderState: data.state,
                 orderDetail: data,
             })
+            var currentTime = new Date().getTime() // 当前时间毫秒数
             if (data.state == 0 || data.state == 1) {
-                var create_time = new Date(res.data.create_time);
-                this.setData({
-                    time: create_time.getTime(),
+                var create_time = new Date((data.create_time).replace(/-/g,'/'));
+                vm.setData({
+                    timer: parseInt((currentTime - create_time.getTime()) / 1000, 10)
                 })
                 vm.countTime()
-                vm.setData({
-                    counter: setInterval(() => {
-                        vm.countTime()
-                    }, 1000)
-                })
+                counter = setInterval(() => {
+                    vm.countTime()
+                }, 1000)
             } else if (data.state == 3) {
-                var distribution_time = new Date(res.data.distribution_time);
-                this.setData({
-                    time: distribution_time.getTime(),
+                var distribution_time = new Date((data.distribution_time).replace(/-/g,'/'));
+                vm.setData({
+                    timer: parseInt((currentTime - distribution_time.getTime()) / 1000, 10)
                 })
                 vm.countTime()
-                vm.setData({
-                    counter: setInterval(() => {
-                        vm.countTime()
-                    }, 1000)
-                })
+                counter =  setInterval(() => {
+                    vm.countTime()
+                }, 1000)
                 var animation = wx.createAnimation({
                     duration: 14000,
                     timingFunction: "linear",
                     delay: 0
                 })
                 vm.animation = animation
-                animation.translateX(300).step()
+                animation.translateX(283).step()
                 vm.setData({
                     animationDataCar: animation.export(),
                 })
@@ -82,20 +79,19 @@ Page({
         })
     },
     countTime: function () {
-        var time = this.data.time;
-        var date = new Date(time);
-        var h = parseInt(date.getHours(),10);
-        var m = parseInt(date.getMinutes(),10);
-        var s = parseInt(date.getSeconds(),10);
+        var timer = this.data.timer;
+        var h = parseInt(timer / 60 / 60 % 24, 10) // 计算小时数
+        var m = parseInt(timer / 60 % 60, 10) // 计算分钟数
+        var s = parseInt(timer % 60, 10) // 计算秒数
         this.setData({
-            time : ( time/1000 + 1 ) * 1000,
+            timer : timer + 1,
             timeStr: (h >= 10 ? h : '0'+ h) + ':' + (m >= 10 ? m : '0'+ m) + ':' + (s >= 10 ? s : '0'+ s)
         })
     },
     clearCount: function () {
-        clearInterval(this.data.counter)
+        clearInterval(counter)
         this.setData({
-            time : 0,
+            timer : 0,
             timeStr: ''
         })
     },

@@ -125,8 +125,9 @@ Page({
         }
     },
     getAddress: function () {
+      var getAddress = this.data.getAddress.first_address ? JSON.stringify(this.data.getAddress) : ''
         wx.navigateTo({
-            url: '/pages/employer/getAddress/getAddress?goIndex="index"&getAddress='+JSON.stringify(this.data.getAddress)
+            url: '/pages/employer/getAddress/getAddress?goIndex="index"&getAddress='+ getAddress
         })
     },
     receiveAddress: function () {

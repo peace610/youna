@@ -16,6 +16,7 @@
         <text wx:if='{{item.default}}' class='default-address'>默认</text>
       </view>
       <view class='oper'>
+          <text bindtap='goEmployer' data-receive-address='{{item}}' class='confirm'>确定</text>
           <image src='../../images/icon-edit.png' class='icon-edit' data-id='{{item.id}}' bindtap='editAddress'/>
           <image src='../../images/icon-del.png' class='icon-del' data-id='{{item.id}}' bindtap='delAddress'/>
       </view>        

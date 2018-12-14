@@ -12,16 +12,16 @@
             <text class='price'>{{userInfo.amount}}元</text>
             <image src='../../images/next.png' class='icon-next'/>
         </li>
-        <li wx:if='{{userInfo.state == 1}}' bindtap='cash'>
-            <image src='../../images/icon-my-cash.png' class='icon-my'/>
-            <text  class='label'>缴纳押金</text>
-            <text class='price'>未缴纳</text>
-            <image src='../../images/next.png' class='icon-next'/>
-        </li>
-        <li wx:elif='{{userInfo.state == 2}}'>
+        <li wx:if='{{userInfo.deposit}}'>
             <image src='../../images/icon-my-cash.png' class='icon-my'/>
             <text  class='label'>缴纳押金</text>
             <text class='price'>已缴纳</text>
+            <image src='../../images/next.png' class='icon-next'/>
+        </li>
+        <li wx:else bindtap='cash'>
+            <image src='../../images/icon-my-cash.png' class='icon-my'/>
+            <text  class='label'>缴纳押金</text>
+            <text class='price'>未缴纳</text>
             <image src='../../images/next.png' class='icon-next'/>
         </li>
         <li bindtap='newsList'>

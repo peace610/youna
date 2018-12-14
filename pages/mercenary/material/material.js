@@ -150,9 +150,16 @@ Page({
             }
         }
         util.ajax('PUT','/user',param,(res) => {
-            wx.navigateTo({
-                url: '/pages/mercenary/cash/cash'
-            })
+            if (res.data.deposit) {
+                wx.navigateTo({
+                    url: '/pages/mercenary/index/index'
+                })
+            } else {
+                wx.navigateTo({
+                    url: '/pages/mercenary/cash/cash'
+                })
+            }
+
         })
     }
 })

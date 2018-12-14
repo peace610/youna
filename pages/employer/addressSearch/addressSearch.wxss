@@ -112,3 +112,6 @@
   height: 120rpx;
   margin-bottom: 40rpx;
 }
+.marBottom {
+    margin-bottom: 20rpx;
+}

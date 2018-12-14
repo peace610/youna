@@ -30,6 +30,7 @@
   </ul>
   <view wx:if='{{!searchResult}}' class='result'>
     <image src='../../images/searchResult.png' class='searchResutl' />
-    <text>搜索无结果</text>
+    <text class='marBottom'>找不到地址？</text>
+    <text>请尝试只输入小区、写字楼或学校名，\n详情地址（如门牌号）可稍后输入哦。</text>
   </view>
 </view>

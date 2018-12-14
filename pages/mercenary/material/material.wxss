@@ -27,7 +27,7 @@ page {
     margin-right: 48rpx;
 }
 .label-code {
-    width: 180rpx;
+    width: 186rpx;
     margin-right: 0;
     color: #AABEC6;
 }

@@ -27,9 +27,17 @@ page {
 .oper{
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     border-top: 2rpx solid #DAE5EE;
     margin-top: 30rpx;
     padding-top: 24rpx;
+}
+.confirm {
+    background:#FFA54A;
+    border-radius:8rpx;
+    margin-right:40rpx;
+    color:#fff;
+    padding:5rpx 15rpx;
 }
 .icon-edit, .icon-del {
     width: 38rpx;
@@ -47,7 +55,7 @@ page {
   font-size: 26rpx;
   color: #FFFFFF;
   background: #1ABFC0;
-  border-radius: 4px;
+  border-radius: 8rpx;
 }
 .submitButton {
     width: 750rpx;

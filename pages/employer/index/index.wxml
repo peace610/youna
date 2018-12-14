@@ -3,7 +3,7 @@
     <navigator url=''>
         <image src='../../images/employerTop.png' class='banner'/>
     </navigator>
-      <navigator url="/pages/employer/my/my">
+      <navigator url="/pages/employer/my/my"  open-type='navigate'>
           <image src='../../images/my.png' class='my-img'/>
       </navigator>
     <view class='tip'>

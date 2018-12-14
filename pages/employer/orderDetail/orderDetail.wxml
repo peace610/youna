@@ -111,9 +111,9 @@
         </view>
         <image src='../../images/cut-border-s.png' class='cut-border cut-border-top'></image>
         <view class='price-list price-list-s'>
-            <view class='item'>
+            <view class='item' wx:if='{{orderState != 0 && orderState != 1}}'>
                 <text>联系同学</text>
-                <image src='../../images/icon-tel.png' class='icon-tel' data-reply-phone='{{orderDetail.recive_address.phone}}' bindtap="phoneCall"></image>
+                <image src='../../images/icon-tel.png' class='icon-tel' data-reply-phone='{{orderDetail.slave_info.phone}}' bindtap="phoneCall"></image>
             </view>
             <view class='item'>
                 <text>验证码</text>

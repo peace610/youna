@@ -6,6 +6,7 @@ Page({
     offset: 0,
     loading: true,
     flagCertif: false,
+    deposit: false,
     list: [],
     imgUrls: [],
     indicatorDots: true,
@@ -59,7 +60,6 @@ Page({
     },
     init: function () {
         var vm = this
-        app.getFixed()
         vm.setData({
             offset: 0,
             loading: true,
@@ -82,7 +82,8 @@ Page({
         })
         util.ajax('GET','/user',param,(res) => {
             vm.setData({
-                flagCertif: res.data.state == 2 ? true : false
+                flagCertif: res.data.state == 2 ? true : false,
+                deposit: res.data.deposit
             })
         })
         vm.getList()
@@ -113,7 +114,7 @@ Page({
     },
     getOrder: function (e) {
         var vm = this
-        if (vm.data.flagCertif) {
+        if (vm.data.flagCertif && vm.data.deposit) {
             var id = e.currentTarget.dataset.id
             var session_id = wx.getStorageSync('session_id')
             var user_id = wx.getStorageSync('user_id')
@@ -130,9 +131,17 @@ Page({
                 })
             })
         } else {
-            wx.navigateTo({
-                url: '/pages/mercenary/material/material'
-            })
+            if (!vm.data.flagCertif) {
+                wx.navigateTo({
+                    url: '/pages/mercenary/material/material'
+                })
+            }
+            if (!vm.data.deposit) {
+                wx.navigateTo({
+                    url: '/pages/mercenary/cash/cash'
+                })
+            }
+
         }
     }
 })

@@ -46,7 +46,7 @@ Page({
                     success: function(res){
                         setTimeout(() => {
                             wx.switchTab({
-                                url: '/pages/mercenary/my/my'
+                                url: '/pages/mercenary/index/index'
                             })
                         },100)
                     },

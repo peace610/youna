@@ -1,4 +1,5 @@
 const util = require('../../../utils/util.js')
+var  counter = 0
 Page({
     /**
      * 页面的初始数据
@@ -11,7 +12,7 @@ Page({
         tel: '',
         code: '',
         counter: 0,
-        time: 0,
+        timer: 0,
         timeStr: '',
     },
     /**
@@ -46,35 +47,33 @@ Page({
                 orderDetail: data,
                 tel: phone.substr(phone.length-4)
             })
+            var currentTime = new Date().getTime() // 当前时间毫秒数
             if (data.state == 3) {
-                var distribution_time = new Date(res.data.distribution_time);
+                var distribution_time = new Date((data.distribution_time).replace(/-/g,'/'));
                 vm.setData({
-                    time: distribution_time.getTime(),
+                    timer: parseInt((currentTime - distribution_time.getTime()) / 1000, 10)
                 })
                 vm.countTime()
-                vm.setData({
-                    counter: setInterval(() => {
-                        vm.countTime()
-                    }, 1000)
-                })
+                counter =  setInterval(() => {
+                    vm.countTime()
+                }, 1000)
             }
         })
     },
     countTime: function () {
-        var time = this.data.time;
-        var date = new Date(time);
-        var h = parseInt(date.getHours(),10);
-        var m = parseInt(date.getMinutes(),10);
-        var s = parseInt(date.getSeconds(),10);
+        var timer = this.data.timer;
+        var h = parseInt(timer / 60 / 60 % 24, 10) // 计算小时数
+        var m = parseInt(timer / 60 % 60, 10) // 计算分钟数
+        var s = parseInt(timer % 60, 10) // 计算秒数
         this.setData({
-            time : ( time/1000 + 1 ) * 1000,
+            timer : timer + 1,
             timeStr: (h >= 10 ? h : '0'+ h) + ':' + (m >= 10 ? m : '0'+ m) + ':' + (s >= 10 ? s : '0'+ s)
         })
     },
     clearCount: function () {
         clearInterval(this.data.counter)
         this.setData({
-            time : 0,
+            timer : 0,
             timeStr: ''
         })
     },

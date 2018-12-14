@@ -52,7 +52,7 @@ Page({
           name: data.name,
           addressDetail: data.addressDetail
       }
-        wx.redirectTo({
+        wx.navigateTo({
             url: '/pages/employer/addressSearch/addressSearch?type=getAddress&getAddress='+JSON.stringify(getAddress)
         })
     },

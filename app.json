@@ -12,7 +12,6 @@
     "pages/employer/newsList/newsList",
     "pages/mercenary/index/index",
     "pages/mercenary/material/material",
-    "pages/mercenary/uploadCard/uploadCard",
     "pages/mercenary/cash/cash",
     "pages/mercenary/orderList/orderList",
     "pages/mercenary/orderDetail/orderDetail",
