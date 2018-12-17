@@ -27,7 +27,7 @@ App({
           }
       })
   },
-  getFixed: function () {
+  getFixed: function (fun) {
       var vm = this
       wx.getLocation({
           success: function(data) {
@@ -45,6 +45,9 @@ App({
                       wx.setStorageSync('longitude',data.longitude)
                       wx.setStorageSync('city',city);
                       wx.setStorageSync('fixedText',res.result.address)
+                      if (typeof fun == "function" ) {
+                          fun()
+                      }
                   },
                   fail: function(res) {
                   },

@@ -41,16 +41,48 @@ Page({
               receiveAddress: receiveAddress
           })
       }
-      var vm = this
-      vm.setData({
-          city: wx.getStorageSync('city'),
-          fixedText: wx.getStorageSync('fixedText'),
-          location: {
-              lat: wx.getStorageSync('latitude'),
-              lng: wx.getStorageSync('longitude')
-          }
-      })
   },
+    onShow: function () {
+        this.resetFixed()
+    },
+    resetFixed: function () {
+        var vm = this
+        // 获取用户信息
+        wx.getSetting({
+            success: res => {
+                if (!res.authSetting['scope.userLocation']) {
+                    wx.showModal({
+                        title: '是否授权当前位置',
+                        content: '需要获取您的地理位置，请确认授权',
+                        success: function (res) {
+                            if (res.cancel) {
+                            } else if (res.confirm) {
+                                wx.openSetting({
+                                    success: function (data) {
+                                        if (data.authSetting["scope.userLocation"] == true) {
+
+                                        }
+                                    }
+                                })
+                            }
+                        }
+                    })
+                } else {
+                    app.getFixed(function () {
+                        vm.setData({
+                            city: wx.getStorageSync('city'),
+                            fixedText: wx.getStorageSync('fixedText'),
+                            location: {
+                                lat: wx.getStorageSync('latitude'),
+                                lng: wx.getStorageSync('longitude')
+                            }
+                        })
+                    })
+
+                }
+            }
+        })
+    },
     focusSearchFlag: function () {
         this.setData({
             searchFlag: true
@@ -114,16 +146,5 @@ Page({
         wx.redirectTo({
             url: url
         })
-    },
-    resetFixed: function () {
-        app.getFixed()
-        this.setData({
-            city: wx.getStorageSync('city'),
-            fixedText: wx.getStorageSync('fixedText'),
-            location: {
-                lat: wx.getStorageSync('latitude'),
-                lng: wx.getStorageSync('longitude')
-            }
-        })
-    },
+    }
 })

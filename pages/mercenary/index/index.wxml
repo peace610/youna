@@ -1,6 +1,4 @@
 <view class='container'>
-    <view class='dialog' wx:if='{{loading}}'></view>
-    <loading wx:if='{{loading}}'>加载附近的订单，请稍等</loading>
     <swiper indicator-dots='{{indicatorDots}}'
         autoplay='{{autoplay}}' interval='{{interval}}' duration='{{duration}}' class='swiperArea'>
         <block wx:for='{{imgUrls}}' wx:key="*this">
@@ -11,50 +9,54 @@
           </swiper-item>
         </block>
     </swiper>
-    <view class='conent'>
-        <view class='info'>
-            <text>推荐订单</text>
-            <view class='fixed'>
-                <image src='../../images/icon-fixed-s.png' class='icon-fixed' />
-                <text class='fixed-tit'>{{fixedText}}</text>
-            </view>
-        </view>
-        <block wx:if="{{list.length > 0}}">
-            <view class='list' wx:for="{{list}}" wx:key="*this">
-                <view class='item'>
-                    <text class='cir'></text>
-                    <text class='address'>{{item.tack_address.first_address}}{{item.tack_address.last_address}}</text>
-                    <view class='price-area'>
-                        <text>¥</text>
-                        <text class='price'>{{item.total_amount}}</text>
-                    </view>
-                </view>
-                <view class='item'>
-                    <text class='cir cir-s'></text>
-                    <text class='address'>{{item.recive_address.first_address}}{{item.recive_address.last_address}}</text>
-                </view>
-                <view class='item item-s'>
-                    <view>
-                        <text class='waimai'>{{item.count}}份外卖</text>
-                        <text>距离 {{item.distance}}</text>
-                    </view>
-                    <button class='btn' bindtap='getOrder' data-id='{{item.id}}'>立即接单</button>
+    <button wx:if='{{!fixFlag}}' class='register' bindtap='resetFixed'>重新获取定位</button>
+    <block wx:else>
+        <loading wx:if='{{loading}}'>加载附近的订单，请稍等</loading>
+        <view class='conent'>
+            <view class='info'>
+                <text>推荐订单</text>
+                <view class='fixed'>
+                    <image src='../../images/icon-fixed-s.png' class='icon-fixed' />
+                    <text class='fixed-tit'>{{fixedText}}</text>
                 </view>
             </view>
-        </block>
-        <view wx:else class='taskInfo'>
-            <image src='../../images/icon-task.png' class='icon-task'></image>
-            <text wx:if="{{flagCertif && deposit}}">
-                任务被人接完了\r\n可以再等等试试哦
-            </text>
-            <block wx:else>
-                <text>
-                    可以再等等试试哦\r\n空闲时间，先完成认证吧
-                </text>
-                <navigator wx:if='{{!flagCertif}}' url='/pages/mercenary/material/material' class='register'>去注册认证</navigator>
-                <navigator wx:elif='{{!deposit}}'  url='/pages/mercenary/cash/cash' class='register'>去注册认证</navigator>
+            <block wx:if="{{list.length > 0}}">
+                <view class='list' wx:for="{{list}}" wx:key="*this">
+                    <view class='item'>
+                        <text class='cir'></text>
+                        <text class='address'>{{item.tack_address.first_address}}{{item.tack_address.last_address}}</text>
+                        <view class='price-area'>
+                            <text>¥</text>
+                            <text class='price'>{{item.total_amount}}</text>
+                        </view>
+                    </view>
+                    <view class='item'>
+                        <text class='cir cir-s'></text>
+                        <text class='address'>{{item.recive_address.first_address}}{{item.recive_address.last_address}}</text>
+                    </view>
+                    <view class='item item-s'>
+                        <view>
+                            <text class='waimai'>{{item.count}}份外卖</text>
+                            <text>距离 {{item.distance}}</text>
+                        </view>
+                        <button class='btn' bindtap='getOrder' data-id='{{item.id}}'>立即接单</button>
+                    </view>
+                </view>
             </block>
+            <view wx:else class='taskInfo'>
+                <image src='../../images/icon-task.png' class='icon-task'></image>
+                <text wx:if="{{flagCertif && deposit}}">
+                    任务被人接完了\r\n可以再等等试试哦
+                </text>
+                <block wx:else>
+                    <text>
+                        可以再等等试试哦\r\n空闲时间，先完成认证吧
+                    </text>
+                    <navigator wx:if='{{!flagCertif}}' url='/pages/mercenary/material/material' class='register'>去注册认证</navigator>
+                    <navigator wx:elif='{{!deposit}}'  url='/pages/mercenary/cash/cash' class='register'>去注册认证</navigator>
+                </block>
 
+            </view>
         </view>
-    </view>
+    </block>
 </view>

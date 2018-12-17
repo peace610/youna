@@ -54,7 +54,7 @@ page {
     margin-left: 20rpx;
 }
 .all {
-    width: 146rpx;
+    width: 160rpx;
     font-size: 32rpx;
     color: #64818D;
 }

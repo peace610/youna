@@ -14,6 +14,7 @@ Page({
     interval: 5000,
     duration: 1000,
     fixedText: '',
+    fixFlag: false,
   },
     onLoad: function (options) {
     },
@@ -57,6 +58,7 @@ Page({
         } else {
             vm.init()
         }
+
     },
     init: function () {
         var vm = this
@@ -64,7 +66,6 @@ Page({
             offset: 0,
             loading: true,
             list: [],
-            fixedText: wx.getStorageSync('fixedText')
         })
         var session_id = wx.getStorageSync('session_id')
         var user_id = wx.getStorageSync('user_id')
@@ -86,7 +87,41 @@ Page({
                 deposit: res.data.deposit
             })
         })
-        vm.getList()
+        // 获取定位 到经纬度
+        app.getFixed(function () {
+            vm.setData({
+                fixedText: wx.getStorageSync('fixedText'),
+                fixFlag: true
+            })
+            vm.getList()
+        })
+    },
+    resetFixed: function () {
+        // 获取用户信息
+        wx.getSetting({
+            success: res => {
+                if (!res.authSetting['scope.userLocation']) {
+                    wx.showModal({
+                        title: '是否授权当前位置',
+                        content: '需要获取您的地理位置，请确认授权',
+                        success: function (res) {
+                            if (res.cancel) {
+                            } else if (res.confirm) {
+                                wx.openSetting({
+                                    success: function (data) {
+                                        if (data.authSetting["scope.userLocation"] == true) {
+
+                                        }
+                                    }
+                                })
+                            }
+                        }
+                    })
+                } else {
+
+                }
+            }
+        })
     },
     getList: function () {
         var vm = this

@@ -42,7 +42,6 @@ Page({
             }
         })
       }
-      app.getFixed()
   },
     getUserInfoEmployer: function (e) {
         if (e.detail.errMsg == 'getUserInfo:ok'){

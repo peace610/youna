@@ -151,7 +151,7 @@ Page({
         }
         util.ajax('PUT','/user',param,(res) => {
             if (res.data.deposit) {
-                wx.navigateTo({
+                wx.switchTab({
                     url: '/pages/mercenary/index/index'
                 })
             } else {
