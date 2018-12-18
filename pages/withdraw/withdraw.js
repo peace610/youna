@@ -50,7 +50,7 @@ Page({
         wx.showModal({
             title: '温馨提示',
             showCancel: false,
-            content: '受微信政策影响，提现请加微信"xxx",我们会人工审核打款一般1-3个工作日到账',
+            content: '受微信政策影响，提现请加微信"879053662",我们会人工审核打款一般1-3个工作日到账',
             confirmColor: '#1ABFC0',
             confirmText: '我知道',
             success(res) {
