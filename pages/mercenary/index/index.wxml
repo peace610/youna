@@ -1,5 +1,9 @@
 <view class='container'>
-    <swiper indicator-dots='{{indicatorDots}}'
+    <block wx:if='{{loading}}'>
+        <view class='dialog' ></view>
+        <loading >加载附近的订单，请稍等</loading>
+    </block>
+    <swiper wx:if='{{imgUrls.length > 0}}' indicator-dots='{{indicatorDots}}'
         autoplay='{{autoplay}}' interval='{{interval}}' duration='{{duration}}' class='swiperArea'>
         <block wx:for='{{imgUrls}}' wx:key="*this">
           <swiper-item>
@@ -11,7 +15,6 @@
     </swiper>
     <button wx:if='{{!fixFlag}}' class='register' bindtap='resetFixed'>重新获取定位</button>
     <block wx:else>
-        <loading wx:if='{{loading}}'>加载附近的订单，请稍等</loading>
         <view class='conent'>
             <view class='info'>
                 <text>推荐订单</text>

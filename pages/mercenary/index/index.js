@@ -89,11 +89,17 @@ Page({
         })
         // 获取定位 到经纬度
         app.getFixed(function () {
+            // 获取成功
             vm.setData({
                 fixedText: wx.getStorageSync('fixedText'),
                 fixFlag: true
             })
             vm.getList()
+        }, function () {
+            // 获取失败
+            vm.setData({
+                loading: false
+            })
         })
     },
     resetFixed: function () {
@@ -170,8 +176,7 @@ Page({
                 wx.navigateTo({
                     url: '/pages/mercenary/material/material'
                 })
-            }
-            if (!vm.data.deposit) {
+            } else if (vm.data.flagCertif && !vm.data.deposit) {
                 wx.navigateTo({
                     url: '/pages/mercenary/cash/cash'
                 })

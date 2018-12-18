@@ -27,7 +27,7 @@ App({
           }
       })
   },
-  getFixed: function (fun) {
+  getFixed: function (fun,failFun) {
       var vm = this
       wx.getLocation({
           success: function(data) {
@@ -54,6 +54,11 @@ App({
                   complete: function(res) {
                   }
               })
+          },
+          fail: function (res) {
+              if (typeof failFun == "function" ) {
+                  failFun()
+              }
           }
       })
   },

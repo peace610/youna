@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-      amount: 0
+      amount: 0,
+      submitOrderFlag: true
   },
 
   /**
@@ -26,36 +27,43 @@ Page({
   },
     submitOrder: function () {
         var vm = this
-        var param = {
-            session_id: wx.getStorageSync('session_id'),
-            post_vars: {
-                user_id: wx.getStorageSync('user_id'),
-                amount: vm.data.amount
+        if (vm.data.submitOrderFlag) {
+            vm.setData({
+                submitOrderFlag: false,
+            })
+            var param = {
+                session_id: wx.getStorageSync('session_id'),
+                post_vars: {
+                    user_id: wx.getStorageSync('user_id'),
+                    amount: vm.data.amount
+                }
             }
-        }
-        util.ajax('POST','/user/account/actions/deposit',param,(res) => {
-            var data = res.data
-            var vm = this
-            wx.requestPayment(
-                {
-                    timeStamp: data.timeStamp,
-                    nonceStr: data.nonceStr,
-                    package: data.package,
-                    signType: data.signType,
-                    paySign: data.paySign,
-                    success: function(res){
-                        setTimeout(() => {
-                            wx.switchTab({
-                                url: '/pages/mercenary/index/index'
-                            })
-                        },100)
-                    },
-                    fail: function(res){
-                    },
-                    complete: function(res){
-                        vm.hideModal()
-                    }
+            util.ajax('POST','/user/account/actions/deposit',param,(res) => {
+                var data = res.data
+                vm.setData({
+                    submitOrderFlag: true,
                 })
-        })
+                wx.requestPayment(
+                    {
+                        timeStamp: data.timeStamp,
+                        nonceStr: data.nonceStr,
+                        package: data.package,
+                        signType: data.signType,
+                        paySign: data.paySign,
+                        success: function(res){
+                            setTimeout(() => {
+                                wx.switchTab({
+                                    url: '/pages/mercenary/index/index'
+                                })
+                            },100)
+                        },
+                        fail: function(res){
+                        },
+                        complete: function(res){
+                            vm.hideModal()
+                        }
+                    })
+            })
+        }
     }
 })
