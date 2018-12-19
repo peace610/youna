@@ -1,0 +1,14 @@
+<view class='container'>
+    <view>1、解锁食堂点餐</view>
+    <view>取外卖界面</view>
+    <view>商家名称：<text class='underLine'>例如，文华食堂2荤1素</text>（填写食堂名称和要点的菜）</view>
+    <view>大致地址：<text class='underLine'>桃李苑文华食堂</text> (搜不到食堂可以输入餐厅附近的任何地点)</view>
+    <view>详细地址：<text class='underLine'>桃李苑文华食堂一楼</text></view>
+    <view><image src='../../images/areaDec1.jpg' class='areaDecImg'/></view>
+    <view>2、解锁代买功能(超市，水果店，奶茶店…更多功能期待你的创造)</view>
+    <view>取外卖界面</view>
+    <view>商家名称：<text class='underLine'>诺玛超市，两瓶可乐，一桶康师傅红烧牛肉面</text></view>
+    <view>大致地址：<text class='underLine'>成蹊苑东门</text></view>
+    <view>详细地址：<text class='underLine'>成蹊苑东门的诺玛超市</text></view>
+    <view><image src='../../images/areaDec2.jpg' class='areaDecImg'/></view>
+</view>

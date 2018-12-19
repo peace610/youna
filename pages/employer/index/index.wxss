@@ -6,8 +6,8 @@
 }
 .top .my-img {
     position:absolute;
-    width: 34rpx;
-    height: 40rpx;
+    width: 56rpx;
+    height: 56rpx;
     top: 28rpx;
     left: 30rpx;
 }
@@ -64,6 +64,10 @@
 }
 .num {
     margin: 0 30rpx;
+}
+.areaDec {
+    width: 46rpx;
+    height: 44rpx;
 }
 /*.input-info {*/
     /*width: 100%;*/

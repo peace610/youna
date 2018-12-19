@@ -6,6 +6,7 @@
     "pages/employer/addressSearch/addressSearch",
     "pages/employer/receiveAddress/receiveAddress",
     "pages/employer/receiveAddressList/receiveAddressList",
+    "pages/employer/areaDec/areaDec",
     "pages/employer/orderDetail/orderDetail",
     "pages/employer/my/my",
     "pages/employer/orderList/orderList",

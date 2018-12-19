@@ -140,6 +140,11 @@ Page({
             url: goUrl
         })
     },
+    areaDec: function () {
+        wx.navigateTo({
+            url: '/pages/employer/areaDec/areaDec'
+        })
+    },
     calculate : function () {
         var vm = this
         // 计算订单金额

@@ -4,7 +4,7 @@
         <image src='../../images/employerTop.png' class='banner'/>
     </navigator>
       <navigator url="/pages/employer/my/my"  open-type='navigate'>
-          <image src='../../images/my.png' class='my-img'/>
+          <image src='../../images/my.jpg' class='my-img'/>
       </navigator>
     <view class='tip'>
         <image src='../../images/fixed.png' class='fixed'/>
@@ -36,7 +36,8 @@
             </view>
         </li>
         <li wx:if='{{!showAreaStatus}}'>
-            <textarea placeholder='童鞋你有何送达要求(40字内)' maxlength='40' auto-height placeholder-style='color: #AABEC6;' class='input-info' bindinput='des' value='{{des}}'/>
+            <textarea placeholder='备注：40字内(点小灯泡，解锁更多姿势~)' maxlength='40' auto-height placeholder-style='color: #AABEC6;' class='input-info' bindinput='des' value='{{des}}'/>
+            <image src='../../images/areaDec.jpg' class='areaDec' bindtap='areaDec'/>
         </li>
         <li>
             <text>预计很快送达</text>
