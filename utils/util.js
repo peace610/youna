@@ -19,7 +19,7 @@ const ajax = (Type, url, params, successFun, failFun, completeFun) => {
     // 默认数据传输格式
     var methonType = 'application/json'
     // 访问主域名
-    var https = 'https://hdzhang.xyz/api'
+    var https = 'https://yona.vip/api'
     // if (Type === 'PUT') {
     //     var p = Object.keys(params).map(function (key) {
     //         return encodeURIComponent(key) + "=" + encodeURIComponent(params[key]);

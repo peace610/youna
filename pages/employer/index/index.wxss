@@ -138,3 +138,6 @@
 .submitButton_s {
     margin-top: 40rpx;
 }
+.footerButton {
+  height: 110rpx;
+}

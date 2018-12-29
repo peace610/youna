@@ -39,7 +39,7 @@ Page({
                     filePaths: filePaths[0]
                 })
                 wx.uploadFile({
-                    url: 'https://hdzhang.xyz/api/upload',
+                    url: 'https://yona.vip/api/upload',
                     filePath: filePaths[0],
                     name: 'file',
                     header: {
