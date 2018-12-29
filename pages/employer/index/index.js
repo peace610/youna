@@ -20,6 +20,8 @@ Page({
     animationData: {},
   },
     onLoad: function (options) {
+    },
+    onShow: function (options) {
         var vm = this
         if (!wx.getStorageSync('user_id')) {
             // 登录
@@ -117,12 +119,6 @@ Page({
         app.getFixed()
         // 计算金额
         this.calculate()
-    },
-    onShow: function () {
-        // 计算金额
-        if (this.data.price) {
-            this.calculate()
-        }
     },
     getAddress: function () {
       var getAddress = this.data.getAddress.first_address ? JSON.stringify(this.data.getAddress) : ''
