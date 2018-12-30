@@ -3,6 +3,7 @@ const util = require('../../../utils/util.js')
 const app = getApp()
 Page({
   data: {
+    options: {},
     count: 0,
     getAddress: {
         first_address: '',
@@ -20,9 +21,13 @@ Page({
     animationData: {},
   },
     onLoad: function (options) {
+      this.setData({
+        options: options
+      })
     },
-    onShow: function (options) {
+    onShow: function () {
         var vm = this
+        var options = vm.data.options
         if (!wx.getStorageSync('user_id')) {
             // 登录
             wx.login({
@@ -122,7 +127,7 @@ Page({
     },
     getAddress: function () {
       var getAddress = this.data.getAddress.first_address ? JSON.stringify(this.data.getAddress) : ''
-        wx.navigateTo({
+      wx.redirectTo({
             url: '/pages/employer/getAddress/getAddress?goIndex="index"&getAddress='+ getAddress
         })
     },
@@ -132,7 +137,7 @@ Page({
         if (receiveAddress.first_address) {
             goUrl = '/pages/employer/receiveAddressList/receiveAddressList'
         }
-        wx.navigateTo({
+      wx.redirectTo({
             url: goUrl
         })
     },

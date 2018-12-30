@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+      options: {},
       name: '',
       address: '',
       addressDetail: '',
@@ -15,6 +16,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      options: options
+    })
+  },
+  onShow: function () {
+      var options = this.data.options
       var address = options && options.address
       var location = options && options.location
       var goIndex = options && options.goIndex
@@ -45,8 +52,17 @@ Page({
               })
           }
       }
+      wx.setStorageSync('getAddressFlag',true)
   },
+    onUnload: function () {
+      if(wx.getStorageSync('getAddressFlag')) {
+        wx.navigateTo({
+              url: '/pages/employer/index/index'
+          })
+      }
+    },
     addressSearch: function () {
+      wx.setStorageSync('getAddressFlag', false)
       var data = this.data
       var  getAddress= {
           name: data.name,
@@ -86,7 +102,8 @@ Page({
             }
         }
         util.ajax('POST','/user/address',param,(res) => {
-            wx.navigateTo({
+            wx.setStorageSync('getAddressFlag',false)
+          wx.redirectTo({
                 url: '/pages/employer/index/index'
             })
         })

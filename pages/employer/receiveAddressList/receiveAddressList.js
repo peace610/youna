@@ -12,7 +12,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      this.getList()
+  },
+  onShow: function () {
+    this.getList()
+    wx.setStorageSync('receiveAddressListFlag', true)
+  },
+  onUnload: function () {
+    if (wx.getStorageSync('receiveAddressListFlag')) {
+      wx.navigateTo({
+        url: '/pages/employer/index/index'
+      })
+    }
   },
     getList: function () {
         var vm = this
@@ -34,12 +44,14 @@ Page({
         })
     },
     goEmployer: function (e) {
+      wx.setStorageSync('receiveAddressListFlag', false)
         var receiveAddress = e.currentTarget.dataset.receiveAddress
         wx.redirectTo({
             url: '/pages/employer/index/index?receiveAddress='+JSON.stringify(receiveAddress)
         })
     },
     editAddress: function (e) {
+      wx.setStorageSync('receiveAddressListFlag', false)
         var id = e.currentTarget.dataset.id
         wx.navigateTo({
             url: '/pages/employer/receiveAddress/receiveAddress?id='+id
@@ -69,6 +81,7 @@ Page({
         })
     },
     receiveAddress: function () {
+      wx.setStorageSync('receiveAddressListFlag', false)
         wx.redirectTo({
             url: '/pages/employer/receiveAddress/receiveAddress'
         })
