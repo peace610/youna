@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    options: {},
     searchInput: '',
     searchFlag: false,
     searchList: [],
@@ -17,12 +18,20 @@ Page({
     id: '',
     getAddress: '{}',
     redeiveAddress: '{}',
+    fixFlag: false,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+      this.setData({
+          options: options
+      })
+  },
+    onShow: function () {
+      var vm = this
+      var options = vm.data.options
       var type = options && options.type
       var id = options && options.id
       var getAddress = options && options.getAddress
@@ -42,20 +51,30 @@ Page({
           })
       }
       wx.setStorageSync('addressFlag', true)
+      vm.fixed()
   },
-    onShow: function () {
-        this.resetFixed()
-    },
     onUnload: function () {
         if (wx.getStorageSync('addressFlag')){
             wx.navigateTo({
                 url: wx.getStorageSync('goAddressUrl')
             })
         }
-
+    },
+    fixed: function () {
+      var vm = this
+        app.getFixed(function () {
+            vm.setData({
+                city: wx.getStorageSync('city'),
+                fixedText: wx.getStorageSync('fixedText'),
+                location: {
+                    lat: wx.getStorageSync('latitude'),
+                    lng: wx.getStorageSync('longitude')
+                },
+                fixFlag: true
+            })
+        })
     },
     resetFixed: function () {
-        var vm = this
         // 获取用户信息
         wx.getSetting({
             success: res => {
@@ -77,16 +96,6 @@ Page({
                         }
                     })
                 } else {
-                    app.getFixed(function () {
-                        vm.setData({
-                            city: wx.getStorageSync('city'),
-                            fixedText: wx.getStorageSync('fixedText'),
-                            location: {
-                                lat: wx.getStorageSync('latitude'),
-                                lng: wx.getStorageSync('longitude')
-                            }
-                        })
-                    })
 
                 }
             }

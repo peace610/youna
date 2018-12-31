@@ -1,3 +1,13 @@
+.fixedButton {
+  width: 410rpx;
+  height: 94rpx;
+  line-height: 94rpx;
+  background: #1ABFC0;
+  border-radius: 8rpx;
+  font-size: 32rpx;
+  color: #FFF;
+  margin: 40rpx auto;
+}
 .top {
   display: flex;
   align-items: center;

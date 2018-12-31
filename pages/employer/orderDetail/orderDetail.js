@@ -199,10 +199,17 @@ Page({
     },
     setPrice: function (e) {
         var price = e.detail.value
-        this.setData({
-            price: price,
-            priceItem: price
-        })
+        if(price < 1 || price > 100 ) {
+            wx.showToast({
+                title: '请输入1-100的数字',
+                icon: 'none'
+            })
+        } else {
+            this.setData({
+                price: price,
+                priceItem: price
+            })
+        }
     },
     submitPrice: function () {
         var vm = this

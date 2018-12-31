@@ -56,7 +56,6 @@ Page({
         }
     },
     getUserInfoMercenary: function (e) {
-        console.log(e)
         if (e.detail.errMsg == 'getUserInfo:ok'){
             app.globalData.userInfo = e.detail.userInfo
             this.setData({
