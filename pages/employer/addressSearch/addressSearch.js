@@ -41,9 +41,18 @@ Page({
               receiveAddress: receiveAddress
           })
       }
+      wx.setStorageSync('addressFlag', true)
   },
     onShow: function () {
         this.resetFixed()
+    },
+    onUnload: function () {
+        if (wx.getStorageSync('addressFlag')){
+            wx.navigateTo({
+                url: wx.getStorageSync('goAddressUrl')
+            })
+        }
+
     },
     resetFixed: function () {
         var vm = this
@@ -134,6 +143,7 @@ Page({
         })
     },
     goAddress: function (e) {
+      wx.setStorageSync('addressFlag', false)
       var address = e.currentTarget.dataset.address
       var location = e.currentTarget.dataset.location
         var url = ''

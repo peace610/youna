@@ -68,7 +68,7 @@ Page({
           name: data.name,
           addressDetail: data.addressDetail
       }
-        wx.navigateTo({
+        wx.redirectTo({
             url: '/pages/employer/addressSearch/addressSearch?type=getAddress&getAddress='+JSON.stringify(getAddress)
         })
     },
@@ -103,7 +103,7 @@ Page({
         }
         util.ajax('POST','/user/address',param,(res) => {
             wx.setStorageSync('getAddressFlag',false)
-          wx.redirectTo({
+            wx.redirectTo({
                 url: '/pages/employer/index/index'
             })
         })

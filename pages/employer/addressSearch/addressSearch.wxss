@@ -79,6 +79,7 @@
   margin-right: 16rpx;
 }
 .fixedText {
+  width: 475rpx;
   font-size: 32rpx;
   color: #1abfc0;
   flex-grow: 1;

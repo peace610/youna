@@ -27,6 +27,7 @@ Page({
     },
     onShow: function () {
         var vm = this
+      // console.info(getCurrentPages(),111)
         var options = vm.data.options
         if (!wx.getStorageSync('user_id')) {
             // 登录
@@ -127,16 +128,21 @@ Page({
     },
     getAddress: function () {
       var getAddress = this.data.getAddress.first_address ? JSON.stringify(this.data.getAddress) : ''
+      var goUrl = '/pages/employer/getAddress/getAddress?goIndex="index"&getAddress=' + getAddress
+      wx.setStorageSync('goAddressUrl', goUrl)
       wx.redirectTo({
-            url: '/pages/employer/getAddress/getAddress?goIndex="index"&getAddress='+ getAddress
+        url: goUrl
         })
     },
     receiveAddress: function () {
       var receiveAddress = this.data.receiveAddress
       var goUrl = '/pages/employer/receiveAddress/receiveAddress'
-        if (receiveAddress.first_address) {
-            goUrl = '/pages/employer/receiveAddressList/receiveAddressList'
-        }
+      wx.setStorageSync('goAddressUrl', goUrl)
+      wx.setStorageSync('receiveAddressFirst', true)
+      if (receiveAddress.first_address) {
+        wx.setStorageSync('receiveAddressFirst', false)
+        goUrl = '/pages/employer/receiveAddressList/receiveAddressList'
+      }
       wx.redirectTo({
             url: goUrl
         })

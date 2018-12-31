@@ -51,10 +51,13 @@ Page({
         })
     },
     editAddress: function (e) {
-      wx.setStorageSync('receiveAddressListFlag', false)
+        wx.setStorageSync('receiveAddressListFlag', false)
         var id = e.currentTarget.dataset.id
-        wx.navigateTo({
-            url: '/pages/employer/receiveAddress/receiveAddress?id='+id
+        var goUrl = '/pages/employer/receiveAddress/receiveAddress?id='+id
+        wx.setStorageSync('goAddressUrl', goUrl)
+        wx.setStorageSync('receiveAddressFirst', false)
+        wx.redirectTo({
+            url: goUrl
         })
     },
     delAddress: function (e) {
@@ -81,9 +84,12 @@ Page({
         })
     },
     receiveAddress: function () {
-      wx.setStorageSync('receiveAddressListFlag', false)
+        wx.setStorageSync('receiveAddressListFlag', false)
+        var goUrl = '/pages/employer/receiveAddress/receiveAddress'
+        wx.setStorageSync('goAddressUrl', goUrl)
+        wx.setStorageSync('receiveAddressFirst', false)
         wx.redirectTo({
-            url: '/pages/employer/receiveAddress/receiveAddress'
+            url: goUrl
         })
     }
 })

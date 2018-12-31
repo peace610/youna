@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+      options: {},
       id: '',
       surname: '', // 姓氏
       name: '', // 名字
@@ -22,7 +23,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+      this.setData({
+          options: options
+      })
+  },
+    onShow: function () {
       var vm = this
+      var options = vm.data.options
       var address = options && options.address
       var location = options && options.location
       var receiveAddress = options && options.receiveAddress
@@ -79,8 +86,23 @@ Page({
               })
           }
       }
-
+        if(wx.getStorageSync('receiveAddressFirst')) {
+            wx.setStorageSync('receiveAddressFlag', 1)
+        } else {
+            wx.setStorageSync('receiveAddressFlag', 2)
+        }
   },
+    onUnload: function () {
+      if(wx.getStorageSync('receiveAddressFlag') == 1) {
+          wx.navigateTo({
+              url: '/pages/employer/index/index'
+          })
+      } else if (wx.getStorageSync('receiveAddressFlag') == 2) {
+          wx.navigateTo({
+              url: '/pages/employer/receiveAddressList/receiveAddressList'
+          })
+      }
+    },
     surname: function (e) {
         this.setData({
             surname: e.detail.value
@@ -108,6 +130,7 @@ Page({
         })
     },
     addressSearch: function () {
+        wx.setStorageSync('receiveAddressFlag', 3)
         var data = this.data
         var  receiveAddress= {
             surname: data.surname,
@@ -118,7 +141,7 @@ Page({
             addressDetail: data.addressDetail,
             defaultCheck: data.defaultCheck
         }
-        wx.navigateTo({
+        wx.redirectTo({
             url: '/pages/employer/addressSearch/addressSearch?type=receiveAddress&id='+data.id+'&receiveAddress='+JSON.stringify(receiveAddress)
         })
     },
@@ -166,6 +189,7 @@ Page({
             type = 'PUT'
         }
         util.ajax(type,'/user/address',param,(res) => {
+            wx.setStorageSync('receiveAddressFlag',3)
             wx.redirectTo({
                 url: '/pages/employer/receiveAddressList/receiveAddressList'
             })

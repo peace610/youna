@@ -81,7 +81,7 @@
   margin-left: 10rpx;
 }
 .address {
-  width: 470rpx;
+  width: 440rpx;
   color: #2A383E;
 }
 .item-s {
