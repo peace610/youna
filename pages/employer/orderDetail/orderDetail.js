@@ -204,6 +204,9 @@ Page({
                 title: '请输入1-100的数字',
                 icon: 'none'
             })
+            this.setData({
+                priceItem: ''
+            })
         } else {
             this.setData({
                 price: price,

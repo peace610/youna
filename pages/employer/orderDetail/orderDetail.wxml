@@ -141,10 +141,10 @@
         </view>
         <view class='other-price'>
             <text class='other-label'>其它金额</text>
-            <input placeholder='请输入1-100金额' type='number' placeholder-style='color: #AABEC6;font-size:32rpx;' class='input-info' bindinput='setPrice'  value='{{price}}' />
+            <input placeholder='请输入1-100金额' type='number' maxlength='2' placeholder-style='color: #AABEC6;font-size:32rpx;' class='input-info' bindinput='setPrice'  value='{{price}}' />
             <text>元</text>
         </view>
-        <button wx:if='{{(priceItem == 1 || priceItem == 3 && priceItem == 6) || (price !== "" && price >= 1 && price <= 100)}}' bindtap='submitPrice' class='submitButton'>去支付</button>
+        <button wx:if='{{(priceItem == 1 || priceItem == 3 || priceItem == 6) || (priceItem != "" && price !== "" && price >= 1 && price < 100)}}' bindtap='submitPrice' class='submitButton'>去支付</button>
         <button wx:else class='submitButton button-disabled'>去支付</button>
     </view>
 </view>
