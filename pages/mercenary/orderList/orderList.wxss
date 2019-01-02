@@ -38,6 +38,7 @@ page {
     display: flex;
     justify-content: space-between;
     padding-top: 30rpx;
+    overflow: hidden
 }
 .icon-get {
     width: 36rpx;
@@ -51,7 +52,7 @@ page {
     display: flex;
 }
 .address {
-    width: 505rpx;
+    width: 476rpx;
     font-size: 28rpx;
     color: #2A383E;
     margin-bottom: 20rpx;
@@ -59,7 +60,7 @@ page {
 .price {
     font-size: 40rpx;
     color: #001A00;
-    margin-left: 30rpx;
+    margin-left: 24rpx;
 }
 .unit {
     font-size: 32rpx;
