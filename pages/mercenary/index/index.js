@@ -102,6 +102,16 @@ Page({
             })
         })
     },
+    onShareAppMessage(res) {
+      if (res.from === 'button') {
+        // 来自页面内转发按钮
+        console.log(res.target)
+      }
+      return {
+        title: '悠拿',
+        path: '/pages/index/index'
+      }
+    },
     resetFixed: function () {
         // 获取用户信息
         wx.getSetting({

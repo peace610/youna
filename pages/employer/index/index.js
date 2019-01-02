@@ -126,6 +126,16 @@ Page({
         // 计算金额
         this.calculate()
     },
+    onShareAppMessage(res) {
+      if (res.from === 'button') {
+        // 来自页面内转发按钮
+        console.log(res.target)
+      }
+      return {
+        title: '悠拿',
+        path: '/pages/index/index'
+      }
+    },
     getAddress: function () {
       var getAddress = this.data.getAddress.first_address ? JSON.stringify(this.data.getAddress) : ''
       var goUrl = '/pages/employer/getAddress/getAddress?goIndex="index"&getAddress=' + getAddress

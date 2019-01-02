@@ -1,5 +1,6 @@
 const util = require('../../../utils/util.js')
 var  counter = 0
+var  detailCounter = 0
 Page({
     /**
      * 页面的初始数据
@@ -27,9 +28,13 @@ Page({
                 id: id,
             })
             vm.getOrderDetail()
+            detailCounter = setInterval(()=> {
+                vm.getOrderDetail()
+            },1000*30)
         }
     },
     onUnload: function () {
+        clearInterval(detailCounter)
         this.clearCount()
     },
     getOrderDetail: function () {
